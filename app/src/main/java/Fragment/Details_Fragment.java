@@ -7,8 +7,10 @@ import android.app.Dialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.ProgressDialog;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
@@ -593,6 +595,7 @@ public class Details_Fragment extends Fragment {
 
                 }
 
+                updateData();
                 btn_add.setVisibility(View.GONE);
                 numberButton.setNumber("1");
                 numberButton.setVisibility(View.VISIBLE);
@@ -761,11 +764,20 @@ public class Details_Fragment extends Fragment {
         return view;
     }
 
-    private void updateintent() {
-        Intent updates = new Intent("Grocery_cart");
-        updates.putExtra("type", "update");
-        getActivity().sendBroadcast(updates);
+    @Override
+    public void onPause() {
+        super.onPause();
+        // unregister reciver
+        getActivity().unregisterReceiver(mCart);
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        // register reciver
+        getActivity().registerReceiver(mCart, new IntentFilter("Grocery_cart"));
+    }
+
     @Override
     public void onStart() {
         super.onStart();
@@ -1298,4 +1310,21 @@ public boolean checkAttributeStatus(String atr)
 
 
 
+
+    private BroadcastReceiver mCart = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+
+            String type = intent.getStringExtra("type");
+
+            if (type.contentEquals("update")) {
+                updateData();
+            }
+        }
+    };
+
+    private void updateData() {
+
+        ((MainActivity) getActivity()).setCartCounter("" + db_cart.getCartCount());
+    }
 }

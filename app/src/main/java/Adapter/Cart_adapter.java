@@ -182,7 +182,7 @@ public class Cart_adapter extends RecyclerView.Adapter<Cart_adapter.ProductHolde
                     holder.tv_contetiy.setText(String.valueOf(qty));
                     double t=Double.parseDouble(m.get("price"));
                     double p=Double.parseDouble(m.get("unit_price"));
-                    holder.tv_total.setText("" + p * qty);
+                    holder.tv_total.setText("" + t * qty);
                     String pr=String.valueOf(t-p);
                     float qt=Float.valueOf(qty);
 
@@ -196,7 +196,7 @@ public class Cart_adapter extends RecyclerView.Adapter<Cart_adapter.ProductHolde
                     mapProduct.put("product_description",map.get( "product_description" ));
                     mapProduct.put("product_attribute",map.get( "product_attribute" ));
                     mapProduct.put("stock",map.get("stock"));
-                    mapProduct.put("price",map.get("price"));
+                    mapProduct.put("price",pr);
                     mapProduct.put("mrp",map.get("mrp"));;
                     mapProduct.put( "unit_price",map.get("unit_price") );
                     mapProduct.put("unit_value",map.get( "unit_value" ));
@@ -278,7 +278,7 @@ public class Cart_adapter extends RecyclerView.Adapter<Cart_adapter.ProductHolde
                 mapProduct.put("product_description",map.get( "product_description" ));
                 mapProduct.put("product_attribute",map.get( "product_attribute" ));
                 mapProduct.put("stock",map.get("stock"));
-                mapProduct.put("price",map.get("price"));
+                mapProduct.put("price",pr);
                 mapProduct.put("mrp",map.get("mrp"));;
                 mapProduct.put( "unit_price",map.get("unit_price") );
                 mapProduct.put("unit_value",map.get( "unit_value" ));
