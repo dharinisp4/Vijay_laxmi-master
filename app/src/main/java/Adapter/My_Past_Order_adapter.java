@@ -107,42 +107,42 @@ SharedPreferences preferences;
         if (mList.getStatus().equals("0")) {
             holder.tv_status.setText(context.getResources().getString(R.string.pending));
             holder.relativetextstatus.setText(context.getResources().getString(R.string.pending));
-            holder.relative_background.setBackgroundColor(context.getResources().getColor(R.color.color_2));
+            holder.relative_background.setBackgroundColor(context.getResources().getColor(R.color.pink));
         } else if (mList.getStatus().equals("1")) {
             holder.view1.setBackgroundColor(context.getResources().getColor(R.color.pink));
             holder.view2.setBackgroundColor(context.getResources().getColor(R.color.pink));
-            holder.relative_background.setBackgroundColor(context.getResources().getColor(R.color.purple));
-            holder.Confirm.setImageResource(R.color.pink);
+            holder.relative_background.setBackgroundColor(context.getResources().getColor(R.color.color_1));
+            holder.Confirm.setImageResource(R.color.color_1);
             holder.tv_status.setText(context.getResources().getString(R.string.confirm));
             holder.relativetextstatus.setText(context.getResources().getString(R.string.confirm));
-            holder.tv_status.setTextColor(context.getResources().getColor(R.color.pink));
+            holder.tv_status.setTextColor(context.getResources().getColor(R.color.black));
         } else if (mList.getStatus().equals("2")) {
             holder.view1.setBackgroundColor(context.getResources().getColor(R.color.pink));
-            holder.relative_background.setBackgroundColor(context.getResources().getColor(R.color.purple));
+            holder.relative_background.setBackgroundColor(context.getResources().getColor(R.color.yelow));
             holder.view2.setBackgroundColor(context.getResources().getColor(R.color.pink));
             holder.view3.setBackgroundColor(context.getResources().getColor(R.color.pink));
             holder.view4.setBackgroundColor(context.getResources().getColor(R.color.pink));
             holder.view5.setBackgroundColor(context.getResources().getColor(R.color.pink));
             holder.view6.setBackgroundColor(context.getResources().getColor(R.color.pink));
-            holder.Confirm.setImageResource(R.color.pink);
-            holder.Out_For_Deliverde.setImageResource(R.color.pink);
+            holder.Confirm.setImageResource(R.color.yelow);
+            holder.Out_For_Deliverde.setImageResource(R.color.yelow);
             holder.tv_status.setText(context.getResources().getString(R.string.outfordeliverd));
             holder.relativetextstatus.setText(context.getResources().getString(R.string.outfordeliverd));
             holder.tv_status.setTextColor(context.getResources().getColor(R.color.pink));
         }else if (mList.getStatus().equals("4")) {
             holder.view1.setBackgroundColor(context.getResources().getColor(R.color.pink));
-            holder.relative_background.setBackgroundColor(context.getResources().getColor(R.color.pink));
+            holder.relative_background.setBackgroundColor(context.getResources().getColor(R.color.color_2));
             holder.view2.setBackgroundColor(context.getResources().getColor(R.color.pink));
             holder.view3.setBackgroundColor(context.getResources().getColor(R.color.pink));
             holder.view4.setBackgroundColor(context.getResources().getColor(R.color.pink));
             holder.view5.setBackgroundColor(context.getResources().getColor(R.color.pink));
             holder.view6.setBackgroundColor(context.getResources().getColor(R.color.pink));
-            holder.Confirm.setImageResource(R.color.pink);
-            holder.Out_For_Deliverde.setImageResource(R.color.pink);
-            holder.Delivered.setImageResource(R.color.pink);
+            holder.Confirm.setImageResource(R.color.color_2);
+            holder.Out_For_Deliverde.setImageResource(R.color.color_2);
+            holder.Delivered.setImageResource(R.color.color_2);
             holder.tv_status.setText(context.getResources().getString(R.string.delivered));
             holder.relativetextstatus.setText(context.getResources().getString(R.string.delivered));
-            holder.tv_status.setTextColor(context.getResources().getColor(R.color.pink));
+            holder.tv_status.setTextColor(context.getResources().getColor(R.color.white));
         }
 
         holder.tv_methid1.setText(mList.getPayment_method());
