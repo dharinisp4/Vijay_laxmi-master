@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_cart_clear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/pink"
+            android:gravity="center"
+            android:paddingBottom="@dimen/space_8"
+            android:paddingTop="@dimen/space_8"
+            android:text="@string/tv_cart_clear"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_small" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_cart"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="@dimen/space_10">
+
+                <Fonts.LatoBLack
+                    android:id="@+id/textView10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tv_cart_item"
+                    android:textColor="#000" />
+
+                <Fonts.LatoBLack
+                    android:id="@+id/tv_cart_item"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="4"
+                    android:textColor="#000" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:padding="@dimen/space_10">
+
+                <Fonts.LatoBLack
+                    android:id="@+id/textView12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tv_cart_total"
+                    android:textColor="#000" />
+                <Fonts.LatoBLack
+                    android:id="@+id/tv_cart_total"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="  50"
+                    android:textColor="#000" />
+
+<!--                <Fonts.LatoBLack-->
+<!--                    android:id="@+id/textView13"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginLeft="2dp"-->
+<!--                    android:text="@string/currency"-->
+<!--                    android:textColor="#000" />-->
+
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/btn_cart_checkout"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/bg_rounded_button"
+            android:padding="@dimen/space_5"
+            android:text="@string/tv_cart_checkout"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_X_small">
+
+            <Fonts.LatoBLack
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/checkout"
+                android:textColor="#fff"
+                android:textSize="@dimen/text_size_small" />
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

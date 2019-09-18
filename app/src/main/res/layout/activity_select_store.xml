@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".SelectCity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:background="@drawable/shapes">
+
+
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical">
+
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_launcher" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+
+            <Fonts.LatoBLack
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_10"
+                android:gravity="center"
+                android:text="Select Store"
+                android:textColor="#000"
+                android:textSize="@dimen/text_size_normal" />
+
+            <LinearLayout
+                android:id="@+id/edit_store"
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+                <Fonts.LatoBLack
+                    android:id="@+id/store"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="@dimen/space_8"
+                    android:layout_marginRight="@dimen/space_8"
+                    android:layout_marginTop="@dimen/space_8"
+                    android:background="@drawable/xml_textbox_bg"
+                    android:editable="false"
+                    android:ems="10"
+                    android:gravity="center_horizontal"
+                    android:text="Select Store"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/text_size_normal"
+                    android:textColor="@color/green" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/go_button"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="@dimen/space_8"
+            android:layout_marginRight="@dimen/space_8"
+            android:background="@drawable/bg_rounded_button">
+
+            <Fonts.LatoBLack
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Go"
+                android:textColor="#fff"
+                android:textSize="@dimen/text_size_small" />
+
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

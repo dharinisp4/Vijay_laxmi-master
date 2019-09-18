@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardElevation="@dimen/space_3"
+    app:cardUseCompatPadding="true"
+    card_view:cardCornerRadius="4dp">
+
+    <LinearLayout
+        android:id="@+id/order_panding_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/space_10"
+            android:layout_marginRight="@dimen/space_10"
+            android:layout_marginTop="@dimen/space_10"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Fonts.LatoBLack
+                    android:id="@+id/tv_order_no"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/order_id"
+                    android:textColor="#000"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <Fonts.LatoBLack
+                    android:id="@+id/tv_order_status"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:textColor="#000" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Fonts.LatoBLack
+                    android:id="@+id/tv_order_date"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/date_d"
+                    android:textColor="#000" />
+
+                <Fonts.LatoBLack
+                    android:id="@+id/tv_order_time"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/time_t"
+                    android:textColor="#000" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Fonts.LatoBLack
+                    android:id="@+id/tv_order_price"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/tv_toolbar_price"
+                    android:textColor="#000" />
+
+                <Fonts.LatoBLack
+                    android:id="@+id/tv_order_item"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/tt_t"
+                    android:textColor="#000" />
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/space_10"
+            android:background="@color/green" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:weightSum="4">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/space_10"
+                android:layout_weight=".7"
+                android:gravity="top"
+                android:orientation="vertical">
+
+                <Fonts.LatoBLack
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_4"
+                    android:text="@string/pending"
+                    android:textColor="#000"
+                    android:textSize="@dimen/text_size_XX_small" />
+
+                <Fonts.LatoBLack
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="#000"
+                    android:textSize="@dimen/text_size_XX_small" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@color/green" />
+
+                    <View
+                        android:id="@+id/view1"
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginTop="@dimen/space_2"
+                        android:background="@color/gray" />
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.2"
+                android:gravity="top|center"
+                android:orientation="vertical">
+
+                <Fonts.LatoBLack
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/space_4"
+                    android:layout_marginTop="@dimen/space_4"
+                    android:text="@string/confirm"
+                    android:textColor="#000"
+                    android:textSize="@dimen/text_size_XX_small" />
+
+                <Fonts.LatoBLack
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/space_4"
+                    android:text=""
+                    android:textColor="#000"
+                    android:textSize="@dimen/text_size_XX_small" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <View
+                        android:id="@+id/view2"
+                        android:layout_width="37dp"
+                        android:layout_height="2dp"
+                        android:layout_marginTop="@dimen/space_2"
+                        android:background="@color/gray" />
+
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/confirm_image"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@color/gray" />
+
+                    <View
+                        android:id="@+id/view3"
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginTop="@dimen/space_2"
+                        android:background="@color/gray" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.2"
+                android:gravity="top|center"
+                android:orientation="vertical">
+
+                <Fonts.LatoBLack
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/space_2"
+                    android:layout_marginTop="@dimen/space_4"
+                    android:text="@string/delivered"
+                    android:textColor="#000"
+                    android:textSize="@dimen/text_size_XX_small" />
+
+                <Fonts.LatoBLack
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/space_2"
+                    android:text=""
+                    android:textColor="#000"
+                    android:textSize="@dimen/text_size_XX_small" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <View
+                        android:id="@+id/view4"
+                        android:layout_width="39dp"
+                        android:layout_height="2dp"
+                        android:layout_marginTop="@dimen/space_2"
+                        android:background="@color/gray" />
+
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/delivered_image"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@color/gray" />
+
+                    <View
+                        android:id="@+id/view5"
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginTop="@dimen/space_2"
+                        android:background="@color/gray" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/space_10"
+                android:layout_weight="1.2"
+                android:gravity="top|center"
+                android:orientation="vertical">
+
+                <Fonts.LatoBLack
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/space_2"
+                    android:layout_marginTop="@dimen/space_4"
+                    android:text="@string/cancle"
+                    android:textColor="#000"
+                    android:textSize="@dimen/text_size_XX_small" />
+
+                <Fonts.LatoBLack
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/space_2"
+                    android:text=""
+                    android:textColor="#000"
+                    android:textSize="@dimen/text_size_XX_small" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <View
+                        android:id="@+id/view6"
+                        android:layout_width="39dp"
+                        android:layout_height="2dp"
+                        android:layout_marginTop="@dimen/space_2"
+                        android:background="@color/gray" />
+
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/cancal_image"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@color/gray" />
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</android.support.v7.widget.CardView>

@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "592788118300",
+    "firebase_url": "https://sli-india-soch.firebaseio.com",
+    "project_id": "sli-india-soch",
+    "storage_bucket": "sli-india-soch.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:592788118300:android:e81a7f27b0a1ba9e",
+        "android_client_info": {
+          "package_name": "com.trolley.tcc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "592788118300-t1sj4rihg0ke55ctm4p6ql0ik1lpv9ie.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBUpH-lKQ6GkQ-drTboutWSUhNrwsXiTFw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "592788118300-t1sj4rihg0ke55ctm4p6ql0ik1lpv9ie.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:592788118300:android:3dcb709f9c231b79",
+        "android_client_info": {
+          "package_name": "gogrocer.tcc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "592788118300-t1sj4rihg0ke55ctm4p6ql0ik1lpv9ie.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBUpH-lKQ6GkQ-drTboutWSUhNrwsXiTFw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "592788118300-t1sj4rihg0ke55ctm4p6ql0ik1lpv9ie.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

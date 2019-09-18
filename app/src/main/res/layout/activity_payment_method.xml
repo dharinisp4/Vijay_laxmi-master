@@ -1,0 +1,471 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:cardUseCompatPadding="true">
+
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical">
+
+                        <Fonts.LatoBLack
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/space_12"
+                            android:text="@string/order_amount"
+                            android:textColor="#000"
+                            android:textSize="14sp" />
+
+                        <Fonts.LatoBLack
+                            android:id="@+id/order_ammount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginRight="140dp"
+                            android:text=""
+                            android:textColor="#000"
+                            android:textSize="14sp" />
+
+
+                    </RelativeLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/coupon_and_wallet"
+                        android:layout_width="match_parent"
+                        android:visibility="gone"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:id="@+id/relative_used_wallet"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:visibility="gone"
+                            android:layout_gravity="center_vertical"
+                            android:gravity="center_vertical">
+
+                            <Fonts.LatoBLack
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/space_12"
+                                android:text="@string/wallet"
+                                android:textColor="#000"
+                                android:textSize="@dimen/text_size_small" />
+
+                            <Fonts.LatoBLack
+                                android:id="@+id/used_wallet_ammount"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginRight="@dimen/space_12"
+                                android:text=""
+                                android:textColor="#000"
+                                android:textSize="@dimen/text_size_small" />
+
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/relative_used_coupon"
+                            android:layout_width="match_parent"
+                            android:visibility="gone"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:gravity="center_vertical">
+
+                            <Fonts.LatoBLack
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/space_12"
+                                android:text="@string/coupon_used"
+                                android:textColor="#000"
+                                android:textSize="@dimen/text_size_small" />
+
+                            <Fonts.LatoBLack
+                                android:id="@+id/used_coupon_ammount"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginRight="@dimen/space_12"
+                                android:text=""
+                                android:textColor="#000"
+                                android:textSize="@dimen/text_size_small" />
+
+
+                        </RelativeLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/gray" />
+
+
+
+                    </LinearLayout>
+
+
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center_vertical">
+
+                        <Fonts.LatoBLack
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/space_12"
+                            android:text="@string/amount_pa"
+                            android:textColor="#000"
+                            android:textSize="14sp" />
+
+                        <Fonts.LatoBLack
+                            android:id="@+id/payable_ammount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginRight="140dp"
+                            android:text=""
+                            android:textStyle="bold"
+                            android:textColor="#000"
+                            android:textSize="14sp" />
+
+
+                    </RelativeLayout>
+
+
+                    <RadioGroup
+                        android:id="@+id/radio_group"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+
+
+                        <CheckBox
+                            android:id="@+id/use_wallet"
+                            style="@android:style/Widget.CompoundButton.RadioButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/space_4"
+                            android:layout_marginRight="@dimen/space_4"
+                            android:layout_marginTop="@dimen/space_4"
+                            android:gravity="center"
+                            android:text="@string/tv_app_name"
+                            android:textSize="@dimen/text_size_small" />
+
+
+
+
+                                    <Fonts.LatoBLack
+                                        android:id="@+id/user_wallet"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="end"
+                                        android:layout_marginRight="@dimen/space_12"
+                                        android:layout_marginTop="-25dp"
+                                        android:text="0.0"
+                                        android:textColor="#000"
+                                        android:textSize="@dimen/text_size_normal" />
+
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:layout_marginTop="@dimen/space_4"
+                            android:background="@color/gray" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/select_payment_method"
+                            android:layout_gravity="center"
+                            android:gravity="center">
+
+                            <Fonts.LatoBLack
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="@dimen/space_12"
+                                android:gravity="center"
+                                android:text="@string/pay"
+                                android:textColor="#000"
+                                android:textSize="@dimen/text_size_normal"
+                                android:textStyle="bold" />
+
+
+                        </LinearLayout>
+
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:layout_marginTop="@dimen/space_4"
+                            android:background="@color/gray" />
+
+
+                        <Fonts.LatoBLack
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/space_12"
+                            android:layout_marginTop="@dimen/space_6"
+                            android:text="@string/pickup"
+                            android:textColor="@color/green"
+                            android:textSize="@dimen/text_size_normal" />
+
+
+                        <RadioButton
+                            android:id="@+id/use_store_pickup"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/space_4"
+                            android:layout_marginRight="@dimen/space_4"
+                            android:text="@string/store"
+                            android:textSize="@dimen/text_size_small"
+                            android:visibility="gone"/>
+
+                        <RadioButton
+                            android:id="@+id/use_COD"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/space_4"
+                            android:layout_marginRight="@dimen/space_4"
+                            android:text="@string/cash"
+                            android:textSize="@dimen/text_size_small" />
+
+                        <RadioButton
+                            android:id="@+id/pay_now"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/space_4"
+                            android:layout_marginRight="@dimen/space_4"
+                            android:text="@string/pay_now"
+                            android:textSize="@dimen/text_size_small" />
+
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:layout_marginTop="@dimen/space_2"
+                            android:background="@color/gray"
+                            android:visibility="gone"/>
+
+                        <Fonts.LatoBLack
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/space_12"
+                            android:layout_marginTop="@dimen/space_6"
+                            android:text="@string/card"
+                            android:textColor="@color/green"
+                            android:textSize="@dimen/text_size_normal"
+                            android:visibility="gone"/>
+
+                        <RadioButton
+                            android:id="@+id/use_card"
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/space_4"
+                            android:layout_marginRight="@dimen/space_4"
+                            android:text="@string/debit"
+                            android:textSize="@dimen/text_size_small"
+                            android:visibility="gone" />
+
+                        <RadioButton
+                            android:id="@+id/use_netbanking"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/space_4"
+                            android:layout_marginRight="@dimen/space_4"
+                            android:fontFamily="@font/cold"
+                            android:text="@string/net"
+                            android:textSize="@dimen/text_size_small"
+                            android:visibility="gone" />
+
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:layout_marginTop="@dimen/space_2"
+                            android:background="@color/gray" />
+
+                        <Fonts.LatoBLack
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/space_12"
+                            android:text="@string/tv_app_name"
+                            android:textColor="@color/green"
+                            android:textSize="@dimen/text_size_normal"
+                            android:visibility="gone"/>
+
+
+                        <RadioButton
+                            android:id="@+id/use_wallet_ammount"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/space_4"
+                            android:layout_marginRight="@dimen/space_4"
+                            android:fontFamily="@font/cold"
+                            android:text="@string/paytm"
+                            android:visibility="gone"
+                            android:textSize="@dimen/text_size_small" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:layout_marginTop="@dimen/space_2"
+                            android:visibility="gone"
+                            android:background="@color/gray" />
+
+                        <Fonts.LatoBLack
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/space_12"
+                            android:text="@string/coupon"
+                            android:textColor="@color/green"
+                            android:textSize="@dimen/text_size_normal"
+                            android:visibility="gone"/>
+
+
+                        <CheckBox
+                            android:id="@+id/use_coupon"
+                            style="@android:style/Widget.CompoundButton.RadioButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/space_4"
+                            android:layout_marginRight="@dimen/space_4"
+                            android:layout_marginTop="@dimen/space_4"
+                            android:gravity="center"
+                            android:text="@string/promo"
+                            android:textSize="@dimen/text_size_small"
+                            android:visibility="gone"/>
+
+                        <LinearLayout
+                            android:id="@+id/prommocode_layout"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/apply_coupon_code_layout_height"
+                            android:orientation="horizontal"
+                            android:visibility="gone"
+                            android:weightSum="2">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1">
+
+                                <EditText
+                                    android:id="@+id/et_coupon_code"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="30dp"
+                                    android:layout_marginBottom="@dimen/space_12"
+                                    android:layout_marginLeft="12dp"
+                                    android:layout_marginRight="@dimen/space_12"
+                                    android:layout_marginTop="@dimen/space_4"
+                                    android:background="@drawable/xml_textbox_bg"
+                                    android:ems="10"
+                                    android:gravity="center_horizontal"
+                                    android:inputType="textEmailAddress"
+                                    android:padding="@dimen/space_10"
+                                    android:textAlignment="center"
+                                    android:textColor="#000"
+                                    android:textColorHint="@color/dark_gray"
+                                    android:textSize="@dimen/text_size_XX_small" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:gravity="center">
+
+                                <RelativeLayout
+                                    android:id="@+id/apply_coupoun_code"
+                                    android:layout_width="85dp"
+                                    android:layout_height="30dp"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_marginBottom="@dimen/space_12"
+                                    android:layout_marginLeft="12dp"
+                                    android:layout_marginRight="@dimen/space_12"
+                                    android:layout_marginTop="@dimen/space_8"
+                                    android:background="@drawable/bg_rounded_button"
+                                    android:gravity="center_vertical">
+
+                                    <Fonts.LatoBLack
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:gravity="center"
+                                        android:text="@string/apply"
+                                        android:textColor="#fff"
+                                        android:textSize="@dimen/text_size_small" />
+                                </RelativeLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </RadioGroup>
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+        </LinearLayout>
+
+                <Button
+                    android:id="@+id/confirm_order"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/confirm_order_button"
+                    android:layout_marginLeft="@dimen/space_6"
+                    android:layout_marginRight="@dimen/space_6"
+                    android:background="@drawable/bg_rounded_button"
+                    android:textSize="@dimen/text_size_small"
+                    android:text="@string/confirm_order"
+                    android:textColor="#fff"
+                    android:padding="12dp"/>
+
+
+        <!--        <RelativeLayout-->
+<!--            android:id="@+id/confirm_order"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="@dimen/confirm_order_button"-->
+<!--            android:layout_marginLeft="@dimen/space_6"-->
+<!--            android:layout_marginRight="@dimen/space_6"-->
+<!--            android:background="@drawable/bg_rounded_button"-->
+<!--            android:padding="12dp">-->
+
+
+<!--            <Fonts.LatoBLack-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:gravity="center"-->
+<!--                android:text="@string/confirm_order"-->
+<!--                android:textColor="#fff"-->
+<!--                android:textSize="@dimen/text_size_small" />-->
+
+
+<!--        </RelativeLayout>-->
+
+    </LinearLayout>
+
+</LinearLayout>

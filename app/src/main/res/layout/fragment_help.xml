@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+   >
+<RelativeLayout
+    android:id="@+id/support"
+    android:layout_width="match_parent"
+    android:layout_height="250dp"
+    android:background="#6aaaeb"
+    >
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/space_10"
+        android:src="@drawable/technicalsupport"
+        android:layout_alignParentEnd="true"
+        android:background="#6aaaeb"
+        android:tintMode="src_in"/>
+    <TextView
+        android:id="@+id/text1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/space_10"
+        android:layout_centerVertical="true"
+        android:text="We are here to help "
+        android:textStyle="bold"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/space_20"/>
+    <TextView
+        android:id="@+id/text2"
+        android:layout_below="@+id/text1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Submit a question or report"
+        android:textColor="@android:color/white"
+        android:layout_marginLeft="@dimen/space_10"
+        android:textSize="@dimen/space_15"/>
+</RelativeLayout>
+    <EditText
+        android:id="@+id/et_name"
+        android:layout_below="@+id/support"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_10"
+        android:layout_marginLeft="@dimen/space_10"
+        android:layout_marginRight="@dimen/space_10"
+        android:hint="Name"
+        android:textAlignment="gravity"
+        android:paddingBottom="@dimen/space_15"
+        android:backgroundTint="@color/colorPrimary"
+        />
+    <EditText
+        android:id="@+id/et_email"
+        android:layout_below="@+id/et_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_10"
+        android:layout_marginLeft="@dimen/space_10"
+        android:layout_marginRight="@dimen/space_10"
+        android:hint="Email"
+        android:textAlignment="gravity"
+        android:paddingBottom="@dimen/space_15"
+        android:backgroundTint="@color/colorPrimary"
+        />
+    <EditText
+        android:id="@+id/et_phone"
+        android:layout_below="@+id/et_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_10"
+        android:layout_marginLeft="@dimen/space_10"
+        android:layout_marginRight="@dimen/space_10"
+        android:hint="Phone Number"
+        android:textAlignment="gravity"
+        android:paddingBottom="@dimen/space_15"
+        android:backgroundTint="@color/colorPrimary"
+        />
+    <EditText
+        android:id="@+id/et_mesg"
+        android:layout_below="@+id/et_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_10"
+        android:layout_marginLeft="@dimen/space_10"
+        android:layout_marginRight="@dimen/space_10"
+        android:hint="Message"
+        android:textAlignment="gravity"
+        android:paddingBottom="@dimen/space_15"
+        android:backgroundTint="@color/colorPrimary"
+        />
+    <Button
+        android:id="@+id/submit_button"
+        android:layout_width="150dp"
+        android:layout_height="55dp"
+        android:background="@color/colorPrimary"
+        android:text="SUBMIT"
+        android:textColor="@android:color/white"
+        android:layout_below="@+id/et_mesg"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/space_15"/>
+
+
+</RelativeLayout>

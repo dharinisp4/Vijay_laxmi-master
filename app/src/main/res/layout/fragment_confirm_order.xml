@@ -1,0 +1,626 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardElevation="@dimen/space_3"
+    app:cardUseCompatPadding="true"
+    card_view:cardCornerRadius="4dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <Fonts.LatoBLack
+            android:textColor="#fff"
+            android:id="@+id/txtPaymentdetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/pink"
+            android:gravity="center_horizontal"
+            android:paddingBottom="@dimen/space_10"
+            android:paddingTop="@dimen/space_10"
+            android:text="@string/tv_conf_order_title"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/linearLayout2"
+            android:background="@color/all"
+            android:layout_below="@+id/txtPaymentdetails">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_vertical_margin">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                        xmlns:app="http://schemas.android.com/apk/res-auto"
+                        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                        xmlns:tools="http://schemas.android.com/tools"
+                        android:id="@+id/card_viewa"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:cardElevation="@dimen/space_3"
+                        app:cardUseCompatPadding="true"
+                        card_view:cardCornerRadius="4dp"
+                        android:visibility="gone">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:visibility="gone">
+
+                            <Fonts.LatoBLack
+                                android:textColor="#fff"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/green"
+                                android:padding="@dimen/space_4"
+                                android:text="@string/tv_del_date_time"
+                                android:textSize="@dimen/space_18" />
+
+                            <Fonts.LatoBLack
+                                android:textColor="#000"
+                                android:id="@+id/textTimeSlot"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:padding="@dimen/space_5"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+                    </android.support.v7.widget.CardView>
+
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/card_viewb"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        card_view:cardElevation="@dimen/space_3"
+                        card_view:cardUseCompatPadding="true"
+                        card_view:cardCornerRadius="4dp"
+                        android:layout_marginTop="-10dp"
+                        >
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            >
+
+                            <Fonts.LatoBLack
+                                android:textColor="#fff"
+                                android:id="@+id/textView8"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/bg_rounded_button"
+                                android:padding="@dimen/space_4"
+                                android:textAlignment="center"
+                                android:text="@string/tv_del_address"
+                                android:textSize="@dimen/space_15"
+                                />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="3dp"
+                                android:orientation="vertical">
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="@dimen/space_2"
+                                    >
+
+                                    <TextView
+                                        android:id="@+id/textname"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:padding="2dp"
+                                        android:text="Receiver Name :"
+                                        android:textColor="@android:color/black"
+                                        android:textSize="14dp" />
+
+                                    <TextView
+                                        android:id="@+id/recivername"
+                                        android:layout_toRightOf="@id/textname"
+                                        android:layout_width="wrap_content"
+                                        android:layout_alignParentRight="true"
+                                        android:padding="@dimen/space_2"
+                                        android:textAlignment="viewEnd"
+                                        android:layout_marginRight="20dp"
+                                        android:textColor="@color/colorPrimary"
+                                        android:layout_height="wrap_content"
+                                        android:text="0"
+                                        android:textSize="@dimen/space_14"
+                                        />
+                                </RelativeLayout>
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="@dimen/space_2"
+                                    >
+                                    <TextView
+                                        android:id="@+id/txtmobile"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:textColor="@android:color/black"
+                                        android:textSize="@dimen/space_14"
+                                        android:padding="2dp"
+                                        android:text="Mobile No. :"/>
+
+                                    <TextView
+                                        android:id="@+id/mobileno"
+                                        android:layout_toRightOf="@id/txtmobile"
+                                        android:layout_width="wrap_content"
+                                        android:layout_alignParentRight="true"
+                                        android:padding="@dimen/space_2"
+                                        android:textAlignment="viewEnd"
+                                        android:layout_marginRight="20dp"
+                                        android:textSize="@dimen/space_14"
+                                        android:textColor="@color/colorPrimary"
+                                        android:layout_height="wrap_content"
+                                        android:text="0"
+                                        />
+                                </RelativeLayout>
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="@dimen/space_2"
+                                    >
+
+                                    <TextView
+                                        android:id="@+id/txtpin"
+                                        android:layout_width="67dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_alignParentTop="true"
+                                        android:layout_marginTop="0dp"
+                                        android:padding="2dp"
+                                        android:text="Pincode :"
+                                        android:textColor="@android:color/black"
+                                        android:textSize="@dimen/space_14" />
+
+                                    <TextView
+                                        android:id="@+id/pincode"
+                                        android:layout_toRightOf="@id/txtpin"
+                                        android:layout_width="wrap_content"
+                                        android:layout_alignParentRight="true"
+                                        android:padding="@dimen/space_2"
+                                        android:textAlignment="viewEnd"
+                                        android:layout_marginRight="20dp"
+                                        android:textColor="@color/colorPrimary"
+                                        android:textSize="@dimen/space_14"
+                                        android:layout_height="wrap_content"
+                                        android:text="0"
+                                        />
+                                </RelativeLayout>
+
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="@dimen/space_2"
+                                    >
+
+                                    <TextView
+                                        android:id="@+id/txtHouse"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignParentBottom="true"
+                                        android:layout_marginBottom="0dp"
+                                        android:padding="2dp"
+                                        android:text="House No. :"
+                                        android:textColor="@android:color/black"
+                                        android:textSize="@dimen/space_14"
+                                        android:visibility="gone"/>
+
+                                    <TextView
+                                        android:id="@+id/Houseno"
+                                        android:layout_toRightOf="@id/txtHouse"
+                                        android:layout_width="wrap_content"
+                                        android:layout_alignParentRight="true"
+                                        android:padding="@dimen/space_2"
+                                        android:textAlignment="viewEnd"
+                                        android:layout_marginRight="20dp"
+                                        android:textSize="@dimen/space_14"
+                                        android:textColor="@color/colorPrimary"
+                                        android:layout_height="wrap_content"
+                                        android:text="0"
+                                        android:visibility="gone"
+                                        />
+                                </RelativeLayout>
+
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="@dimen/space_2"
+                                    >
+                                    <TextView
+                                        android:id="@+id/txtSociety"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:textSize="@dimen/space_14"
+                                        android:padding="2dp"
+                                        android:text="Address :"
+                                        android:textColor="@android:color/black"/>
+
+
+                                    <TextView
+                                        android:id="@+id/Society"
+                                        android:layout_toRightOf="@id/txtSociety"
+                                        android:layout_width="wrap_content"
+                                        android:layout_alignParentRight="true"
+                                        android:padding="@dimen/space_2"
+                                        android:textAlignment="viewEnd"
+                                        android:layout_marginRight="20dp"
+                                        android:textColor="@color/colorPrimary"
+                                        android:textSize="@dimen/space_14"
+                                        android:layout_height="wrap_content"
+                                        android:text="0"
+                                        />
+                                </RelativeLayout>
+
+
+                            </LinearLayout>
+                        </LinearLayout>
+                    </android.support.v7.widget.CardView>
+
+
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/card_viewf"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        card_view:cardElevation="@dimen/space_3"
+                        card_view:cardUseCompatPadding="true"
+
+                        card_view:cardCornerRadius="4dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="3dp"
+                            android:orientation="vertical">
+
+                            <Fonts.LatoBLack
+                                android:textColor="#fff"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/bg_rounded_button"
+                                android:padding="@dimen/space_4"
+                                android:textAlignment="center"
+                                android:text="@string/tv_total_item_amount"
+                                android:textSize="15dp" />
+                          <LinearLayout
+                              android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:orientation="vertical">
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="@dimen/space_2"
+                                >
+                                <TextView
+                                    android:id="@+id/txtitmes"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="14dp"
+                                    android:padding="2dp"
+                                    android:textColor="@android:color/black"
+                                    android:text="Total no. of items :"/>
+
+                                <TextView
+                                    android:id="@+id/tvItems"
+                                    android:layout_toRightOf="@id/txtitmes"
+                                    android:layout_width="wrap_content"
+                                    android:layout_alignParentRight="true"
+                                    android:padding="@dimen/space_2"
+                                    android:textAlignment="viewEnd"
+                                    android:layout_marginRight="20dp"
+                                    android:textColor="@android:color/black"
+                                    android:layout_height="wrap_content"
+                                    android:text="0"
+                                    android:textSize="@dimen/space_14"
+                                    />
+                            </RelativeLayout>
+
+                              <RelativeLayout
+                                  android:layout_width="match_parent"
+                                  android:layout_height="wrap_content"
+                                  android:layout_margin="@dimen/space_2"
+                                  >
+
+                                  <TextView
+                                      android:id="@+id/txtmrp"
+                                      android:layout_width="wrap_content"
+                                      android:layout_height="match_parent"
+                                      android:padding="2dp"
+                                      android:text="M.R.P. :"
+                                      android:textColor="@android:color/black"
+                                      android:textSize="@dimen/space_14" />
+
+                                  <TextView
+                                      android:id="@+id/tvMrp"
+                                      android:layout_toRightOf="@id/txtmrp"
+                                      android:layout_width="wrap_content"
+                                      android:layout_alignParentRight="true"
+                                      android:padding="@dimen/space_2"
+                                      android:textAlignment="viewEnd"
+                                      android:layout_marginRight="20dp"
+                                      android:textSize="@dimen/space_14"
+                                      android:textColor="@android:color/black"
+                                      android:layout_height="wrap_content"
+                                      android:text="0"
+                                      />
+                              </RelativeLayout>
+
+                              <RelativeLayout
+                                  android:layout_width="match_parent"
+                                  android:layout_height="wrap_content"
+                                  android:layout_margin="@dimen/space_2"
+                                  >
+
+                                  <TextView
+                                      android:id="@+id/txtDis"
+                                      android:layout_width="wrap_content"
+                                      android:layout_height="wrap_content"
+                                      android:padding="2dp"
+
+                                      android:text="Discounts :"
+                                      android:textColor="@android:color/black"
+                                      android:textSize="@dimen/space_14" />
+
+                                  <TextView
+                                      android:id="@+id/tvDiscount"
+                                      android:layout_toRightOf="@id/txtDis"
+                                      android:layout_width="wrap_content"
+                                      android:layout_alignParentRight="true"
+                                      android:padding="@dimen/space_2"
+                                      android:textAlignment="viewEnd"
+                                      android:layout_marginRight="20dp"
+                                      android:textColor="@color/colorPrimary"
+                                      android:textSize="@dimen/space_14"
+                                      android:layout_height="wrap_content"
+                                      android:text="0"
+                                      />
+                              </RelativeLayout>
+
+
+                              <RelativeLayout
+                                  android:layout_width="match_parent"
+                                  android:layout_height="wrap_content"
+                                  android:layout_margin="@dimen/space_2"
+                                  >
+                                  <TextView
+                                      android:id="@+id/txtDel"
+                                      android:layout_width="wrap_content"
+                                      android:layout_height="wrap_content"
+                                      android:textSize="@dimen/space_14"
+                                      android:padding="2dp"
+                                      android:textColor="@android:color/black"
+                                      android:text="Delivery Charges :"/>
+
+                                  <TextView
+                                      android:id="@+id/tvDelivary"
+                                      android:layout_width="wrap_content"
+                                      android:layout_alignParentRight="true"
+                                      android:padding="@dimen/space_2"
+                                      android:layout_height="wrap_content"
+                                      android:layout_marginRight="20dp"
+                                      android:layout_toRightOf="@id/txtDel"
+                                      android:text="0"
+                                      android:textAlignment="viewEnd"
+                                      android:textColor="@color/colorPrimary"
+                                      android:textSize="@dimen/space_14" />
+                              </RelativeLayout>
+                              <TextView
+                                  android:layout_width="match_parent"
+                                  android:layout_height="@dimen/space_1"
+                                  android:background="@android:color/darker_gray"
+                                  android:layout_marginRight="@dimen/space_2"
+                                  android:layout_marginLeft="@dimen/space_2"/>
+
+                              <RelativeLayout
+                                  android:layout_width="match_parent"
+                                  android:layout_height="wrap_content"
+                                  android:layout_margin="@dimen/space_2"
+                                  >
+                                  <TextView
+                                      android:id="@+id/txtsub"
+                                      android:layout_width="wrap_content"
+                                      android:layout_height="wrap_content"
+                                      android:textSize="@dimen/space_14"
+                                      android:padding="2dp"
+                                      android:textStyle="bold"
+                                      android:text="Sub Total :"
+                                      android:textColor="@android:color/black"/>
+
+
+                                  <TextView
+                                      android:id="@+id/tvSubTotal"
+                                      android:layout_toRightOf="@id/txtsub"
+                                      android:layout_width="match_parent"
+                                      android:textAlignment="viewEnd"
+                                      android:layout_marginRight="20dp"
+                                      android:textColor="@android:color/black"
+                                      android:textSize="@dimen/space_14"
+                                      android:padding="2dp"
+                                      android:textStyle="bold"
+                                      android:layout_height="wrap_content"
+                                      android:text="0"
+                                      />
+                              </RelativeLayout>
+
+
+
+                          </LinearLayout>
+                            <!--<LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:baselineAligned="false"
+                                android:orientation="horizontal">
+
+                                &lt;!&ndash;<TextView
+                                    android:id="@+id/textItems"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:padding="@dimen/space_10"
+                                    android:text="Items : 4" />
+
+                                <TextView
+                                    android:id="@+id/textPrice"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:gravity="end"
+                                    android:padding="@dimen/space_10"
+                                    android:text="Total : 50 Rs" />&ndash;&gt;
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:padding="@dimen/space_4">
+
+                                    <TextView
+                                        android:id="@+id/textView10"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="@string/tv_cart_item" />
+
+                                    <TextView
+                                        android:id="@+id/textItems"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="4"
+                                        android:textStyle="bold" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:gravity="end"
+                                    android:padding="@dimen/space_4">
+
+                                    <TextView
+                                        android:id="@+id/textView12"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="@string/tv_cart_total" />
+
+                                    <TextView
+                                        android:id="@+id/textPrice"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="50"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:id="@+id/textView13"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="@dimen/space_2"
+                                        android:text="@string/currency" />
+
+                                </LinearLayout>
+
+                            </LinearLayout>-->
+
+                        </LinearLayout>
+
+                    </android.support.v7.widget.CardView>
+            <android.support.v7.widget.CardView
+                android:id="@+id/card_viewf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                card_view:cardElevation="@dimen/space_3"
+                card_view:cardUseCompatPadding="true"
+
+                card_view:cardCornerRadius="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="3dp"
+                android:orientation="vertical">
+
+                <Fonts.LatoBLack
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_rounded_button"
+                    android:padding="@dimen/space_4"
+                    android:text="Note"
+                    android:textAlignment="center"
+                    android:textColor="#fff"
+                    android:textSize="15dp" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/space_2"
+                        >
+                        <TextView
+                            android:id="@+id/txtNote"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="14dp"
+                            android:padding="2dp"
+                            android:textColor="@android:color/holo_red_dark"
+                            android:layout_marginTop="@dimen/space_5"
+
+                            android:text="Order placed after 06:00 PM will deliver next day. "/>
+
+
+                    </RelativeLayout>
+                </LinearLayout>
+            </LinearLayout>
+            </android.support.v7.widget.CardView>
+                </LinearLayout>
+
+
+            </LinearLayout>
+        </ScrollView>
+
+        <LinearLayout
+            android:id="@+id/btn_order_now"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/bg_rounded_button"
+            android:orientation="vertical"
+            android:padding="@dimen/space_10">
+
+            <Fonts.LatoBLack
+                android:id="@+id/buttonContinue"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/order_now"
+                android:textColor="#fff"
+                android:textSize="@dimen/text_size_small"/>
+        </LinearLayout>
+
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

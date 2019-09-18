@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center">
+
+    <Fonts.LatoBLack
+        android:id="@+id/text_city"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:padding="10dp"
+        android:textAllCaps="false"
+        android:textColor="#000"
+        android:text="Ram"
+        android:textStyle="bold"
+        android:textSize="18dp" />
+
+
+</LinearLayout>

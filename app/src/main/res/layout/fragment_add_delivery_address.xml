@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/space_10">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Fonts.LatoBLack
+                    android:id="@+id/tv_add_adres_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tv_reg_name_hint"
+                    android:textColor="#000"
+                    android:textSize="14sp" />
+
+                <ImageView
+                    android:id="@+id/iconnemail"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:src="@drawable/iconn" />
+
+            </LinearLayout>
+
+
+            <EditText
+                android:id="@+id/et_add_adres_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_4"
+                android:layout_marginBottom="@dimen/space_5"
+                android:background="@drawable/xml_textbox_bg"
+                android:ems="10"
+                android:inputType="text"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Fonts.LatoBLack
+                    android:id="@+id/tv_add_adres_phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tv_deli_mobile"
+                    android:textColor="#000"
+                    android:textSize="14sp" />
+
+                <ImageView
+                    android:id="@+id/iconm"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:src="@drawable/iconn" />
+
+            </LinearLayout>
+
+
+            <EditText
+                android:id="@+id/et_add_adres_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_4"
+                android:layout_marginBottom="@dimen/space_5"
+                android:background="@drawable/xml_textbox_bg"
+                android:ems="10"
+                android:inputType="number"
+                android:maxLength="15"
+                android:textSize="@dimen/space_14" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Fonts.LatoBLack
+                    android:id="@+id/tv_add_adres_pin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tv_reg_pincode"
+                    android:textColor="#000"
+                    android:textSize="14sp" />
+
+                <ImageView
+                    android:id="@+id/iconpass"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:src="@drawable/iconn" />
+
+            </LinearLayout>
+
+
+            <EditText
+                android:id="@+id/et_add_adres_pin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_4"
+                android:layout_marginBottom="@dimen/space_5"
+                android:background="@drawable/xml_textbox_bg"
+                android:ems="10"
+                android:hint="12345"
+                android:textColor="#000"
+                android:textColorHint="#000"
+                android:textSize="@dimen/space_14" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Fonts.LatoBLack
+                    android:id="@+id/tv_add"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Address"
+                    android:textColor="#000"
+                    android:textSize="14sp" />
+
+                <ImageView
+                    android:id="@+id/area"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:src="@drawable/iconn" />
+
+            </LinearLayout>
+
+
+
+            <EditText
+                android:id="@+id/et_add_adres_home"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginTop="@dimen/space_4"
+                android:layout_marginBottom="@dimen/space_5"
+                android:background="@drawable/xml_textbox_bg"
+                android:inputType="textMultiLine"
+
+                android:textSize="@dimen/space_14" />
+
+            <RelativeLayout
+                android:id="@+id/btn_add_adres_edit"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_margin="12dp"
+                android:background="@drawable/bg_rounded_button"
+                android:padding="12dp">
+
+                <Fonts.LatoBLack
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="@string/add_del"
+                    android:textColor="#fff"
+                    android:textSize="@dimen/text_size_small" />
+
+
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

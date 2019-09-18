@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Default app_bar_main cantaint size-->
+
+    <dimen name="contentInsetStart_size">144dp</dimen>
+    <dimen name="text_size_XX_small">11sp</dimen>
+    <dimen name="text_size_XXX_small">9sp</dimen>
+    <dimen name="text_size_X_small">11sp</dimen>
+    <dimen name="text_size_small">12sp</dimen>
+    <dimen name="text_size_normal">17sp</dimen>
+    <dimen name="text_size_large">20sp</dimen>
+    <dimen name="text_size_x_large">27sp</dimen>
+    <dimen name="text_size_XX_large">33sp</dimen>
+    <dimen name="catogary_recycler">400dp</dimen>
+    <dimen name="gif_size">100dp</dimen>
+    <dimen name="reward_point_size">70dp</dimen>
+    <dimen name="reward_picture_size">140dp</dimen>
+    <dimen name="apply_coupon_code_layout_height">45dp</dimen>
+    <dimen name="select_payment_method">30dp</dimen>
+    <dimen name="confirm_order_button">45dp</dimen>
+    <dimen name="reward_point_layout_width">120dp</dimen>
+    <dimen name="nav_view_width">295dp</dimen>
+    <dimen name="slider_one_height">200dp</dimen>
+    <dimen name="slider_two_height">130dp</dimen>
+    <dimen name="slider_three_height">180dp</dimen>
+</resources>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <Fonts.LatoBLack
+        android:id="@+id/tv_pro_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000"
+        android:layout_margin="@dimen/space_10"
+        android:text="@string/et_reg_search"
+        android:textSize="14sp" />
+
+
+    <EditText
+        android:id="@+id/et_socity_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/space_10"
+        android:layout_marginTop="@dimen/space_14"
+        android:background="@drawable/xml_textbox_bg"
+        android:ems="10"
+        android:hint="@string/et_sea"
+        android:inputType="textPersonName"
+        android:textSize="@dimen/space_14" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_socity"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

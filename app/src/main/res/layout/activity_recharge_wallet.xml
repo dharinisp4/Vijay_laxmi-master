@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="trolley.tcc.ForgotActivity">
+
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        app:elevation="0dp">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/pink"
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            app:titleTextAppearance="@style/RobotoBoldTextAppearance">
+
+
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imageView"
+            android:layout_width="fill_parent"
+            android:layout_height="150dp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:src="@drawable/logo1"
+            android:textAlignment="center" />
+
+        <Fonts.LatoBLack
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/space_10"
+            android:textColor="#000"
+            android:text="@string/tv_rech"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/et_wallet_ammount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_4"
+            android:background="@drawable/xml_textbox_bg"
+            android:ems="10"
+            android:gravity="center_horizontal"
+            android:inputType="number"
+            android:padding="@dimen/space_10"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textColorHint="@color/dark_gray"
+            android:textSize="14sp" />
+        <RelativeLayout
+            android:id="@+id/recharge_button"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_margin="12dp"
+            android:background="@drawable/bg_rounded_button"
+            android:padding="12dp">
+
+            <Fonts.LatoBLack
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/tv_rech_wall"
+                android:textColor="#fff"
+                android:textSize="@dimen/text_size_small"/>
+
+
+        </RelativeLayout>
+    </LinearLayout>
+
+</RelativeLayout>

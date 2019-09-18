@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/bottom_sheet_layout"
+    android:layout_width="wrap_content"
+    android:layout_margin="@dimen/space_2"
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimary"
+    android:clickable="true"
+    android:gravity="bottom|center"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_gravity="bottom"
+        android:layout_margin="@dimen/space_10"
+        android:gravity="center">
+
+
+        <ImageView
+            android:id="@+id/hotlist_bell"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+
+            android:contentDescription="bell"
+            android:gravity="bottom"
+            app:srcCompat="@drawable/ic_bookmark_border_black_24dp" />
+        <TextView
+            android:id="@+id/actionbar_notifcation"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_marginLeft="@dimen/space_16"
+            android:background="@drawable/xml_budget"
+            android:gravity="center"
+            android:padding="1dp"
+            android:text="99"
+            android:textColor="#ffffff"
+            android:textSize="9sp"
+           />
+
+    </RelativeLayout>
+
+
+</LinearLayout>

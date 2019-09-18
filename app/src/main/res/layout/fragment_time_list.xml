@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <Fonts.LatoBLack
+        android:id="@+id/textView2"
+        android:textColor="#fff"
+        android:textSize="@dimen/text_size_normal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Delivery time"
+        android:padding="@dimen/space_10"
+        android:background="@color/pink"
+        android:textStyle="bold"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/rv_times"/>
+</LinearLayout>
