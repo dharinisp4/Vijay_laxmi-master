@@ -16,6 +16,7 @@ public class Product_model {
     String end_date;
     String end_time;
     String price;
+
     String product_image;
     String product_name_arb;
     String product_description_arb;

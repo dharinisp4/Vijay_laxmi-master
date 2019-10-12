@@ -2,7 +2,7 @@ package Model;
 
 public class ProductVariantModel {
 
-    String id,product_id,attribute_name,attribute_value,attribute_mrp;
+    String id,product_id,attribute_name,attribute_value,attribute_mrp ,attribute_image;
 
     public ProductVariantModel() {
     }

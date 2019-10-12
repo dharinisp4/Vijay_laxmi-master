@@ -253,12 +253,33 @@
                             android:background="@drawable/spinner_back_layout"/>
 
                         <android.support.v7.widget.CardView
+                            android:id="@+id/card_varients"
+                            android:layout_below="@id/txtSize"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <android.support.v7.widget.RecyclerView
+                                android:layout_width="match_parent"
+                                android:layout_height="120dp"
+                                android:layout_margin="5dp"
+                                android:id="@+id/varient_recycler"/>
+                        </android.support.v7.widget.CardView>
+                        <View
+                            android:id="@+id/linevarient"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_below="@+id/card_varients"
+
+                            android:layout_marginStart="0dp"
+                            android:layout_marginLeft="@dimen/space_5"
+                            android:layout_marginRight="@dimen/space_5"
+                            android:background="@color/dark_gray" />
+                        <android.support.v7.widget.CardView
                             android:id="@+id/card_view3"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@android:color/white"
                             android:layout_marginTop="@dimen/space_5"
-                            android:layout_below="@id/txtSize"
+                            android:layout_below="@id/linevarient"
                             app:cardCornerRadius="3dp">
                             <RelativeLayout
                                 android:layout_width="match_parent"
@@ -307,7 +328,7 @@
                                     android:layout_marginLeft="5dp"
                                     android:text="Weight :"
                                     android:padding="5dp"
-
+                                    android:visibility="gone"
 
                                     />
 
@@ -457,8 +478,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@android:color/white"
-
-android:visibility="gone"
+                            android:visibility="gone"
                             android:layout_below="@id/line6"
                             app:cardCornerRadius="3dp">
                             <RelativeLayout
@@ -495,13 +515,25 @@ android:visibility="gone"
                             </RelativeLayout>
 
                         </android.support.v7.widget.CardView>
+
                         <RelativeLayout
                             android:id="@+id/rel_relative_product"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/card_view4"
                             >
+                            <TextView
+                                android:id="@+id/related_txt"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Related Products"
+                                android:fontFamily="cursive"
+                                android:padding="5dp"
+                                android:textColor="@color/colorPrimary"
+                                android:textStyle="bold"
+                                android:textSize="@dimen/space_20"/>
                             <android.support.v7.widget.RecyclerView
+                                android:layout_below="@+id/related_txt"
                                 android:id="@+id/top_selling_recycler"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -522,6 +554,15 @@ android:visibility="gone"
 
 
         </RelativeLayout>
+<!--        <Button-->
+<!--            android:id="@+id/btn_buy_now"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_alignParentStart="true"-->
+<!--            android:background="@color/colorPrimary"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:layout_margin="@dimen/space_10"-->
+<!--            android:text="Buy Now"/>-->
 
 
 
@@ -576,14 +617,18 @@ android:visibility="gone"
                 </RelativeLayout>
 
                  </RelativeLayout>
+
+
             <Button
                 android:id="@+id/btn_f_Add_to_cart"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
                 android:layout_toRightOf="@id/relll"
                 android:background="@color/colorPrimary"
                 android:textColor="@color/white"
                 android:text="Checkout"/>
+
         </RelativeLayout>
 
     </RelativeLayout>

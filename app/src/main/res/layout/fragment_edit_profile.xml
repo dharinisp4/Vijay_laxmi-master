@@ -44,8 +44,8 @@
 
                 <ImageView
                     android:id="@+id/iconnemail"
-                    android:layout_width="16dp"
-                    android:layout_height="16dp"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
                     android:src="@drawable/iconn" />
 
             </LinearLayout>
@@ -77,8 +77,8 @@
 
                 <ImageView
                     android:id="@+id/iconm"
-                    android:layout_width="16dp"
-                    android:layout_height="16dp"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
                     android:src="@drawable/iconn" />
 
             </LinearLayout>
@@ -109,8 +109,8 @@
 
                 <ImageView
                     android:id="@+id/iconem"
-                    android:layout_width="16dp"
-                    android:layout_height="16dp"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
                     android:src="@drawable/iconn" />
 
             </LinearLayout>

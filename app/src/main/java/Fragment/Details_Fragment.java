@@ -60,6 +60,7 @@ import Adapter.ProductVariantAdapter;
 import Adapter.Product_adapter;
 import Adapter.RelatedProductAdapter;
 import Adapter.Top_Selling_Adapter;
+import Adapter.VarientsAdapter;
 import Config.BaseURL;
 import Model.ProductVariantModel;
 import Model.Product_model;
@@ -102,6 +103,7 @@ public class Details_Fragment extends Fragment {
     RelativeLayout rel_variant;
     private List<RelatedProductModel> product_modelList = new ArrayList<>();
     private RelatedProductAdapter adapter_product;
+    VarientsAdapter varientsAdapter ;
     Activity activity;
     Button btn_add_to_cart;
     DatabaseCartHandler db_cart;
@@ -138,7 +140,7 @@ public class Details_Fragment extends Fragment {
     List<String> image_list;
     private TextView txtName,txtDesc,txtPrice,txtMrp;
     //Spinner spinner_size,spinner_color;
-    RecyclerView recyclerView;
+    RecyclerView recyclerView ,varient_recycler;
     CardView cardView;
 
     private ElegantNumberButton numberButton;
@@ -167,11 +169,15 @@ public class Details_Fragment extends Fragment {
         loadingBar.setCanceledOnTouchOutside(false);
 
         rv_cat = (RecyclerView) view.findViewById(R.id.top_selling_recycler);
+        varient_recycler=(RecyclerView)view.findViewById( R.id.varient_recycler );
+
         // gifImageView=(ImageView) view.findViewById(R.id.gifImageView);
         LinearLayoutManager linearLayoutManager1=new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false);
         rv_cat.setLayoutManager(linearLayoutManager1);
+        varient_recycler.setLayoutManager( linearLayoutManager1 );
         db_wish = new WishlistHandler( getActivity() );
         db_cart=new DatabaseCartHandler(getActivity());
+
         Bundle bundle=getArguments();
         variantList=new ArrayList<>();
 

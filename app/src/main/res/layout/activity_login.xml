@@ -52,8 +52,8 @@
                 android:textSize="14sp" />
             <ImageView
                 android:id="@+id/iconnemail"
-                android:layout_width="16dp"
-                android:layout_height="16dp"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
                 android:layout_marginTop="@dimen/space_10"
                 android:src="@drawable/iconn" />
 
@@ -90,8 +90,8 @@
 
             <ImageView
                 android:id="@+id/iconp"
-                android:layout_width="16dp"
-                android:layout_height="16dp"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
                 android:layout_marginTop="@dimen/space_10"
                 android:src="@drawable/iconn" />
 
