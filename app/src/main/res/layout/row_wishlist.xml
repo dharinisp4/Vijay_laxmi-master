@@ -30,7 +30,7 @@
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_margin="@dimen/space_20"
-            app:srcCompat="@drawable/ic_shopping_cart_black_24dp"
+            app:srcCompat="@drawable/icons8_shopping_bag_full_60px"
             android:tint="@color/dark_gray"
             android:layout_alignParentEnd="true"
 

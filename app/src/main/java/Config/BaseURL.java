@@ -84,6 +84,8 @@ public class BaseURL {
 
     public static String GET_PRODUCT_URL = BASE_URL + "index.php/api/get_products";
 
+    public static String GET_ATTR_URL = BASE_URL + "index.php/api/get_attribute";
+
     public static String GET_ABOUT_URL = BASE_URL + "index.php/api/aboutus";
 
     public static String GET_SUPPORT_URL = BASE_URL + "index.php/api/support";

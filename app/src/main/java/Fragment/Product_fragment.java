@@ -3,11 +3,9 @@ package Fragment;
 import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.SharedPreferences;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -22,10 +20,8 @@ import com.android.volley.Response;
 import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
-import com.android.volley.toolbox.JsonArrayRequest;
-import com.daimajia.slider.library.SliderLayout;
-import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONArray;
@@ -41,12 +37,10 @@ import java.util.Map;
 import Adapter.Product_adapter;
 import Config.BaseURL;
 import Model.Category_model;
+import Model.ProductVariantModel;
 import Model.Product_model;
 import Model.Slider_subcat_model;
-import pl.droidsonroids.gif.GifImageButton;
-import pl.droidsonroids.gif.GifImageView;
 import trolley.tcc.AppController;
-import trolley.tcc.CustomSlider;
 import trolley.tcc.MainActivity;
 import trolley.tcc.R;
 import util.ConnectivityReceiver;
@@ -68,6 +62,7 @@ public class Product_fragment extends Fragment {
     private List<Slider_subcat_model> slider_subcat_models = new ArrayList<>();
     private List<String> cat_menu_id = new ArrayList<>();
     private List<Product_model> product_modelList = new ArrayList<>();
+    private List<ProductVariantModel> product_variant_list = new ArrayList<>();
     private Product_adapter adapter_product;
     //private SliderLayout  banner_slider;
     String language;
@@ -278,7 +273,7 @@ public class Product_fragment extends Fragment {
     }
 
     //Get Shop By Catogary Products
-    private void makeGetProductRequest(String cat_id) {
+    private void makeGetProductRequest(final String cat_id) {
         loadingBar.show();
         String tag_json_obj = "json_product_req";
         Map<String, String> params = new HashMap<String, String>();
@@ -289,22 +284,22 @@ public class Product_fragment extends Fragment {
 
             @Override
             public void onResponse(JSONObject response) {
-                Log.d("rett" +
-                        "", response.toString());
+                Log.d("rett"+cat_id , response.toString());
 
                 try {
 
                     Boolean status = response.getBoolean("responce");
 
                     if (status) {
-               ///         Toast.makeText(getActivity(),""+response.getString("data"),Toast.LENGTH_LONG).show();
+
+
                         Gson gson = new Gson();
                         Type listType = new TypeToken<List<Product_model>>() {
                         }.getType();
                         product_modelList = gson.fromJson(response.getString("data"), listType);
                         loadingBar.dismiss();
                         adapter_product = new Product_adapter(product_modelList, getActivity());
-
+                        //     Toast.makeText(getActivity(),""+product_modelList.get(0).getProduct_name(),Toast.LENGTH_LONG).show();
                         rv_cat.setAdapter(adapter_product);
                         adapter_product.notifyDataSetChanged();
                         if (getActivity() != null) {
@@ -313,23 +308,24 @@ public class Product_fragment extends Fragment {
 
                                 loadingBar.dismiss();
                                 gifImageView.setVisibility(View.VISIBLE);
-                                rv_cat.setVisibility( View.GONE );
+                                rv_cat.setVisibility(View.GONE);
 
 
                                 Toast.makeText(getActivity(), getResources().getString(R.string.no_rcord_found), Toast.LENGTH_SHORT).show();
                             }
+
+
+                        }
+                    }
+                } catch (JSONException e){
+                            loadingBar.dismiss();
+                            //   e.printStackTrace();
+                            String ex = e.getMessage();
+
+                            //  Toast.makeText(getActivity(),""+ex,Toast.LENGTH_LONG).show();
+
                         }
 
-                    }
-                } catch (JSONException e) {
-                    loadingBar.dismiss();
-               //   e.printStackTrace();
-                        String ex=e.getMessage();
-
-
-
-
-                }
             }
         }, new Response.ErrorListener() {
 

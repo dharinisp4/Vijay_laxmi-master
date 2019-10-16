@@ -2,17 +2,19 @@ package Model;
 
 public class ProductVariantModel {
 
-    String id,product_id,attribute_name,attribute_value,attribute_mrp ,attribute_image;
+    String id,product_id,attribute_name,attribute_value,attribute_mrp,attribute_image,attribute_color;
 
     public ProductVariantModel() {
     }
 
-    public ProductVariantModel(String id, String product_id, String attribute_name, String attribute_value, String attribute_mrp) {
+    public ProductVariantModel(String id, String product_id, String attribute_name, String attribute_value, String attribute_mrp, String attribute_image, String attribute_color) {
         this.id = id;
         this.product_id = product_id;
         this.attribute_name = attribute_name;
         this.attribute_value = attribute_value;
         this.attribute_mrp = attribute_mrp;
+        this.attribute_image = attribute_image;
+        this.attribute_color = attribute_color;
     }
 
     public String getId() {
@@ -53,5 +55,21 @@ public class ProductVariantModel {
 
     public void setAttribute_mrp(String attribute_mrp) {
         this.attribute_mrp = attribute_mrp;
+    }
+
+    public String getAttribute_image() {
+        return attribute_image;
+    }
+
+    public void setAttribute_image(String attribute_image) {
+        this.attribute_image = attribute_image;
+    }
+
+    public String getAttribute_color() {
+        return attribute_color;
+    }
+
+    public void setAttribute_color(String attribute_color) {
+        this.attribute_color = attribute_color;
     }
 }

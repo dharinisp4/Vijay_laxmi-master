@@ -1,6 +1,7 @@
 package Fragment;
 
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -11,8 +12,10 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -20,7 +23,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -44,7 +46,6 @@ import com.cepheuen.elegantnumberbutton.view.ElegantNumberButton;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -55,28 +56,23 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import Adapter.AttrColorAdapter;
 import Adapter.Produccts_images_adapter;
 import Adapter.ProductVariantAdapter;
-import Adapter.Product_adapter;
 import Adapter.RelatedProductAdapter;
-import Adapter.Top_Selling_Adapter;
 import Adapter.VarientsAdapter;
 import Config.BaseURL;
 import Model.ProductVariantModel;
-import Model.Product_model;
 import Model.RelatedProductModel;
-import Model.Top_Selling_model;
 import Module.Module;
 import trolley.tcc.AppController;
 import trolley.tcc.LoginActivity;
 import trolley.tcc.MainActivity;
 import trolley.tcc.R;
-import trolley.tcc.ThanksOrder;
-import util.CartHandler;
 import util.ConnectivityReceiver;
 import util.CustomVolleyJsonRequest;
 import util.DatabaseCartHandler;
-import util.DatabaseHandlerWishList;
+import util.RecyclerTouchListener;
 import util.Session_management;
 import util.WishlistHandler;
 
@@ -93,9 +89,11 @@ public class Details_Fragment extends Fragment {
     Button btn_add;
     ArrayList<ProductVariantModel> variantList;
     ProductVariantAdapter productVariantAdapter;
-
+  VarientsAdapter varientsAdapter;
+    List<ProductVariantModel> v_list;
+    AttrColorAdapter colorAdapter;
     private static String TAG = Details_Fragment.class.getSimpleName();
-    private RecyclerView rv_cat;
+    private RecyclerView rv_cat,rv_color,rv_weight;
     int index;
     double tot_amt=0;
     ProgressDialog loadingBar;
@@ -103,7 +101,7 @@ public class Details_Fragment extends Fragment {
     RelativeLayout rel_variant;
     private List<RelatedProductModel> product_modelList = new ArrayList<>();
     private RelatedProductAdapter adapter_product;
-    VarientsAdapter varientsAdapter ;
+   // VarientsAdapter varientsAdapter ;
     Activity activity;
     Button btn_add_to_cart;
     DatabaseCartHandler db_cart;
@@ -144,10 +142,15 @@ public class Details_Fragment extends Fragment {
     CardView cardView;
 
     private ElegantNumberButton numberButton;
-
+ Module module=new Module();
     private Session_management sessionManagement;
     private String details_product_unit_price;
+    List<String> list_color=new ArrayList<>();
+    List<String> list_images=new ArrayList<>();
 
+    Button btn_desc,btn_info;
+    RelativeLayout rel_desc,rel_info;
+    RecyclerView.LayoutManager layoutManager;
     public Details_Fragment() {
         // Required empty public constructor
     }
@@ -170,16 +173,21 @@ public class Details_Fragment extends Fragment {
 
         rv_cat = (RecyclerView) view.findViewById(R.id.top_selling_recycler);
         varient_recycler=(RecyclerView)view.findViewById( R.id.varient_recycler );
+        rv_color=(RecyclerView)view.findViewById( R.id.rv_color);
+        rv_weight=(RecyclerView)view.findViewById( R.id.rv_weight);
 
         // gifImageView=(ImageView) view.findViewById(R.id.gifImageView);
         LinearLayoutManager linearLayoutManager1=new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false);
+
         rv_cat.setLayoutManager(linearLayoutManager1);
-        varient_recycler.setLayoutManager( linearLayoutManager1 );
+        LinearLayoutManager linearLayoutManager2=new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false);
+        varient_recycler.setLayoutManager( linearLayoutManager2 );
         db_wish = new WishlistHandler( getActivity() );
         db_cart=new DatabaseCartHandler(getActivity());
 
         Bundle bundle=getArguments();
         variantList=new ArrayList<>();
+        v_list=new ArrayList<>();
 
         cat_id=bundle.getString("cat_id");
         product_id=bundle.getString("product_id");
@@ -201,11 +209,6 @@ public class Details_Fragment extends Fragment {
         details_product_title=bundle.getString("title");
 
 
-//         list=new ArrayList<String>();
-//         list_atr_name=new ArrayList<String>();
-//         list_id=new ArrayList<String>();
-//         list_atr_value=new ArrayList<String>();
-//         list_atr_mrp=new ArrayList<String>();
     btn_add=(Button)view.findViewById(R.id.btn_add);
         dialog_unit_type=(TextView)view.findViewById(R.id.unit_type);
         dialog_txtId=(TextView)view.findViewById(R.id.txtId);
@@ -224,9 +227,6 @@ public class Details_Fragment extends Fragment {
 
         image_list=new ArrayList<>();
         progressBar=(ProgressBar)view.findViewById(R.id.progress_bar);
-
-        //txtColor=(TextView)view.findViewById(R.id.txtColor);
-        //txtSize=(TextView)view.findViewById(R.id.txtSize);
         //   Glide.with(this).load(R.raw.basicloader).into(btn);
         txtName=(TextView)view.findViewById(R.id.details_product_name);
         txtDesc=(TextView)view.findViewById(R.id.details_product_description);
@@ -236,16 +236,19 @@ public class Details_Fragment extends Fragment {
       //  btn_add_to_cart=(Button)view.findViewById(R.id.btnAdd_to_cart);
 
         ((MainActivity) getActivity()).getSupportActionBar().setTitle(details_product_name);
-        txtrate=(TextView)view.findViewById(R.id.product_rate);
+       // txtrate=(TextView)view.findViewById(R.id.product_rate);
         txtTotal=(TextView)view.findViewById(R.id.product_total);
         numberButton=(ElegantNumberButton)view.findViewById(R.id.product_qty);
         txtDesc.setText(details_product_desc);
+        Double mrp=Double.parseDouble(details_product_mrp);
+       final Double price=Double.parseDouble(details_product_price);
+       Double discount = Double.valueOf(getDiscount(details_product_price,details_product_mrp));
+      if (mrp > price)
+      {
 
-
-        float mrp=Float.parseFloat(details_product_mrp);
-       final float price=Float.parseFloat(details_product_price);
-       float per=((mrp-price)/mrp)*100;
-       int df=Math.round(per);
+          txtPer.setText(String.valueOf(Math.round(discount)+"%"+"off"));
+      }
+      else  txtPer.setVisibility(View.GONE);
 
         txtName.setText(details_product_name);
 
@@ -253,65 +256,20 @@ public class Details_Fragment extends Fragment {
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false);
         recyclerView.setLayoutManager(linearLayoutManager);
 
+        makeGetAttributeRequest(product_id);
 
-        String atr=String.valueOf(details_product_attribute);
-        if(atr.equals("[]"))
-        {
-            txtPer.setText(String.valueOf(df)+"% off");
+        layoutManager=new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false);
+        rv_color.setLayoutManager(layoutManager);
+        colorAdapter=new AttrColorAdapter(list_color,getActivity());
+        rv_color.setAdapter(colorAdapter);
 
-            status=1;
-            txtPrice.setText("\u20B9"+details_product_price);
-            txtMrp.setText("\u20B9"+details_product_mrp);
-
-            txtrate.setVisibility(View.VISIBLE);
-            Toast.makeText(getActivity(),""+atr,Toast.LENGTH_LONG).show();
-            txtrate.setText(details_product_unit_value+details_product_unit);
-            txtTotal.setText("\u20B9"+String.valueOf(db_cart.getTotalAmount()));
-            }
-
-        else
-        {
-
-            rel_variant.setVisibility(View.VISIBLE);
-            status=2;
-            JSONArray jsonArr = null;
-            try {
-
-                jsonArr = new JSONArray(atr);
-
-                ProductVariantModel model=new ProductVariantModel();
-                JSONObject jsonObj = jsonArr.getJSONObject(0);
-                atr_id=jsonObj.getString("id");
-                product_id=jsonObj.getString("product_id");
-                attribute_name=jsonObj.getString("attribute_name");
-                attribute_value=jsonObj.getString("attribute_value");
-                attribute_mrp=jsonObj.getString("attribute_mrp");
+        RecyclerView.LayoutManager layoutManager1=new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false);
+        rv_weight.setLayoutManager(layoutManager1);
+        varientsAdapter=new VarientsAdapter(getActivity(),v_list);
+        rv_weight.setAdapter(varientsAdapter);
 
 
 
-                //     arrayList.add(new AttributeModel(atr_id,product_id,attribute_name,attribute_value));
-
-                //Toast.makeText(getActivity(),"id "+atr_id+"\n p_id "+product_id+"\n atr_name "+attribute_name+"\n atr_value "+attribute_value,Toast.LENGTH_LONG).show();
-
-
-                String atr_price=String.valueOf(attribute_value);
-                String atr_mrp=String.valueOf(attribute_mrp);
-                int atr_dis=getDiscount(atr_price,atr_mrp);
-                txtPrice.setText("\u20B9"+attribute_value.toString());
-                txtMrp.setText("\u20B9"+attribute_mrp.toString());
-                dialog_txtId.setText(String.valueOf(atr_id.toString()+"@"+"0"));
-                dialog_txtVar.setText(attribute_value+"@"+attribute_name+"@"+attribute_mrp);
-                dialog_unit_type.setText("\u20B9"+attribute_value+"/"+attribute_name);
-                //  holder.txtTotal.setText("\u20B9"+String.valueOf(list_atr_value.get(0).toString()));
-                txtPer.setText(""+atr_dis+"% OFF");
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-
-
-        }
 
         if(db_wish.isInWishtable( product_id ))
         {
@@ -609,8 +567,32 @@ public class Details_Fragment extends Fragment {
             }
         });
 
+        rv_color.addOnItemTouchListener(new RecyclerTouchListener(getActivity(), rv_color, new RecyclerTouchListener.OnItemClickListener() {
+            @SuppressLint("ResourceType")
+            @Override
+            public void onItemClick(View view, int position) {
 
-      //  txtTotal.setText("\u20B9"+String.valueOf(details_product_price));
+                Glide.with(getActivity())
+                        .load(BaseURL.IMG_PRODUCT_URL +list_images.get(position).toString())
+                        .centerCrop()
+                        .placeholder(R.drawable.icon)
+                        .crossFade()
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .dontAnimate()
+                        .into(btn);
+                btn.setColorFilter(Color.parseColor(list_color.get(position).toString()), android.graphics.PorterDuff.Mode.SRC_IN);
+                btn.setColorFilter(ContextCompat.getColor(getActivity(), Color.parseColor(list_color.get(position).toString())), android.graphics.PorterDuff.Mode.SRC_IN);
+                btn.setColorFilter(Color.parseColor(list_color.get(position).toString()));
+            }
+
+            @Override
+            public void onLongItemClick(View view, int position) {
+
+            }
+        }));
+
+
+        //  txtTotal.setText("\u20B9"+String.valueOf(details_product_price));
 
         numberButton.setOnValueChangeListener(new ElegantNumberButton.OnValueChangeListener() {
             @Override
@@ -719,38 +701,7 @@ public class Details_Fragment extends Fragment {
 
 
 
-//if(txtColor.getVisibility()==View.VISIBLE) {
-//    txtColor.setOnClickListener( new View.OnClickListener() {
-//        @Override
-//        public void onClick(View view) {
-//            dialog = new Dialog( getActivity() );
-//            dialog.requestWindowFeature( Window.FEATURE_NO_TITLE );
-//            dialog.setContentView( R.layout.dialog_product_color_layout );
-//
-//            listView1 = (ListView) dialog.findViewById( R.id.list_view_color );
-//            pbg1 = (ProgressBar) dialog.findViewById( R.id.pgbr );
-//            //List<String> lis=new ArrayList<>();
-//            final List lis = makeGetProductColorRequest( cat_id, product_id, listView1, pbg1, dialog );
-//
-//
-//            dialog.setCanceledOnTouchOutside( false );
-//            dialog.show();
-//
-//            listView1.setOnItemClickListener( new AdapterView.OnItemClickListener() {
-//                @Override
-//                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                    txtColor.setText( lis.get( i ).toString() );
-//                    dialog.dismiss();
-//
-//                    //  Toast.makeText(Product_Frag_details.this,""+lis.get(i).toString(),Toast.LENGTH_LONG).show();
-//
-//
-//                }
-//            } );
-//
-//        }
-//    } );
-//}
+
 
         btn_add_to_cart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -791,33 +742,33 @@ public class Details_Fragment extends Fragment {
 
         txtTotal.setText("\u20B9"+String.valueOf(db_cart.getTotalAmount()));
 
-        String atr=String.valueOf(details_product_attribute);
-        if(atr.equals("[]"))
-        {
-            boolean st=db_cart.isInCart(product_id);
-            if(st==true)
-            {
-             btn_add.setVisibility(View.GONE);
-             numberButton.setNumber(db_cart.getCartItemQty(product_id));
-             numberButton.setVisibility(View.VISIBLE);
-            }
-        }
-        else
-        {
-            String str_id=dialog_txtId.getText().toString();
-            String[] str=str_id.split("@");
-            String at_id=String.valueOf(str[0]);
-            boolean st=db_cart.isInCart(at_id);
-            if(st==true)
-            {
-                btn_add.setVisibility(View.GONE);
-                numberButton.setNumber(db_cart.getCartItemQty(at_id));
-                numberButton.setVisibility(View.VISIBLE);
-            }
-        }
+//        String atr=String.valueOf(details_product_attribute);
+//        if(atr.equals("[]"))
+//        {
+//            boolean st=db_cart.isInCart(product_id);
+//            if(st==true)
+//            {
+//             btn_add.setVisibility(View.GONE);
+//             numberButton.setNumber(db_cart.getCartItemQty(product_id));
+//             numberButton.setVisibility(View.VISIBLE);
+//            }
+//        }
+//        else
+//        {
+//            String str_id=dialog_txtId.getText().toString();
+//            String[] str=str_id.split("@");
+//            String at_id=String.valueOf(str[0]);
+//            boolean st=db_cart.isInCart(at_id);
+//            if(st==true)
+//            {
+//                btn_add.setVisibility(View.GONE);
+//                numberButton.setNumber(db_cart.getCartItemQty(at_id));
+//                numberButton.setVisibility(View.VISIBLE);
+//            }
+//        }
 
         //Toast.makeText(getActivity(),""+cat_id, Toast.LENGTH_LONG).show();
-        makeRelatedProductRequest(cat_id);
+      //  makeRelatedProductRequest(cat_id);
 
        try
         {
@@ -1141,6 +1092,126 @@ public class Details_Fragment extends Fragment {
     }
 
 
+    private void makeGetAttributeRequest(String product_id)
+    {
+        loadingBar.show();
+        String json_tag="json_attr_tag";
+        HashMap<String,String> params=new HashMap<>();
+        params.put("product_id",product_id);
+
+        CustomVolleyJsonRequest customVolleyJsonRequest=new CustomVolleyJsonRequest(Request.Method.POST, BaseURL.GET_ATTR_URL, params, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+
+                v_list.clear();
+                Log.d("attrm",response.toString());
+                loadingBar.dismiss();
+                try
+                {
+                    JSONArray jsonArr=response.getJSONArray("product_attribute");
+
+                    List<ProductVariantModel> varientlist = new ArrayList<>();
+
+
+                        //JSONArray jsonArr = new JSONArray(attribute);
+
+                        for (int i = 0; i < jsonArr.length(); i++) {
+                            JSONObject jsonObj = jsonArr.getJSONObject(i);
+                            ProductVariantModel model=new ProductVariantModel();
+
+
+                            if (jsonObj.has("id") && !jsonObj.isNull("id"))
+                                model.setId(jsonObj.getString("id"));
+                            else
+                                model.setId(jsonObj.getString(""));
+                            if (jsonObj.has("product_id") && !jsonObj.isNull("product_id"))
+                                model.setProduct_id(jsonObj.getString("product_id"));
+                            else
+                                model.setProduct_id("");
+
+                            if (jsonObj.has("attribute_name") && !jsonObj.isNull("attribute_name"))
+                                model.setAttribute_name(jsonObj.getString("attribute_name"));
+                            else
+                                model.setAttribute_name("");
+
+                            if (jsonObj.has("attribute_value") && !jsonObj.isNull("attribute_value"))
+                                model.setAttribute_value(jsonObj.getString("attribute_value"));
+                            else
+                                model.setAttribute_value("");
+
+                            if (jsonObj.has("attribute_mrp") && !jsonObj.isNull("attribute_mrp"))
+                                model.setAttribute_mrp(jsonObj.getString("attribute_mrp"));
+                            else
+                                model.setAttribute_mrp("");
+
+                            if (jsonObj.has("attribute_image") && !jsonObj.isNull("attribute_image"))
+                                model.setAttribute_image(jsonObj.getString("attribute_image"));
+                            else
+                                model.setAttribute_image("");
+                            if (jsonObj.has("attribute_color") && !jsonObj.isNull("attribute_color"))
+                                model.setAttribute_color(jsonObj.getString("attribute_color"));
+                            else
+                                model.setAttribute_color("");
+
+
+                            varientlist.add(model);
+                            v_list.add(model);
+                         varientsAdapter.notifyDataSetChanged();
+                        }
+              list_color.clear();
+                        String str_col=varientlist.get(0).getAttribute_color();
+                        if(str_col.isEmpty() || str_col.equals(null))
+                        {
+                            Toast.makeText(getActivity(),"empty ",Toast.LENGTH_LONG).show();
+                        }
+                        else
+                        {
+
+                            JSONArray col_array=new JSONArray(str_col);
+                            for(int j=0; j<col_array.length();j++)
+                            {
+                                    list_color.add(col_array.getString(j).toString());
+                            }
+                            colorAdapter.notifyDataSetChanged();
+                            //Toast.makeText(getActivity(),""+col_array+"\n "+col_array.length(),Toast.LENGTH_LONG).show();
+                        }
+
+                    list_images.clear();
+                    String str_img=varientlist.get(0).getAttribute_image();
+                    if(str_img.isEmpty() || str_img.equals(null))
+                    {
+                        Toast.makeText(getActivity(),"empty ",Toast.LENGTH_LONG).show();
+                    }
+                    else
+                    {
+
+                        JSONArray col_array=new JSONArray(str_img);
+                        for(int j=0; j<col_array.length();j++)
+                        {
+                            list_images.add(col_array.getString(j).toString());
+                        }
+                        //colorAdapter.notifyDataSetChanged();
+                        //Toast.makeText(getActivity(),""+col_array+"\n "+col_array.length(),Toast.LENGTH_LONG).show();
+                    }
+
+
+                }
+                catch (Exception ex)
+                {
+                    Toast.makeText(getActivity(),""+ex.getMessage(),Toast.LENGTH_LONG).show();
+                }
+              //  Toast.makeText(getActivity(),""+response,Toast.LENGTH_LONG).show();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                loadingBar.dismiss();
+                Toast.makeText(getActivity(),""+error.getMessage(),Toast.LENGTH_LONG).show();
+            }
+        });
+        AppController.getInstance().addToRequestQueue(customVolleyJsonRequest,json_tag);
+     }
 
 
     private void makeRelatedProductRequest(String cat_id) {

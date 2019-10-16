@@ -2,7 +2,6 @@ package Adapter;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -13,16 +12,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -33,20 +29,14 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import Config.BaseURL;
 import Fragment.Details_Fragment;
 import Model.Deal_Of_Day_model;
 import Model.ProductVariantModel;
-import Model.RelatedProductModel;
-import Model.Top_Selling_model;
-import trolley.tcc.MainActivity;
 import trolley.tcc.R;
-import util.CartHandler;
 import util.DatabaseCartHandler;
-import util.DatabaseHandlerWishList;
 import util.WishlistHandler;
 
 import static android.content.Context.MODE_PRIVATE;

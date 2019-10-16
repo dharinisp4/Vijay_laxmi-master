@@ -2,14 +2,11 @@ package Adapter;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Fragment;
-import android.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
-import android.media.Image;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -24,7 +21,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
+
 import Fragment.*;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -39,18 +36,11 @@ import java.util.HashMap;
 import java.util.List;
 
 import Config.BaseURL;
-import Fragment.Wishlist;
-import Model.Deal_Of_Day_model;
 import Model.ProductVariantModel;
-import Model.Product_model;
-import Model.Top_Selling_model;
 import Model.Wish_model;
 import Module.Module;
-import trolley.tcc.MainActivity;
 import trolley.tcc.R;
-import util.CartHandler;
 import util.DatabaseCartHandler;
-import util.DatabaseHandlerWishList;
 import util.WishlistHandler;
 
 import static android.content.Context.MODE_PRIVATE;
@@ -62,7 +52,7 @@ public class Wishlist_Adapter extends RecyclerView.Adapter<Wishlist_Adapter.Wish
     String attribute_name="";
     String attribute_value="";
     String attribute_mrp="";
-
+    Module module=new Module();
     ArrayList<ProductVariantModel> variantList;
     ArrayList<ProductVariantModel> attributeList;
     ProductVariantAdapter productVariantAdapter;
@@ -140,95 +130,100 @@ public class Wishlist_Adapter extends RecyclerView.Adapter<Wishlist_Adapter.Wish
 
 
             status=1;
-//            String p=String.valueOf(map.get("price"));
-//            String m=String.valueOf(map.get("mrp"));
+//
             holder.product_price.setText(activity.getResources().getString(R.string.currency)+ map.get("price"));
             holder.product_mrp.setText(activity.getResources().getString(R.string.currency)+map.get("mrp"));
-            holder.txtrate.setVisibility(View.VISIBLE);
-            holder.txtrate.setText(map.get("unit_value")+" "+map.get("unit"));
-//            int discount=getDiscount(p,m);
-            //Toast.makeText(getActivity(),""+atr,Toast.LENGTH_LONG).show();
-            holder.discount.setText(""+discount+"% OFF");
-        }
 
+            holder.txtrate.setText(map.get("unit_value")+" "+map.get("unit"));
+             discount=getDiscount(p,m);
+            //Toast.makeText(getActivity(),""+atr,Toast.LENGTH_LONG).show();
+            holder.discount.setText(""+Math.round(discount)+"% OFF");
+        }
         else
         {
-           holder.rel_variant.setVisibility(View.VISIBLE);
-            status=2;
-            attributeList.clear();
-       //     String atr=String.valueOf(mList.getProduct_attribute());
-            JSONArray jsonArr = null;
-            try {
-
-                jsonArr = new JSONArray(atr);
-                for (int i = 0; i < jsonArr.length(); i++)
-                {
-                    ProductVariantModel model=new ProductVariantModel();
-                    JSONObject jsonObj = jsonArr.getJSONObject(i);
-                    String atrid=jsonObj.getString("id");
-                    String atrproductid=jsonObj.getString("product_id");
-                    String attributename=jsonObj.getString("attribute_name");
-                    String attributevalue=jsonObj.getString("attribute_value");
-                    String attributemrp=jsonObj.getString("attribute_mrp");
-
-
-                    model.setId(atrid);
-                    model.setProduct_id(atrproductid);
-                    model.setAttribute_value(attributevalue);
-                    model.setAttribute_name(attributename);
-                    model.setAttribute_mrp(attributemrp);
-
-                    attributeList.add(model);
-
-                    //     arrayList.add(new AttributeModel(atr_id,product_id,attribute_name,attribute_value));
-
-                    //Toast.makeText(getActivity(),"id "+atr_id+"\n p_id "+product_id+"\n atr_name "+attribute_name+"\n atr_value "+attribute_value,Toast.LENGTH_LONG).show();
-                }
-
-
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-            try
-            {
-
-
-
-
-                atr_id=attributeList.get(0).getId();
-                atr_product_id=attributeList.get(0).getProduct_id();
-                attribute_name=attributeList.get(0).getAttribute_name();
-                attribute_value=attributeList.get(0).getAttribute_value();
-                attribute_mrp=attributeList.get(0).getAttribute_mrp();
-
-
-
-                //     arrayList.add(new AttributeModel(atr_id,product_id,attribute_name,attribute_value));
-
-                //Toast.makeText(getActivity(),"id "+atr_id+"\n p_id "+product_id+"\n atr_name "+attribute_name+"\n atr_value "+attribute_value,Toast.LENGTH_LONG).show();
-
-
-
-                String atr_price=String.valueOf(attribute_value);
-                String atr_mrp=String.valueOf(attribute_mrp);
-                int atr_dis=getDiscount(atr_price,atr_mrp);
-                holder.product_price.setText("\u20B9"+attribute_value.toString());
-                holder.product_mrp.setText("\u20B9"+attribute_mrp.toString());
-                holder.dialog_txtId.setText(atr_id.toString()+"@"+"0");
-                holder.dialog_unit_type.setText("\u20B9"+attribute_value+"/"+attribute_name);
-                holder.dialog_txtVar.setText(attribute_value+"@"+attribute_name+"@"+attribute_mrp);
-                //  holder.txtTotal.setText("\u20B9"+String.valueOf(list_atr_value.get(0).toString()));
-                holder.discount.setText(""+atr_dis+"% OFF");
-            }
-            catch (Exception ex)
-            {
-                ex.printStackTrace();
-            }
-
-
+            List<ProductVariantModel> variantModels=module.getAttribute(atr);
+            holder.product_price.setText("\u20B9" +variantModels.get(position).getAttribute_value());
+            holder.product_mrp.setText("\u20B9" +variantModels.get(position).getAttribute_mrp());
         }
+
+//        else
+//        {
+//           holder.rel_variant.setVisibility(View.VISIBLE);
+//            status=2;
+//            attributeList.clear();
+//       //     String atr=String.valueOf(mList.getProduct_attribute());
+//            JSONArray jsonArr = null;
+//            try {
+//
+//                jsonArr = new JSONArray(atr);
+//                for (int i = 0; i < jsonArr.length(); i++)
+//                {
+//                    ProductVariantModel model=new ProductVariantModel();
+//                    JSONObject jsonObj = jsonArr.getJSONObject(i);
+//                    String atrid=jsonObj.getString("id");
+//                    String atrproductid=jsonObj.getString("product_id");
+//                    String attributename=jsonObj.getString("attribute_name");
+//                    String attributevalue=jsonObj.getString("attribute_value");
+//                    String attributemrp=jsonObj.getString("attribute_mrp");
+//
+//
+//                    model.setId(atrid);
+//                    model.setProduct_id(atrproductid);
+//                    model.setAttribute_value(attributevalue);
+//                    model.setAttribute_name(attributename);
+//                    model.setAttribute_mrp(attributemrp);
+//
+//                    attributeList.add(model);
+//
+//                    //     arrayList.add(new AttributeModel(atr_id,product_id,attribute_name,attribute_value));
+//
+//                    //Toast.makeText(getActivity(),"id "+atr_id+"\n p_id "+product_id+"\n atr_name "+attribute_name+"\n atr_value "+attribute_value,Toast.LENGTH_LONG).show();
+//                }
+//
+//
+//
+//            } catch (JSONException e) {
+//                e.printStackTrace();
+//            }
+
+//            try
+//            {
+//
+//
+//
+//
+//                atr_id=attributeList.get(0).getId();
+//                atr_product_id=attributeList.get(0).getProduct_id();
+//                attribute_name=attributeList.get(0).getAttribute_name();
+//                attribute_value=attributeList.get(0).getAttribute_value();
+//                attribute_mrp=attributeList.get(0).getAttribute_mrp();
+//
+//
+//
+//                //     arrayList.add(new AttributeModel(atr_id,product_id,attribute_name,attribute_value));
+//
+//                //Toast.makeText(getActivity(),"id "+atr_id+"\n p_id "+product_id+"\n atr_name "+attribute_name+"\n atr_value "+attribute_value,Toast.LENGTH_LONG).show();
+//
+//
+//
+//                String atr_price=String.valueOf(attribute_value);
+//                String atr_mrp=String.valueOf(attribute_mrp);
+//                int atr_dis=getDiscount(atr_price,atr_mrp);
+//                holder.product_price.setText("\u20B9"+attribute_value.toString());
+//                holder.product_mrp.setText("\u20B9"+attribute_mrp.toString());
+//                holder.dialog_txtId.setText(atr_id.toString()+"@"+"0");
+//                holder.dialog_unit_type.setText("\u20B9"+attribute_value+"/"+attribute_name);
+//                holder.dialog_txtVar.setText(attribute_value+"@"+attribute_name+"@"+attribute_mrp);
+//                //  holder.txtTotal.setText("\u20B9"+String.valueOf(list_atr_value.get(0).toString()));
+//                holder.discount.setText(""+atr_dis+"% OFF");
+//            }
+//            catch (Exception ex)
+//            {
+//                ex.printStackTrace();
+//            }
+//
+//
+//        }
 
          String product_id=String.valueOf(map.get("product_id"));
         if(atr.equals("[]"))
@@ -244,19 +239,19 @@ public class Wishlist_Adapter extends RecyclerView.Adapter<Wishlist_Adapter.Wish
         }
         else
         {
-            String str_id=holder.dialog_txtId.getText().toString();
-            String[] str=str_id.split("@");
-            String at_id=String.valueOf(str[0]);
-            boolean st=db_cart.isInCart(at_id);
-            if(st==true)
-            {
-                holder.add.setVisibility(View.GONE);
-                holder.elegantNumberButton.setNumber(db_cart.getCartItemQty(at_id));
-                holder.elegantNumberButton.setVisibility(View.VISIBLE);
-            }
-            else {
-
-            }
+//            String str_id=holder.dialog_txtId.getText().toString();
+//            String[] str=str_id.split("@");
+//            String at_id=String.valueOf(str[0]);
+//            boolean st=db_cart.isInCart(at_id);
+//            if(st==true)
+//            {
+//                holder.add.setVisibility(View.GONE);
+//                holder.elegantNumberButton.setNumber(db_cart.getCartItemQty(at_id));
+//                holder.elegantNumberButton.setVisibility(View.VISIBLE);
+//            }
+//            else {
+//
+//            }
         }
 
 

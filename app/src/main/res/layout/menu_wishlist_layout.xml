@@ -26,7 +26,7 @@
 
             android:contentDescription="bell"
             android:gravity="bottom"
-            app:srcCompat="@drawable/ic_bookmark_border_black_24dp" />
+            app:srcCompat="@drawable/icons8_like_60px_1" />
         <TextView
             android:id="@+id/actionbar_notifcation"
             android:layout_width="15dp"

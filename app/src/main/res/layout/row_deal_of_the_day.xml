@@ -4,7 +4,7 @@
     android:id="@+id/card_view_deals"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginLeft="@dimen/space_2"
+    android:layout_margin="@dimen/space_2"
     android:elevation="@dimen/space_4"
     card_view:cardCornerRadius="12dp"
     card_view:cardPreventCornerOverlap="false"
@@ -102,7 +102,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="left"
                 android:text="Product Name"
-                android:paddingLeft="@dimen/space_5"
+                android:layout_marginLeft="@dimen/space_10"
+                android:layout_marginRight="@dimen/space_20"
                 android:textColor="@color/colorPrimary"
                 android:textSize="@dimen/text_size_normal"
                 android:textStyle="bold"
@@ -113,99 +114,49 @@
                 android:id="@+id/product_desc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/space_20"
                 android:gravity="left"
+                android:layout_marginLeft="@dimen/space_10"
                 android:text="Product Desc"
                 android:textColor="@color/black"
-                android:paddingLeft="@dimen/space_5"
                 android:textSize="@dimen/text_size_normal"
-                android:maxLines="1"
+                android:maxLines="2"
                 android:ellipsize="end"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:weightSum="2">
+                android:layout_marginLeft="@dimen/space_10"
+                android:layout_marginRight="@dimen/space_20"
+                >
 
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1">
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/space_4"
-                        android:gravity="left"
-                        android:paddingRight="@dimen/space_8"
-                        android:text="Price"
-                        android:paddingLeft="@dimen/space_5"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/text_size_normal" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1">
 
                     <TextView
                         android:id="@+id/product_prize"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/space_4"
-                        android:paddingLeft="@dimen/space_8"
-                        android:paddingRight="@dimen/space_8"
+                        android:textAlignment="viewStart"
+
+
                         android:text="@string/tv_toolbar_price"
                         android:textColor="@color/black"
                         android:textSize="@dimen/text_size_normal" />
 
-                </LinearLayout>
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="2">
-
-                <LinearLayout
-                    android:layout_width="0dp"
+                <TextView
+                    android:id="@+id/product_offer_prize"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1">
+                    android:layout_marginLeft="@dimen/space_5"
+                    android:layout_marginTop="@dimen/space_4"
+                    android:paddingLeft="@dimen/space_8"
+                    android:paddingRight="@dimen/space_8"
+                    android:text="@string/tv_toolbar_price"
+                    android:textColor="@color/pink"
+                    android:textSize="@dimen/text_size_normal" />
 
-                    <TextView
-                        android:id="@+id/ofer_textview"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="left"
-                        android:paddingRight="@dimen/space_8"
-                        android:text="Offer Price:"
-                        android:paddingLeft="@dimen/space_5"
-                        android:textColor="@color/pink"
-                        android:textSize="@dimen/text_size_normal" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1">
-
-                    <TextView
-                        android:id="@+id/product_offer_prize"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingLeft="@dimen/space_8"
-                        android:paddingRight="@dimen/space_8"
-                        android:text="@string/tv_toolbar_price"
-                        android:textColor="@color/pink"
-                        android:textSize="@dimen/text_size_normal" />
-
-                </LinearLayout>
 
 
             </LinearLayout>

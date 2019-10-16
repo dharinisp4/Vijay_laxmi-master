@@ -36,6 +36,7 @@ import Adapter.Search_adapter;
 import Adapter.SuggestionAdapter;
 import Config.BaseURL;
 import Model.Product_model;
+import Module.Module;
 import trolley.tcc.AppController;
 import trolley.tcc.MainActivity;
 import trolley.tcc.R;
@@ -56,8 +57,8 @@ public class Search_fragment extends Fragment {
     private AutoCompleteTextView acTextView;
     private RelativeLayout btn_search;
     private RecyclerView rv_search;
-
-    private List<Product_model> product_modelList = new ArrayList<>();
+    Module module=new Module();
+    private List<Product_model> modelList = new ArrayList<>();
     private Search_adapter adapter_product;
 
     public Search_fragment() {
@@ -111,22 +112,23 @@ public class Search_fragment extends Fragment {
                 Bundle args = new Bundle();
 
                 //Intent intent=new Intent(context, Product_details.class);
-                args.putString("cat_id", product_modelList.get(position).getCategory_id());
-                args.putString("product_id",product_modelList.get(position).getProduct_id());
-                args.putString("product_images",product_modelList.get(position).getProduct_image());
-
-                args.putString("product_name",product_modelList.get(position).getProduct_name());
-                args.putString("product_description",product_modelList.get(position).getProduct_description());
-                args.putString("product_in_stock",product_modelList.get(position).getIn_stock());
-                args.putString("product_size",product_modelList.get(position).getSize());
-                args.putString("product_color",product_modelList.get( position).getColor());
-                args.putString("product_price",product_modelList.get(position).getPrice());
-                args.putString("product_mrp",product_modelList.get(position).getMrp());
-                args.putString("product_unit_value",product_modelList.get(position).getUnit_value());
-                args.putString("product_unit",product_modelList.get(position).getUnit());
-                args.putString("product_rewards",product_modelList.get(position).getRewards());
-                args.putString("product_increament",product_modelList.get(position).getIncreament());
-                args.putString("product_title",product_modelList.get(position).getTitle());
+                args.putString("cat_id", modelList.get(position).getCategory_id());
+                args.putString("product_id",modelList.get(position).getProduct_id());
+                args.putString("product_image",modelList.get(position).getProduct_image());
+                args.putString("product_name",modelList.get(position).getProduct_name());
+                args.putString("product_description",modelList.get(position).getProduct_description());
+                args.putString("stock",modelList.get(position).getIn_stock());
+//                args.putString("product_size",modelList.get(position).getSize());
+                args.putString("product_color",modelList.get( position).getColor());
+                args.putString("price",modelList.get(position).getPrice());
+                args.putString("mrp",modelList.get(position).getMrp());
+                args.putString( "unit_price",modelList.get( position ).getPrice());
+                args.putString("unit_value",modelList.get(position).getUnit_value());
+                args.putString("unit",modelList.get(position).getUnit());
+                args.putString("product_attribute",String.valueOf(module.getAttribute(modelList.get(position).getProduct_attribute())));
+                args.putString("rewards",modelList.get(position).getRewards());
+                args.putString("increment",modelList.get(position).getIncreament());
+                args.putString("title",modelList.get(position).getTitle());
                 details_fragment.setArguments(args);
 
 
@@ -177,15 +179,15 @@ public class Search_fragment extends Fragment {
                         Type listType = new TypeToken<List<Product_model>>() {
                         }.getType();
 
-                        product_modelList = gson.fromJson(response.getString("data"), listType);
+                        modelList = gson.fromJson(response.getString("data"), listType);
 
-                        adapter_product = new Search_adapter(product_modelList, getActivity());
+                        adapter_product = new Search_adapter(modelList, getActivity());
                         rv_search.setAdapter(adapter_product);
                         adapter_product.notifyDataSetChanged();
 
                         
                         if (getActivity() != null) {
-                            if (product_modelList.isEmpty()) {
+                            if (modelList.isEmpty()) {
                                 Toast.makeText(getActivity(), getResources().getString(R.string.no_rcord_found), Toast.LENGTH_SHORT).show();
                             }
                         }

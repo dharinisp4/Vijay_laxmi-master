@@ -35,9 +35,7 @@ import Fragment.Details_Fragment;
 import Model.Deal_Of_Day_model;
 import Model.ProductVariantModel;
 import trolley.tcc.R;
-import util.CartHandler;
 import util.DatabaseCartHandler;
-import util.DatabaseHandlerWishList;
 import util.WishlistHandler;
 
 import static android.content.Context.MODE_PRIVATE;

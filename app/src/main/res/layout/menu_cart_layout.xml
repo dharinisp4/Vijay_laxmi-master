@@ -26,7 +26,7 @@
             android:layout_height="25dp"
             android:contentDescription="bell"
             android:gravity="bottom"
-            app:srcCompat="@drawable/ic_shopping_cart_black_24dp" />
+            app:srcCompat="@drawable/icons8_shopping_bag_full_60px" />
 
         <TextView
             android:id="@+id/actionbar_notifcation"

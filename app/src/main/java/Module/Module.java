@@ -5,8 +5,16 @@ import android.content.Context;
 import android.content.Intent;
 import android.widget.Toast;
 
-import java.util.HashMap;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+import Adapter.ProductVariantAdapter;
+import Model.ProductVariantModel;
 import trolley.tcc.MainActivity;
 import util.DatabaseCartHandler;
 
@@ -68,4 +76,62 @@ public class Module {
         updates.putExtra("type", "update");
         activity.sendBroadcast(updates);
     }
-}
+
+    public List<ProductVariantModel> getAttribute(String attribute)
+    {
+        ProductVariantModel model=new ProductVariantModel();
+        List<ProductVariantModel> varientlist = new ArrayList<>();
+
+        try {
+            JSONArray jsonArr = new JSONArray(attribute);
+
+            for (int i = 0; i < jsonArr.length(); i++) {
+                JSONObject jsonObj = jsonArr.getJSONObject(i);
+
+                if (jsonObj.has("id") && !jsonObj.isNull("id"))
+                    model.setId(jsonObj.getString("id"));
+                else
+                    model.setId(jsonObj.getString(""));
+                if (jsonObj.has("product_id") && !jsonObj.isNull("product_id"))
+                    model.setProduct_id(jsonObj.getString("product_id"));
+                else
+                    model.setProduct_id("");
+
+                if (jsonObj.has("attribute_name") && !jsonObj.isNull("attribute_name"))
+                    model.setAttribute_name(jsonObj.getString("attribute_name"));
+                else
+                    model.setAttribute_name("");
+
+                if (jsonObj.has("attribute_value") && !jsonObj.isNull("attribute_value"))
+                    model.setAttribute_value(jsonObj.getString("attribute_value"));
+                else
+                    model.setAttribute_value("");
+
+                if (jsonObj.has("attribute_mrp") && !jsonObj.isNull("attribute_mrp"))
+                    model.setAttribute_mrp(jsonObj.getString("attribute_mrp"));
+                else
+                    model.setAttribute_mrp("");
+
+                if (jsonObj.has("attribute_image") && !jsonObj.isNull("attribute_image"))
+                    model.setAttribute_image(jsonObj.getString("attribute_image"));
+                     else
+                    model.setAttribute_image("");
+                if (jsonObj.has("attribute_color") && !jsonObj.isNull("attribute_color"))
+                    model.setAttribute_color(jsonObj.getString("attribute_color"));
+                     else
+                    model.setAttribute_color("");
+
+                varientlist.add(model);
+            }
+    }
+           catch (JSONException ex) {
+            ex.printStackTrace();
+        }
+        return  varientlist ;
+
+        }
+
+
+
+    }
+

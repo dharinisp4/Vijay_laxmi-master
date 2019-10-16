@@ -3,6 +3,7 @@ package Adapter;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
@@ -106,13 +107,21 @@ public class Cart_adapter extends RecyclerView.Adapter<Cart_adapter.ProductHolde
             holder.tv_title.setText(map.get("product_name"));
 
         holder.tv_mrp.setText( activity.getResources().getString(R.string.currency)+ map.get( "mrp" ) );
+       holder.tv_mrp.setPaintFlags( holder.tv_mrp.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
         holder.tv_price.setText(activity.getResources().getString(R.string.currency)+map.get("unit_price"));
         holder.tv_contetiy.setText(map.get("qty"));
         String p=String.valueOf(map.get("price"));
         String m=String.valueOf(map.get("mrp"));
-        int discount=getDiscount(p,m);
-        //Toast.makeText(getActivity(),""+atr,Toast.LENGTH_LONG).show();
-        holder.tv_product_discout.setText(""+discount+"% OFF");
+        int pp =Integer.parseInt(p);
+        int mm =Integer.parseInt(m);
+        if (mm>pp) {
+            int discount = getDiscount(p, m);
+            //Toast.makeText(getActivity(),""+atr,Toast.LENGTH_LONG).show();
+            holder.tv_product_discout.setText("" + Math.round(discount) + "% OFF");
+        }
+        else
+            holder.tv_product_discout.setVisibility(View.GONE);
+
         int items = Integer.parseInt(db_cart.getInCartItemQty(map.get("cart_id")));
          price = Double.parseDouble(map.get("unit_price"));
         // holder.tv_subcat_weight.setText("Weight : "+map.get("unit"));

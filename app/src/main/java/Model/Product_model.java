@@ -1,5 +1,7 @@
 package Model;
 
+import java.util.List;
+
 /**
  * Created by Rajesh Dabhi on 26/6/2017.
  */
@@ -16,7 +18,6 @@ public class Product_model {
     String end_date;
     String end_time;
     String price;
-
     String product_image;
     String product_name_arb;
     String product_description_arb;
@@ -24,10 +25,7 @@ public class Product_model {
     String in_stock;
     String unit_value;
     String unit_price;
-
-
-
-    String unit;
+  String unit;
     String increament;
     String rewards;
     String stock;
@@ -36,9 +34,12 @@ public class Product_model {
     String color;
     String mrp;
     String product_attribute;
+    String brand ;
 
+    public Product_model() {
+    }
 
-    public Product_model(String product_id, String product_name, String category_id, String product_description, String deal_price, String start_date, String start_time, String end_date, String end_time, String price, String product_image, String product_name_arb, String product_description_arb, String status, String in_stock, String unit_value,String unit_price, String unit, String increament, String rewards, String stock, String title, String size, String color, String mrp, String product_attribute) {
+    public Product_model(String product_id, String product_name, String category_id, String product_description, String deal_price, String start_date, String start_time, String end_date, String end_time, String price, String product_image, String product_name_arb, String product_description_arb, String status, String in_stock, String unit_value, String unit_price, String unit, String increament, String rewards, String stock, String title, String size, String color, String mrp, String product_attribute, String brand) {
         this.product_id = product_id;
         this.product_name = product_name;
         this.category_id = category_id;
@@ -65,6 +66,7 @@ public class Product_model {
         this.color = color;
         this.mrp = mrp;
         this.product_attribute = product_attribute;
+        this.brand = brand;
     }
 
     public String getProduct_id() {
@@ -195,6 +197,14 @@ public class Product_model {
         this.unit_value = unit_value;
     }
 
+    public String getUnit_price() {
+        return unit_price;
+    }
+
+    public void setUnit_price(String unit_price) {
+        this.unit_price = unit_price;
+    }
+
     public String getUnit() {
         return unit;
     }
@@ -267,10 +277,11 @@ public class Product_model {
         this.product_attribute = product_attribute;
     }
 
-    public String getUnit_price() {
-        return unit_price ;
+    public String getBrand() {
+        return brand;
     }
-    public void setUnit_price(String unit_price) {
-        this.unit_price = unit_price;
+
+    public void setBrand(String brand) {
+        this.brand = brand;
     }
 }

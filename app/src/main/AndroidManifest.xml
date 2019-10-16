@@ -72,6 +72,10 @@
         <meta-data
             android:name="android.support.multidex.MultiDexApplication"
             android:value="true" />
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+
         <service
             android:name="fcm.MyFirebaseMessagingService"
             android:exported="false">
