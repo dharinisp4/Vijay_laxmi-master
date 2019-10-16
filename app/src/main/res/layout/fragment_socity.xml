@@ -5,11 +5,12 @@
     android:background="@color/white"
     android:orientation="vertical">
 
-    <Fonts.LatoBLack
+    <TextView
         android:id="@+id/tv_pro_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#000"
+        android:fontFamily="@font/cabin"
         android:layout_margin="@dimen/space_10"
         android:text="@string/et_reg_search"
         android:textSize="14sp" />
@@ -23,6 +24,7 @@
         android:layout_marginTop="@dimen/space_14"
         android:background="@drawable/xml_textbox_bg"
         android:ems="10"
+        android:fontFamily="@font/cabin"
         android:hint="@string/et_sea"
         android:inputType="textPersonName"
         android:textSize="@dimen/space_14" />

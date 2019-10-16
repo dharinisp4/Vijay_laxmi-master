@@ -17,8 +17,6 @@
         tools:node="replace">
         <activity android:name="com.trolley.tcc.Help"></activity>
 
-        <activity android:name=".Product_details" />
-
         <activity
             android:name=".SplashActivity"
             android:theme="@style/AppTheme.NoActionBar">

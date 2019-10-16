@@ -22,12 +22,13 @@
         android:layout_height="@dimen/reward_point_size"
         android:orientation="vertical">
 
-        <Fonts.LatoBLack
+        <TextView
             android:id="@+id/tv_socity_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:padding="@dimen/space_8"
+            android:fontFamily="@font/cabin"
             android:text="@string/rewards_points"
             android:textColor="#000"
             android:textSize="18sp" />

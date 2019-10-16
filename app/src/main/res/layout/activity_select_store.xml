@@ -43,13 +43,14 @@
             android:orientation="vertical">
 
 
-            <Fonts.LatoBLack
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/space_10"
                 android:gravity="center"
                 android:text="Select Store"
                 android:textColor="#000"
+                android:fontFamily="@font/cabin"
                 android:textSize="@dimen/text_size_normal" />
 
             <LinearLayout
@@ -57,13 +58,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp">
 
-                <Fonts.LatoBLack
+                <TextView
                     android:id="@+id/store"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginLeft="@dimen/space_8"
                     android:layout_marginRight="@dimen/space_8"
                     android:layout_marginTop="@dimen/space_8"
+                    android:fontFamily="@font/cabin"
                     android:background="@drawable/xml_textbox_bg"
                     android:editable="false"
                     android:ems="10"
@@ -85,13 +87,14 @@
             android:layout_marginRight="@dimen/space_8"
             android:background="@drawable/bg_rounded_button">
 
-            <Fonts.LatoBLack
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:text="Go"
+                android:fontFamily="@font/cabin"
                 android:textColor="#fff"
-                android:textSize="@dimen/text_size_small" />
+                android:textSize="@dimen/space_16" />
 
 
         </RelativeLayout>

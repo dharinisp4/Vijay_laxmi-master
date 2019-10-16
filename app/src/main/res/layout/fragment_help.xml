@@ -27,6 +27,7 @@
         android:layout_centerVertical="true"
         android:text="We are here to help "
         android:textStyle="bold"
+        android:fontFamily="@font/cabin"
         android:textColor="@android:color/white"
         android:textSize="@dimen/space_20"/>
     <TextView
@@ -34,6 +35,7 @@
         android:layout_below="@+id/text1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/cabin"
         android:text="Submit a question or report"
         android:textColor="@android:color/white"
         android:layout_marginLeft="@dimen/space_10"
@@ -48,12 +50,14 @@
         android:layout_marginLeft="@dimen/space_10"
         android:layout_marginRight="@dimen/space_10"
         android:hint="Name"
+        android:fontFamily="@font/cabin"
         android:textAlignment="gravity"
         android:paddingBottom="@dimen/space_15"
         android:backgroundTint="@color/colorPrimary"
         />
     <EditText
         android:id="@+id/et_email"
+        android:fontFamily="@font/cabin"
         android:layout_below="@+id/et_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -75,6 +79,7 @@
         android:layout_marginRight="@dimen/space_10"
         android:hint="Phone Number"
         android:textAlignment="gravity"
+        android:fontFamily="@font/cabin"
         android:paddingBottom="@dimen/space_15"
         android:backgroundTint="@color/colorPrimary"
         />
@@ -87,6 +92,7 @@
         android:layout_marginLeft="@dimen/space_10"
         android:layout_marginRight="@dimen/space_10"
         android:hint="Message"
+        android:fontFamily="@font/cabin"
         android:textAlignment="gravity"
         android:paddingBottom="@dimen/space_15"
         android:backgroundTint="@color/colorPrimary"
@@ -97,6 +103,7 @@
         android:layout_height="55dp"
         android:background="@color/colorPrimary"
         android:text="SUBMIT"
+        android:fontFamily="@font/cabin"
         android:textColor="@android:color/white"
         android:layout_below="@+id/et_mesg"
         android:layout_centerHorizontal="true"

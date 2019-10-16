@@ -37,10 +37,10 @@
     <item
         android:id="@+id/action_wish"
 
-        android:icon="@drawable/icons8_like_60px_1"
+        android:icon="@drawable/icons8_hearts_58"
         android:title="Wishlist"
         app:actionLayout="@layout/menu_wishlist_layout"
-        app:icon="@drawable/icons8_like_60px_1"
+        app:icon="@drawable/icons8_hearts_58"
         app:showAsAction="always" />
 
     <item

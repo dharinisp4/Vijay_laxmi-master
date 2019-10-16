@@ -27,7 +27,8 @@
                 android:padding="@dimen/space_10"
                 android:visibility="gone">
 
-                <Fonts.LatoBLack
+                <TextView
+                    android:fontFamily="@font/cabin"
                     android:id="@+id/tv_deli_date"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -41,7 +42,8 @@
                     android:visibility="gone"
                     />
 
-                <Fonts.LatoBLack
+                <TextView
+                    android:fontFamily="@font/cabin"
                     android:id="@+id/tv_deli_fromtime"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -80,7 +82,8 @@
                         android:background="@drawable/bg_rounded_button"
                         android:padding="12dp">
 
-                        <Fonts.LatoBLack
+                        <TextView
+                            android:fontFamily="@font/cabin"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:gravity="center"
@@ -96,7 +99,8 @@
                     </RelativeLayout>
 
                 </RelativeLayout>
-                <Fonts.LatoBLack
+                <TextView
+                    android:fontFamily="@font/cabin"
                     android:id="@+id/txtdelivery"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -139,14 +143,16 @@
                 android:layout_weight="1"
                 android:padding="@dimen/space_10">
 
-                <Fonts.LatoBLack
+                <TextView
+                    android:fontFamily="@font/cabin"
                     android:id="@+id/textView10"
                     android:textColor="#000"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/tv_cart_item" />
 
-                <Fonts.LatoBLack
+                <TextView
+                    android:fontFamily="@font/cabin"
                     android:textColor="#000"
                     android:id="@+id/tv_deli_item"
                     android:layout_width="wrap_content"
@@ -162,14 +168,16 @@
                 android:gravity="end"
                 android:padding="@dimen/space_10">
 
-                <Fonts.LatoBLack
+                <TextView
+                    android:fontFamily="@font/cabin"
                     android:textColor="#000"
                     android:id="@+id/textView12"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/total" />
 
-                <Fonts.LatoBLack
+                <TextView
+                    android:fontFamily="@font/cabin"
                     android:textColor="#000"
                     android:id="@+id/tv_deli_total"
                     android:layout_width="wrap_content"
@@ -196,13 +204,14 @@
             android:background="@drawable/bg_rounded_button"
             android:padding="12dp">
 
-            <Fonts.LatoBLack
+            <TextView
+                android:fontFamily="@font/cabin"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:text="Continue"
                 android:textColor="#fff"
-                android:textSize="@dimen/text_size_small"/>
+                android:textSize="@dimen/space_16"/>
 
 
 

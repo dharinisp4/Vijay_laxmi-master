@@ -31,14 +31,15 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="56dp"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <Fonts.LatoBLack
+                <TextView
                     android:id="@+id/tv_pro_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/tv_reg_name_hint"
+                    android:fontFamily="@font/cabin"
                     android:textColor="#000"
                     android:textSize="14sp" />
 
@@ -58,6 +59,7 @@
                 android:layout_marginBottom="@dimen/space_5"
                 android:layout_marginTop="@dimen/space_4"
                 android:textSize="14sp"
+                android:fontFamily="@font/cabin"
                 android:background="@drawable/xml_textbox_bg"
                 android:ems="10"
                 android:inputType="text" />
@@ -67,7 +69,8 @@
                 android:layout_width="match_parent"
                 android:orientation="horizontal"
                 android:layout_height="wrap_content">
-                <Fonts.LatoBLack
+                <TextView
+                    android:fontFamily="@font/cabin"
                     android:id="@+id/tv_pro_phone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -93,13 +96,15 @@
                 android:background="@drawable/xml_textbox_bg"
                 android:ems="10"
                 android:textSize="14sp"
+                android:fontFamily="@font/cabin"
                 android:inputType="number"
                 android:maxLength="15" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:orientation="horizontal"
                 android:layout_height="wrap_content">
-                <Fonts.LatoBLack
+                <TextView
+                    android:fontFamily="@font/cabin"
                     android:id="@+id/tv_pro_email"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -168,13 +173,14 @@
                 android:background="@drawable/bg_rounded_button"
                 android:padding="12dp">
 
-                <Fonts.LatoBLack
+                <TextView
+                    android:fontFamily="@font/cabin"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:text="@string/continue_bt"
                     android:textColor="#fff"
-                    android:textSize="@dimen/text_size_small"/>
+                    android:textSize="@dimen/space_16"/>
 
 
 

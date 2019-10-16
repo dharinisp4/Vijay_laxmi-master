@@ -60,9 +60,10 @@
                 android:layout_below="@+id/rel"
                 android:padding="@dimen/space_2"
                 android:textAlignment="center"
-                android:fontFamily="sans-serif-smallcaps"
+
                 android:textStyle="bold"
                 android:text="Ram"
+                android:fontFamily="@font/cabin"
                 android:textColor="@color/black"
                 android:textSize="12dp" />
 

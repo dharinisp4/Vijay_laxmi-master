@@ -40,7 +40,8 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <Fonts.LatoBLack
+                <TextView
+                    android:fontFamily="@font/cabin"
                     android:textColor="#000"
                     android:id="@+id/tv_order_Detail_title"
                     android:layout_width="match_parent"
@@ -50,7 +51,8 @@
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
-                <Fonts.LatoBLack
+                <TextView
+                    android:fontFamily="@font/cabin"
                     android:textColor="#000"
                     android:id="@+id/txtQty"
                     android:layout_width="match_parent"
@@ -80,14 +82,16 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
-                        <Fonts.LatoBLack
+                        <TextView
+                            android:fontFamily="@font/cabin"
                             android:textColor="#000"
                             android:id="@+id/textRuppes"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/tv_order_rs" />
 
-                        <Fonts.LatoBLack
+                        <TextView
+                            android:fontFamily="@font/cabin"
                             android:textColor="#000"
                             android:id="@+id/tv_order_Detail_price"
                             android:layout_width="wrap_content"
@@ -106,7 +110,8 @@
                     android:gravity="center_vertical|center_horizontal"
                     android:orientation="horizontal">
 
-                    <Fonts.LatoBLack
+                    <TextView
+                        android:fontFamily="@font/cabin"
                         android:textColor="#000"
                         android:id="@+id/tv_order_Detail_qty"
                         android:layout_width="match_parent"

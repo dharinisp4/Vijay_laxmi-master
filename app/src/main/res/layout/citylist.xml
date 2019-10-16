@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     android:gravity="center">
 
-    <Fonts.LatoBLack
+    <TextView
         android:id="@+id/text_city"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -14,6 +14,7 @@
         android:textAllCaps="false"
         android:textColor="#000"
         android:text="Ram"
+        android:fontFamily="@font/cabin"
         android:textStyle="bold"
         android:textSize="18dp" />
 

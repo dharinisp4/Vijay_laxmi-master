@@ -96,7 +96,7 @@ public class Cart_adapter extends RecyclerView.Adapter<Cart_adapter.ProductHolde
 
         Glide.with(activity)
                 .load(BaseURL.IMG_PRODUCT_URL + img_name)
-                .centerCrop()
+              //  .centerCrop()
                 .placeholder(R.drawable.icon)
                 .crossFade()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)

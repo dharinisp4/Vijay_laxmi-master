@@ -9,6 +9,7 @@
         android:id="@+id/l_english"
         android:text="English"
         android:textSize="17sp"
+        android:fontFamily="@font/cabin"
         android:gravity="center_vertical"
         android:paddingStart="10dp"
         android:paddingEnd="10dp"
@@ -20,6 +21,7 @@
         android:background="#d9d9d9"/>
     <TextView
         android:id="@+id/l_arabic"
+        android:fontFamily="@font/cabin"
         android:text="Arabic"
         android:textSize="17sp"
         android:gravity="center_vertical"

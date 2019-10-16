@@ -136,7 +136,7 @@ public class RelatedProductAdapter extends RecyclerView.Adapter<RelatedProductAd
             holder.txtrate.setText(mList.getUnit_value()+" "+mList.getUnit());
             int discount=getDiscount(p,m);
             //Toast.makeText(getActivity(),""+atr,Toast.LENGTH_LONG).show();
-            holder.product_discount.setText(""+discount+"% OFF");
+            holder.product_discount.setText(""+Math.round( discount)+"% OFF");
 
         }
 
@@ -177,7 +177,7 @@ public class RelatedProductAdapter extends RecyclerView.Adapter<RelatedProductAd
                 holder.dialog_txtVar.setText(attribute_value+"@"+attribute_name+"@"+attribute_mrp);
                 holder.dialog_unit_type.setText("\u20B9"+attribute_value+"/"+attribute_name);
                 //  holder.txtTotal.setText("\u20B9"+String.valueOf(list_atr_value.get(0).toString()));
-                holder.product_discount.setText(""+atr_dis+"% OFF");
+                holder.product_discount.setText(""+Math.round(atr_dis)+"% OFF");
             } catch (JSONException e) {
                 e.printStackTrace();
             }

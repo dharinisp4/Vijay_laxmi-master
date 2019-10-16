@@ -4,6 +4,7 @@
 
     <TextView
         android:id="@+id/txtVarient"
+        android:fontFamily="@font/cabin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="center"
@@ -12,6 +13,7 @@
         android:layout_marginBottom="5dp"/>
     <TextView
         android:id="@+id/txtVariantId"
+        android:fontFamily="@font/cabin"
         android:layout_toRightOf="@id/txtVarient"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

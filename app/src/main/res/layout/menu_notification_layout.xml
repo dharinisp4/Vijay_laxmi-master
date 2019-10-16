@@ -35,6 +35,7 @@
             android:background="@drawable/xml_budget"
             android:gravity="center"
             android:padding="1dp"
+            android:fontFamily="@font/cabin"
             android:text="99"
             android:textColor="#ffffff"
             android:textSize="9sp"

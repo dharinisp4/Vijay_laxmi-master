@@ -33,14 +33,16 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
-                    <Fonts.LatoBLack
+                    <TextView
+                        android:fontFamily="@font/cabin"
                         android:textColor="#000"
                         android:id="@+id/textView14"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/tv_deli_socity" />
 
-                    <Fonts.LatoBLack
+                    <TextView
+                        android:fontFamily="@font/cabin"
                         android:textColor="#000"
                         android:id="@+id/tv_adres_address"
                         android:layout_width="match_parent"
@@ -58,14 +60,16 @@
                     android:orientation="horizontal">
 
 
-                    <Fonts.LatoBLack
+                    <TextView
+                        android:fontFamily="@font/cabin"
                         android:textColor="#000"
                         android:id="@+id/textView15"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/tv_deli_pin" />
 
-                    <Fonts.LatoBLack
+                    <TextView
+                        android:fontFamily="@font/cabin"
                         android:textColor="#000"
                         android:id="@+id/tv_adres_pincode"
                         android:layout_width="match_parent"
@@ -82,14 +86,16 @@
                     android:layout_marginTop="@dimen/space_5"
                     android:orientation="horizontal">
 
-                    <Fonts.LatoBLack
+                    <TextView
+                        android:fontFamily="@font/cabin"
                         android:textColor="#000"
                         android:id="@+id/textView17"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/tv_deli_mobile" />
 
-                    <Fonts.LatoBLack
+                    <TextView
+                        android:fontFamily="@font/cabin"
                         android:textColor="#000"
                         android:id="@+id/tv_adres_phone"
                         android:layout_width="match_parent"
@@ -105,14 +111,16 @@
                     android:layout_marginTop="@dimen/space_5"
                     android:orientation="horizontal">
 
-                    <Fonts.LatoBLack
+                    <TextView
+                        android:fontFamily="@font/cabin"
                         android:textColor="#000"
                         android:id="@+id/textView16"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/delivery_charge" />
 
-                    <Fonts.LatoBLack
+                    <TextView
+                        android:fontFamily="@font/cabin"
                         android:textColor="#000"
                         android:id="@+id/tv_adres_charge"
                         android:layout_width="match_parent"
@@ -128,6 +136,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
+                android:fontFamily="@font/cabin"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/space_8" />

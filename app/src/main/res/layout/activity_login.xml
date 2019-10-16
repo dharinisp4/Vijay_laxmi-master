@@ -42,14 +42,15 @@
             android:layout_width="match_parent"
             android:orientation="horizontal"
             android:layout_height="wrap_content">
-            <Fonts.LatoBLack
+            <TextView
                 android:id="@+id/tv_login_email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/space_10"
+                android:fontFamily="@font/cabin"
                 android:text="@string/tv_login_email"
                 android:textColor="#000"
-                android:textSize="14sp" />
+                android:textSize="@dimen/space_16" />
             <ImageView
                 android:id="@+id/iconnemail"
                 android:layout_width="10dp"
@@ -67,6 +68,7 @@
             android:layout_marginTop="@dimen/space_4"
             android:background="@drawable/xml_textbox_bg"
             android:ems="10"
+            android:fontFamily="@font/cabin"
             android:gravity="center_horizontal"
             android:inputType="textEmailAddress"
             android:padding="@dimen/space_10"
@@ -79,14 +81,15 @@
             android:orientation="horizontal"
             android:layout_height="wrap_content">
 
-            <Fonts.LatoBLack
+            <TextView
                 android:id="@+id/tv_login_password"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/space_10"
                 android:text="@string/tv_login_password"
+                android:fontFamily="@font/cabin"
                 android:textColor="#000"
-                android:textSize="14sp" />
+                android:textSize="@dimen/space_16" />
 
             <ImageView
                 android:id="@+id/iconp"
@@ -113,6 +116,7 @@
             android:textAlignment="center"
             android:textColor="#000"
             android:textColorHint="@color/dark_gray"
+            android:fontFamily="@font/cabin"
             android:textSize="14sp" />
 
         <RelativeLayout
@@ -123,13 +127,14 @@
             android:background="@drawable/bg_rounded_button"
             android:padding="12dp">
 
-            <Fonts.LatoBLack
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:text="@string/btn_continue"
                 android:textColor="#fff"
-                android:textSize="@dimen/text_size_small" />
+                android:fontFamily="@font/cabin"
+                android:textSize="16dp" />
 
 
         </RelativeLayout>
@@ -143,27 +148,29 @@
             android:background="@drawable/bg_rounded_button"
             android:padding="12dp">
 
-            <Fonts.LatoBLack
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:text="@string/btn_Register"
+                android:fontFamily="@font/cabin"
                 android:textColor="#fff"
-                android:textSize="@dimen/text_size_small" />
+                android:textSize="16dp" />
 
 
         </RelativeLayout>
 
-        <Fonts.LatoBLack
+        <TextView
             android:id="@+id/btnForgot"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
             android:gravity="center"
+            android:fontFamily="@font/cabin"
             android:text="@string/forgot"
             android:textColor="@color/pink"
-            android:textSize="13sp" />
+            android:textSize="@dimen/space_16" />
     </LinearLayout>
 
 </RelativeLayout>

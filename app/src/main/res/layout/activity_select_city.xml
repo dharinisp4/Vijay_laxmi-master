@@ -45,12 +45,13 @@
             android:orientation="vertical">
 
 
-            <Fonts.LatoBLack
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/space_10"
                 android:gravity="center"
                 android:text="Select City"
+                android:fontFamily="@font/cabin"
                 android:textColor="#000"
                 android:textSize="@dimen/text_size_normal" />
 
@@ -59,7 +60,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp">
 
-                <Fonts.LatoBLack
+                <TextView
                     android:id="@+id/city"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
@@ -69,6 +70,7 @@
                     android:background="@drawable/xml_textbox_bg"
                     android:editable="false"
                     android:ems="10"
+                    android:fontFamily="@font/cabin"
                     android:gravity="center_horizontal"
                     android:text="Select City"
                     android:textColor="@color/green"
@@ -86,13 +88,14 @@
             android:layout_marginRight="@dimen/space_8"
             android:background="@drawable/bg_rounded_button">
 
-            <Fonts.LatoBLack
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:text="Next"
+                android:fontFamily="@font/cabin"
                 android:textColor="#fff"
-                android:textSize="@dimen/text_size_small" />
+                android:textSize="@dimen/space_16" />
 
 
         </RelativeLayout>

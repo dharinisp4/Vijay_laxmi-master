@@ -53,7 +53,7 @@
                 android:layout_weight="1.3"
                 android:gravity="center">
 
-                <Fonts.LatoBLack
+                <TextView
                     android:id="@+id/tv_header_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -129,7 +129,7 @@
                 android:layout_weight="1.3"
                 android:gravity="center">
 
-                <Fonts.LatoBLack
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/space_8"
@@ -195,7 +195,7 @@
                         app:srcCompat="@drawable/order" />
 
 
-                    <Fonts.LatoBLack
+                    <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -223,10 +223,10 @@
                     <ImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        app:srcCompat="@drawable/icons8_like_60px_1" />
+                        app:srcCompat="@drawable/icons8_hearts_58" />
 
 
-                    <Fonts.LatoBLack
+                    <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -258,7 +258,7 @@
                         app:srcCompat="@drawable/ic_account_balance_wallet_black_24dp" />
 
 
-                    <Fonts.LatoBLack
+                    <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -290,7 +290,7 @@
                         app:srcCompat="@drawable/icons8_shopping_bag_full_60px" />
 
 
-                    <Fonts.LatoBLack
+                    <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"

@@ -128,11 +128,11 @@ public class Top_Selling_Adapter extends RecyclerView.Adapter<Top_Selling_Adapte
     public void onBindViewHolder(final Top_Selling_Adapter.MyViewHolder holder, final int position) {
         final Top_Selling_model mList = modelList.get(position);
         final String getid = mList.getProduct_id();
-//        if(db_wish.isInWishtable( getid ))
-//        {
-//            holder.wish_after.setVisibility( View.VISIBLE );
-//            holder.wish_before.setVisibility( View.GONE );
-//        }
+        if(db_wish.isInWishtable( getid ))
+        {
+            holder.wish_after.setVisibility( View.VISIBLE );
+            holder.wish_before.setVisibility( View.GONE );
+        }
 
          preferences = context.getSharedPreferences("lan", MODE_PRIVATE);
     final String language=preferences.getString("language","");
@@ -220,7 +220,7 @@ public class Top_Selling_Adapter extends RecyclerView.Adapter<Top_Selling_Adapte
                 holder.dialog_unit_type.setText("\u20B9"+attribute_value+"/"+attribute_name);
                 //  holder.txtTotal.setText("\u20B9"+String.valueOf(list_atr_value.get(0).toString()));
                 if(atr_dis>0) {
-                    holder.product_discount.setText( "" + atr_dis + "% OFF" );
+                    holder.product_discount.setText( "" + Math.round( atr_dis) + "% OFF" );
                 }
                 else
                 {
@@ -340,7 +340,7 @@ public class Top_Selling_Adapter extends RecyclerView.Adapter<Top_Selling_Adapte
                         int atr_dis=getDiscount(pr,mr);
                         if(atr_dis >0) {
 
-                            holder.product_discount.setText( "" + atr_dis + "% OFF" );
+                            holder.product_discount.setText( "" + Math.round( atr_dis) + "% OFF" );
                         }
                         else
                         {

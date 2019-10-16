@@ -120,6 +120,7 @@ public class DealsOfTheDayAdapter extends RecyclerView.Adapter<DealsOfTheDayAdap
             holder.txtrate.setVisibility(View.VISIBLE);
             holder.txtrate.setText(mList.getUnit_value()+" "+mList.getUnit());
             int discount=getDiscount(p,m);
+            holder.product_discount.setText( String.valueOf( discount ) + "%" +"off" );
             //Toast.makeText(getActivity(),""+atr,Toast.LENGTH_LONG).show();
           //  holder.product_discount.setText(""+discount+"% OFF");
 
@@ -156,6 +157,8 @@ public class DealsOfTheDayAdapter extends RecyclerView.Adapter<DealsOfTheDayAdap
                 int atr_dis=getDiscount(atr_price,atr_mrp);
                 holder.product_price.setText("\u20B9"+attribute_value.toString());
                holder.product_offer_price.setText("\u20B9"+attribute_mrp.toString());
+               holder.product_discount.setText( String.valueOf( atr_dis ) + "%" +"off" );
+
                // holder.dialog_txtId.setText(atr_id.toString()+"@"+"0");
                 //dialog_unit_type.setText("\u20B9"+variantList.get(i).getAttribute_value()+"/"+variantList.get(i).getAttribute_name());
                 //dialog_txtId.setText(variantList.get(i).getId()+"@"+i);
@@ -398,7 +401,7 @@ public class DealsOfTheDayAdapter extends RecyclerView.Adapter<DealsOfTheDayAdap
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         ImageView product_img ;
-        TextView product_name,product_desc , product_price ,product_offer_price ,dialog_unit_type ,dialog_txtId,dialog_txtVar,txtrate  ;
+        TextView product_name,product_desc , product_price ,product_offer_price ,dialog_unit_type ,dialog_txtId,dialog_txtVar,txtrate ,product_discount ;
         CardView card_deals ;
         RelativeLayout rel_variant ;
         Button add_Button ;
@@ -412,6 +415,7 @@ public class DealsOfTheDayAdapter extends RecyclerView.Adapter<DealsOfTheDayAdap
             product_name=(TextView)itemView.findViewById( R.id.product_name );
             product_price=(TextView)itemView.findViewById( R.id.product_prize );
             product_offer_price=(TextView)itemView.findViewById( R.id.product_offer_prize );
+            product_discount =(TextView)itemView.findViewById( R.id.product_discount );
             variantList=new ArrayList<>();
             card_deals=(CardView) itemView.findViewById(R.id.card_view_deals);
             dialog_unit_type=(TextView)itemView.findViewById(R.id.unit_type);

@@ -193,8 +193,8 @@ public class Search_adapter extends RecyclerView.Adapter<Search_adapter.MyViewHo
         }
         Glide.with(context)
                 .load(BaseURL.IMG_PRODUCT_URL +img_name)
-                .placeholder(R.drawable.logo)
-                .centerCrop()
+                .placeholder(R.drawable.icon)
+              //  .centerCrop()
                 .crossFade()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .dontAnimate()

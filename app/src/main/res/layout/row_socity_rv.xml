@@ -15,7 +15,8 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <Fonts.LatoBLack
+        <TextView
+            android:fontFamily="@font/cabin"
             android:textColor="#000"
             android:id="@+id/tv_socity_name"
             android:layout_width="match_parent"

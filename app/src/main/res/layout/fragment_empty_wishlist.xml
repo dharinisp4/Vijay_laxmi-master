@@ -21,7 +21,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/wish_list_80px" />
 
-    <Fonts.LatoBLack
+    <TextView
+        android:fontFamily="@font/cabin"
         android:layout_width="348dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -37,7 +38,7 @@
         tools:layout_editor_absoluteX="10dp"
         tools:layout_editor_absoluteY="326dp" />
 
-    <Fonts.LatoBLack
+    <TextView
         android:layout_width="348dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -45,6 +46,7 @@
         android:gravity="center"
         android:shadowDx="1"
         android:shadowDy="1"
+        android:fontFamily="@font/cabin"
         android:text="@string/add_cart"
         android:textAlignment="center"
         android:textColor="@color/dark_gray"
@@ -63,11 +65,12 @@
         android:background="@drawable/bg_rounded_button"
         android:padding="12dp">
 
-        <Fonts.LatoBLack
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="Explore"
+            android:fontFamily="@font/cabin"
             android:textColor="#fff"
             android:textSize="@dimen/space_16" />
 

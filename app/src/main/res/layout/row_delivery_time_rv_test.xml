@@ -35,6 +35,7 @@
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
                     android:layout_centerVertical="true"
+                    android:fontFamily="@font/cabin"
                     android:background="@drawable/bg_rounded_button"
                     android:text="@string/edit"
                     android:textColor="@color/white" />
@@ -44,6 +45,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:layout_alignParentEnd="true"
+                    android:fontFamily="@font/cabin"
                     android:layout_alignParentRight="true"
                     android:layout_alignTop="@+id/edit"
                     android:background="@drawable/bg_rounded_button"
@@ -79,6 +81,7 @@
 
                         <TextView
                             android:id="@+id/textView15"
+                            android:fontFamily="@font/cabin"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/reciver_name"
@@ -88,6 +91,7 @@
                             />
 
                         <TextView
+                            android:fontFamily="@font/cabin"
                             android:id="@+id/tv_adres_username"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -112,12 +116,14 @@
                             android:layout_height="wrap_content"
                             android:text="@string/tv_deli_mobile"
                             android:textStyle="bold"
+                            android:fontFamily="@font/cabin"
                             android:textSize="@dimen/space_15"
                             android:textColor="#000"
                             />
 
                         <TextView
                             android:id="@+id/tv_adres_phone"
+                            android:fontFamily="@font/cabin"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/space_2"
@@ -140,6 +146,7 @@
                             android:textStyle="bold"
                             android:textColor="#000"
                             android:textSize="@dimen/space_15"
+                            android:fontFamily="@font/cabin"
                             android:visibility="gone"/>
 
                         <TextView
@@ -147,6 +154,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/space_2"
+                            android:fontFamily="@font/cabin"
                             android:layout_marginStart="@dimen/space_2"
                             android:text="TextView"
                             android:textSize="15dp"
@@ -167,11 +175,13 @@
                             android:textStyle="bold"
                             android:textSize="@dimen/space_15"
                             android:textColor="#000"
+                            android:fontFamily="@font/cabin"
                             />
 
                         <TextView
                             android:id="@+id/tv_adres_address"
                             android:layout_width="match_parent"
+                            android:fontFamily="@font/cabin"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/space_2"
                             android:layout_marginStart="@dimen/space_2"
@@ -192,6 +202,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
+                    android:fontFamily="@font/cabin"
 android:layout_centerVertical="true"
                     android:layout_marginLeft="@dimen/space_8" />
 

@@ -6,14 +6,16 @@
     android:layout_height="300dp"
 
     card_view:cardPreventCornerOverlap="false"
-    android:elevation="@dimen/space_4"
+    android:elevation="6dp"
     android:layout_marginLeft="@dimen/space_5"
-
+    android:layout_marginTop="@dimen/space_5"
+    app:cardCornerRadius="@dimen/space_5"
     android:layout_marginBottom="@dimen/space_10"
     card_view:cardUseCompatPadding="true">
     <RelativeLayout
         android:id="@+id/relative_top"
         android:layout_width="wrap_content"
+        android:layout_margin="@dimen/space_5"
         android:layout_height="wrap_content">
 <!--    <ImageView-->
 <!--        android:id="@+id/wish_before"-->
@@ -69,7 +71,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAlignment="gravity"
-
+                android:fontFamily="@font/cabin"
                 android:text="Product Name"
                 android:textColor="@color/pink"
                 android:textStyle="bold"
@@ -78,7 +80,7 @@
                 android:ellipsize="end"/>
             <TextView
                 android:id="@+id/txtDesc"
-
+                android:fontFamily="@font/cabin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/space_10"
@@ -102,6 +104,7 @@
                 <TextView
                     android:id="@+id/product_prize"
                     android:layout_width="wrap_content"
+                    android:fontFamily="@font/cabin"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
                     android:layout_marginLeft="2dp"
@@ -112,26 +115,27 @@
                     android:textSize="16sp" />
                 <TextView
                     android:id="@+id/product_mrp"
+                    android:fontFamily="@font/cabin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
 
                     android:layout_toRightOf="@id/product_prize"
                     android:layout_marginTop="5dp"
                     android:paddingLeft="@dimen/space_2"
-                    android:paddingTop="@dimen/space_3"
+                    android:paddingTop="2dp"
                     android:textAlignment="gravity"
                     android:gravity="bottom"
                     android:text="Price"
                     android:textColor="@android:color/darker_gray"
                     android:textSize="13sp" />
                 <TextView
+                    android:fontFamily="@font/cabin"
                     android:id="@+id/product_discount"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:text=" discount"
                     android:layout_alignParentEnd="true"
-                    android:layout_marginTop="@dimen/space_5"
-
+                    android:layout_marginTop="2dp"
                     android:layout_marginEnd="3dp"
                     android:padding="2dp"
                     android:textColor="@color/colorPrimaryDark"
@@ -147,6 +151,7 @@
 
                 <TextView
                     android:id="@+id/txtId"
+                    android:fontFamily="@font/cabin"
 
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -160,6 +165,7 @@
 
                 <TextView
                     android:id="@+id/txtVar"
+                    android:fontFamily="@font/cabin"
 
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -172,6 +178,7 @@
                     />
                 <TextView
                     android:id="@+id/single_varient"
+                    android:fontFamily="@font/cabin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/space_10"
@@ -196,6 +203,7 @@
 
                     <TextView
                         android:id="@+id/unit_type"
+                        android:fontFamily="@font/cabin"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"

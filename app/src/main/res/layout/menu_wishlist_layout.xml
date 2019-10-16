@@ -26,7 +26,7 @@
 
             android:contentDescription="bell"
             android:gravity="bottom"
-            app:srcCompat="@drawable/icons8_like_60px_1" />
+            app:srcCompat="@drawable/icons8_hearts_58" />
         <TextView
             android:id="@+id/actionbar_notifcation"
             android:layout_width="15dp"
@@ -36,6 +36,7 @@
             android:gravity="center"
             android:padding="1dp"
             android:text="99"
+            android:fontFamily="@font/cabin"
             android:textColor="#ffffff"
             android:textSize="9sp"
            />

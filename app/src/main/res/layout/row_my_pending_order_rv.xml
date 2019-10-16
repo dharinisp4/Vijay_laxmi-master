@@ -29,7 +29,8 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <Fonts.LatoBLack
+                <TextView
+                    android:fontFamily="@font/cabin"
                     android:id="@+id/tv_order_no"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -39,7 +40,8 @@
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
-                <Fonts.LatoBLack
+                <TextView
+                    android:fontFamily="@font/cabin"
                     android:id="@+id/tv_order_status"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -53,7 +55,8 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <Fonts.LatoBLack
+                <TextView
+                    android:fontFamily="@font/cabin"
                     android:id="@+id/tv_order_date"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -61,7 +64,8 @@
                     android:text="@string/date_d"
                     android:textColor="#000" />
 
-                <Fonts.LatoBLack
+                <TextView
+                    android:fontFamily="@font/cabin"
                     android:id="@+id/tv_order_time"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -76,7 +80,8 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <Fonts.LatoBLack
+                <TextView
+                    android:fontFamily="@font/cabin"
                     android:id="@+id/tv_order_price"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -84,7 +89,8 @@
                     android:text="@string/tv_toolbar_price"
                     android:textColor="#000" />
 
-                <Fonts.LatoBLack
+                <TextView
+                    android:fontFamily="@font/cabin"
                     android:id="@+id/tv_order_item"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -118,7 +124,8 @@
                 android:gravity="top"
                 android:orientation="vertical">
 
-                <Fonts.LatoBLack
+                <TextView
+                    android:fontFamily="@font/cabin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/space_4"
@@ -126,7 +133,8 @@
                     android:textColor="#000"
                     android:textSize="@dimen/text_size_XX_small" />
 
-                <Fonts.LatoBLack
+                <TextView
+                    android:fontFamily="@font/cabin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=""
@@ -162,7 +170,8 @@
                 android:gravity="top|center"
                 android:orientation="vertical">
 
-                <Fonts.LatoBLack
+                <TextView
+                    android:fontFamily="@font/cabin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="@dimen/space_4"
@@ -171,7 +180,8 @@
                     android:textColor="#000"
                     android:textSize="@dimen/text_size_XX_small" />
 
-                <Fonts.LatoBLack
+                <TextView
+                    android:fontFamily="@font/cabin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="@dimen/space_4"
@@ -217,7 +227,8 @@
                 android:gravity="top|center"
                 android:orientation="vertical">
 
-                <Fonts.LatoBLack
+                <TextView
+                    android:fontFamily="@font/cabin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/space_2"
@@ -226,7 +237,8 @@
                     android:textColor="#000"
                     android:textSize="@dimen/text_size_XX_small" />
 
-                <Fonts.LatoBLack
+                <TextView
+                    android:fontFamily="@font/cabin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/space_2"
@@ -273,7 +285,8 @@
                 android:gravity="top|center"
                 android:orientation="vertical">
 
-                <Fonts.LatoBLack
+                <TextView
+                    android:fontFamily="@font/cabin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/space_2"
@@ -282,7 +295,8 @@
                     android:textColor="#000"
                     android:textSize="@dimen/text_size_XX_small" />
 
-                <Fonts.LatoBLack
+                <TextView
+                    android:fontFamily="@font/cabin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/space_2"

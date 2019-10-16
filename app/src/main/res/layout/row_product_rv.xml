@@ -96,9 +96,11 @@
                     android:padding="@dimen/space_5"
                     android:layout_marginEnd="@dimen/space_15"
                     android:maxLines="2"
+                    android:fontFamily="@font/cabin"
                     android:ellipsize="end"/>
                 <TextView
                     android:id="@+id/txt_desc"
+                    android:fontFamily="@font/cabin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
@@ -127,11 +129,13 @@
                         android:layout_marginTop="2dp"
                         android:paddingLeft="@dimen/space_2"
                         android:text="Price :"
+                        android:fontFamily="@font/cabin"
                         android:textColor="@color/black"
                         android:textSize="16dp" />
 
                     <TextView
                         android:id="@+id/product_mrp"
+                        android:fontFamily="@font/cabin"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
@@ -143,11 +147,12 @@
                         android:textSize="13dp" />
                     <TextView
                         android:id="@+id/dis"
+                        android:fontFamily="@font/cabin"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                        android:layout_toRightOf="@+id/product_mrp"
                         android:visibility="gone"
-                        android:layout_marginTop="5dp"
+                        android:layout_marginTop="2dp"
                         android:textAlignment="center"
                         android:padding="2dp"
                         android:text="Price"
@@ -172,7 +177,7 @@
                     >
                     <TextView
                         android:id="@+id/txtId"
-
+                        android:fontFamily="@font/cabin"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
                         android:layout_marginLeft="29dp"
@@ -184,7 +189,7 @@
                         />
                     <TextView
                         android:id="@+id/txtVar"
-
+                        android:fontFamily="@font/cabin"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
                         android:layout_marginLeft="29dp"
@@ -199,6 +204,7 @@
                         android:layout_height="30dp"
                         android:layout_marginLeft="29dp"
                         android:text="1kg"
+                        android:fontFamily="@font/cabin"
                        android:textAlignment="gravity"
                         android:layout_centerVertical="true"
                         android:visibility="gone"
@@ -220,6 +226,7 @@
                             android:layout_centerHorizontal="true"
                             android:layout_centerVertical="true"
                             android:text="text"
+                            android:fontFamily="@font/cabin"
                             android:textColor="@color/black"
                             android:textSize="15sp" />
                         <ImageView

@@ -34,19 +34,21 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical">
 
-                        <Fonts.LatoBLack
+                        <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/space_12"
                             android:text="@string/order_amount"
+                            android:fontFamily="@font/cabin"
                             android:textColor="#000"
                             android:textSize="14sp" />
 
-                        <Fonts.LatoBLack
+                        <TextView
                             android:id="@+id/order_ammount"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
+                            android:fontFamily="@font/cabin"
                             android:layout_marginRight="140dp"
                             android:text=""
                             android:textColor="#000"
@@ -71,19 +73,21 @@
                             android:layout_gravity="center_vertical"
                             android:gravity="center_vertical">
 
-                            <Fonts.LatoBLack
+                            <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="@dimen/space_12"
                                 android:text="@string/wallet"
                                 android:textColor="#000"
+                                android:fontFamily="@font/cabin"
                                 android:textSize="@dimen/text_size_small" />
 
-                            <Fonts.LatoBLack
+                            <TextView
                                 android:id="@+id/used_wallet_ammount"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentRight="true"
+                                android:fontFamily="@font/cabin"
                                 android:layout_marginRight="@dimen/space_12"
                                 android:text=""
                                 android:textColor="#000"
@@ -100,15 +104,16 @@
                             android:layout_gravity="center_vertical"
                             android:gravity="center_vertical">
 
-                            <Fonts.LatoBLack
+                            <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="@dimen/space_12"
                                 android:text="@string/coupon_used"
                                 android:textColor="#000"
+                                android:fontFamily="@font/cabin"
                                 android:textSize="@dimen/text_size_small" />
 
-                            <Fonts.LatoBLack
+                            <TextView
                                 android:id="@+id/used_coupon_ammount"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -116,6 +121,7 @@
                                 android:layout_marginRight="@dimen/space_12"
                                 android:text=""
                                 android:textColor="#000"
+                                android:fontFamily="@font/cabin"
                                 android:textSize="@dimen/text_size_small" />
 
 
@@ -138,21 +144,23 @@
                         android:layout_gravity="center_vertical"
                         android:gravity="center_vertical">
 
-                        <Fonts.LatoBLack
+                        <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/space_12"
                             android:text="@string/amount_pa"
                             android:textColor="#000"
+                            android:fontFamily="@font/cabin"
                             android:textSize="14sp" />
 
-                        <Fonts.LatoBLack
+                        <TextView
                             android:id="@+id/payable_ammount"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
                             android:layout_marginRight="140dp"
                             android:text=""
+                            android:fontFamily="@font/cabin"
                             android:textStyle="bold"
                             android:textColor="#000"
                             android:textSize="14sp" />
@@ -183,11 +191,12 @@
 
 
 
-                                    <Fonts.LatoBLack
+                                    <TextView
                                         android:id="@+id/user_wallet"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_gravity="end"
+                                        android:fontFamily="@font/cabin"
                                         android:layout_marginRight="@dimen/space_12"
                                         android:layout_marginTop="-25dp"
                                         android:text="0.0"
@@ -207,13 +216,14 @@
                             android:layout_gravity="center"
                             android:gravity="center">
 
-                            <Fonts.LatoBLack
+                            <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:layout_gravity="center"
                                 android:layout_marginLeft="@dimen/space_12"
                                 android:gravity="center"
                                 android:text="@string/pay"
+                                android:fontFamily="@font/cabin"
                                 android:textColor="#000"
                                 android:textSize="@dimen/text_size_normal"
                                 android:textStyle="bold" />
@@ -229,13 +239,14 @@
                             android:background="@color/gray" />
 
 
-                        <Fonts.LatoBLack
+                        <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/space_12"
                             android:layout_marginTop="@dimen/space_6"
                             android:text="@string/pickup"
                             android:textColor="@color/green"
+                            android:fontFamily="@font/cabin"
                             android:textSize="@dimen/text_size_normal" />
 
 
@@ -275,7 +286,7 @@
                             android:background="@color/gray"
                             android:visibility="gone"/>
 
-                        <Fonts.LatoBLack
+                        <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/space_12"
@@ -283,6 +294,7 @@
                             android:text="@string/card"
                             android:textColor="@color/green"
                             android:textSize="@dimen/text_size_normal"
+                            android:fontFamily="@font/cabin"
                             android:visibility="gone"/>
 
                         <RadioButton
@@ -314,13 +326,14 @@
                             android:layout_marginTop="@dimen/space_2"
                             android:background="@color/gray" />
 
-                        <Fonts.LatoBLack
+                        <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/space_12"
                             android:text="@string/tv_app_name"
                             android:textColor="@color/green"
                             android:textSize="@dimen/text_size_normal"
+                            android:fontFamily="@font/cabin"
                             android:visibility="gone"/>
 
 
@@ -342,13 +355,14 @@
                             android:visibility="gone"
                             android:background="@color/gray" />
 
-                        <Fonts.LatoBLack
+                        <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/space_12"
                             android:text="@string/coupon"
                             android:textColor="@color/green"
                             android:textSize="@dimen/text_size_normal"
+                            android:fontFamily="@font/cabin"
                             android:visibility="gone"/>
 
 
@@ -392,6 +406,7 @@
                                     android:inputType="textEmailAddress"
                                     android:padding="@dimen/space_10"
                                     android:textAlignment="center"
+                                    android:fontFamily="@font/cabin"
                                     android:textColor="#000"
                                     android:textColorHint="@color/dark_gray"
                                     android:textSize="@dimen/text_size_XX_small" />
@@ -417,11 +432,12 @@
                                     android:background="@drawable/bg_rounded_button"
                                     android:gravity="center_vertical">
 
-                                    <Fonts.LatoBLack
+                                    <TextView
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
                                         android:gravity="center"
                                         android:text="@string/apply"
+                                        android:fontFamily="@font/cabin"
                                         android:textColor="#fff"
                                         android:textSize="@dimen/text_size_small" />
                                 </RelativeLayout>

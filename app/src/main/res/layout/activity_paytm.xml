@@ -39,10 +39,11 @@
             android:orientation="vertical">
 
 
-            <Fonts.LatoBLack
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
+                android:fontFamily="@font/cabin"
                 android:text="Paytm"
                 android:textColor="@color/green"
                 android:textSize="@dimen/text_size_XX_large"
@@ -68,20 +69,22 @@
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
-            <Fonts.LatoBLack
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Your Order Id :"
                 android:textColor="@color/dark_gray"
+                android:fontFamily="@font/cabin"
                 android:textSize="@dimen/text_size_normal" />
 
-            <Fonts.LatoBLack
+            <TextView
                 android:id="@+id/order_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Ram"
+                android:fontFamily="@font/cabin"
                 android:textColor="@color/green"
                 android:textSize="@dimen/text_size_normal" />
         </LinearLayout>
@@ -99,11 +102,12 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <Fonts.LatoBLack
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Your Email :"
+                    android:fontFamily="@font/cabin"
                     android:textColor="@color/dark_gray"
                     android:textSize="@dimen/text_size_normal" />
 
@@ -113,6 +117,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/space_4"
+                    android:fontFamily="@font/cabin"
                     android:background="@drawable/xml_textbox_bg"
                     android:clickable="false"
                     android:cursorVisible="false"
@@ -143,11 +148,12 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <Fonts.LatoBLack
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Your Mobile No :"
+                    android:fontFamily="@font/cabin"
                     android:textColor="@color/dark_gray"
                     android:textSize="@dimen/text_size_normal" />
 
@@ -162,6 +168,7 @@
                     android:cursorVisible="false"
                     android:editable="false"
                     android:ems="10"
+                    android:fontFamily="@font/cabin"
                     android:focusable="false"
                     android:focusableInTouchMode="false"
                     android:gravity="center_horizontal"
@@ -187,7 +194,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <Fonts.LatoBLack
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -207,6 +214,7 @@
                     android:editable="false"
                     android:ems="10"
                     android:focusable="false"
+                    android:fontFamily="@font/cabin"
                     android:focusableInTouchMode="false"
                     android:gravity="center_horizontal"
                     android:inputType="textEmailAddress"
@@ -229,12 +237,14 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Order Response : "
+                android:fontFamily="@font/cabin"
                 android:textSize="20sp" />
 
             <EditText
                 android:id="@+id/order_res"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/cabin"
                 android:editable="false" />
 
         </LinearLayout>
@@ -254,10 +264,11 @@
                 android:layout_height="match_parent"
                 android:background="@drawable/bg_rounded_button"
                 android:gravity="center"
+                android:fontFamily="@font/cabin"
                 android:onClick="onStartTransaction"
                 android:text="Pay"
                 android:textColor="#fff"
-                android:textSize="@dimen/text_size_small" />
+                android:textSize="@dimen/space_16" />
 
 
         </RelativeLayout>

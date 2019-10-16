@@ -4,7 +4,8 @@
     android:layout_height="wrap_content"
     android:gravity="center">
 
-    <Fonts.LatoBLack
+    <TextView
+        android:fontFamily="@font/cabin"
         android:id="@+id/text_store"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

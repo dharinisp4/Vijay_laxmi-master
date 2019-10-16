@@ -16,8 +16,9 @@
         android:background="@color/white"
         android:orientation="vertical">
 
-        <Fonts.LatoBLack
+        <TextView
             android:textColor="#fff"
+            android:fontFamily="@font/cabin"
             android:id="@+id/txtPaymentdetails"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -68,8 +69,9 @@
                             android:orientation="vertical"
                             android:visibility="gone">
 
-                            <Fonts.LatoBLack
+                            <TextView
                                 android:textColor="#fff"
+                                android:fontFamily="@font/cabin"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:background="@color/green"
@@ -77,7 +79,8 @@
                                 android:text="@string/tv_del_date_time"
                                 android:textSize="@dimen/space_18" />
 
-                            <Fonts.LatoBLack
+                            <TextView
+                                android:fontFamily="@font/cabin"
                                 android:textColor="#000"
                                 android:id="@+id/textTimeSlot"
                                 android:layout_width="match_parent"
@@ -103,7 +106,8 @@
                             android:orientation="vertical"
                             >
 
-                            <Fonts.LatoBLack
+                            <TextView
+                                android:fontFamily="@font/cabin"
                                 android:textColor="#fff"
                                 android:id="@+id/textView8"
                                 android:layout_width="match_parent"
@@ -131,6 +135,7 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:padding="2dp"
+                                        android:fontFamily="@font/cabin"
                                         android:text="Receiver Name :"
                                         android:textColor="@android:color/black"
                                         android:textSize="14dp" />
@@ -141,6 +146,7 @@
                                         android:layout_width="wrap_content"
                                         android:layout_alignParentRight="true"
                                         android:padding="@dimen/space_2"
+                                        android:fontFamily="@font/cabin"
                                         android:textAlignment="viewEnd"
                                         android:layout_marginRight="20dp"
                                         android:textColor="@color/colorPrimary"
@@ -161,6 +167,7 @@
                                         android:layout_height="wrap_content"
                                         android:textColor="@android:color/black"
                                         android:textSize="@dimen/space_14"
+                                        android:fontFamily="@font/cabin"
                                         android:padding="2dp"
                                         android:text="Mobile No. :"/>
 
@@ -173,6 +180,7 @@
                                         android:textAlignment="viewEnd"
                                         android:layout_marginRight="20dp"
                                         android:textSize="@dimen/space_14"
+                                        android:fontFamily="@font/cabin"
                                         android:textColor="@color/colorPrimary"
                                         android:layout_height="wrap_content"
                                         android:text="0"
@@ -193,6 +201,7 @@
                                         android:layout_marginTop="0dp"
                                         android:padding="2dp"
                                         android:text="Pincode :"
+                                        android:fontFamily="@font/cabin"
                                         android:textColor="@android:color/black"
                                         android:textSize="@dimen/space_14" />
 
@@ -203,6 +212,7 @@
                                         android:layout_alignParentRight="true"
                                         android:padding="@dimen/space_2"
                                         android:textAlignment="viewEnd"
+                                        android:fontFamily="@font/cabin"
                                         android:layout_marginRight="20dp"
                                         android:textColor="@color/colorPrimary"
                                         android:textSize="@dimen/space_14"
@@ -227,6 +237,7 @@
                                         android:padding="2dp"
                                         android:text="House No. :"
                                         android:textColor="@android:color/black"
+                                        android:fontFamily="@font/cabin"
                                         android:textSize="@dimen/space_14"
                                         android:visibility="gone"/>
 
@@ -241,6 +252,7 @@
                                         android:textSize="@dimen/space_14"
                                         android:textColor="@color/colorPrimary"
                                         android:layout_height="wrap_content"
+                                        android:fontFamily="@font/cabin"
                                         android:text="0"
                                         android:visibility="gone"
                                         />
@@ -259,6 +271,7 @@
                                         android:textSize="@dimen/space_14"
                                         android:padding="2dp"
                                         android:text="Address :"
+                                        android:fontFamily="@font/cabin"
                                         android:textColor="@android:color/black"/>
 
 
@@ -268,6 +281,7 @@
                                         android:layout_width="wrap_content"
                                         android:layout_alignParentRight="true"
                                         android:padding="@dimen/space_2"
+                                        android:fontFamily="@font/cabin"
                                         android:textAlignment="viewEnd"
                                         android:layout_marginRight="20dp"
                                         android:textColor="@color/colorPrimary"
@@ -284,7 +298,7 @@
 
 
                     <android.support.v7.widget.CardView
-                        android:id="@+id/card_viewf"
+                        android:id="@+id/card_views"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         card_view:cardElevation="@dimen/space_3"
@@ -298,7 +312,8 @@
                             android:layout_marginBottom="3dp"
                             android:orientation="vertical">
 
-                            <Fonts.LatoBLack
+                            <TextView
+                                android:fontFamily="@font/cabin"
                                 android:textColor="#fff"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -322,6 +337,7 @@
                                     android:layout_height="wrap_content"
                                     android:textSize="14dp"
                                     android:padding="2dp"
+                                    android:fontFamily="@font/cabin"
                                     android:textColor="@android:color/black"
                                     android:text="Total no. of items :"/>
 
@@ -331,6 +347,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_alignParentRight="true"
                                     android:padding="@dimen/space_2"
+                                    android:fontFamily="@font/cabin"
                                     android:textAlignment="viewEnd"
                                     android:layout_marginRight="20dp"
                                     android:textColor="@android:color/black"
@@ -352,6 +369,7 @@
                                       android:layout_height="match_parent"
                                       android:padding="2dp"
                                       android:text="M.R.P. :"
+                                      android:fontFamily="@font/cabin"
                                       android:textColor="@android:color/black"
                                       android:textSize="@dimen/space_14" />
 
@@ -361,6 +379,7 @@
                                       android:layout_width="wrap_content"
                                       android:layout_alignParentRight="true"
                                       android:padding="@dimen/space_2"
+                                      android:fontFamily="@font/cabin"
                                       android:textAlignment="viewEnd"
                                       android:layout_marginRight="20dp"
                                       android:textSize="@dimen/space_14"
@@ -381,7 +400,7 @@
                                       android:layout_width="wrap_content"
                                       android:layout_height="wrap_content"
                                       android:padding="2dp"
-
+                                      android:fontFamily="@font/cabin"
                                       android:text="Discounts :"
                                       android:textColor="@android:color/black"
                                       android:textSize="@dimen/space_14" />
@@ -392,6 +411,7 @@
                                       android:layout_width="wrap_content"
                                       android:layout_alignParentRight="true"
                                       android:padding="@dimen/space_2"
+                                      android:fontFamily="@font/cabin"
                                       android:textAlignment="viewEnd"
                                       android:layout_marginRight="20dp"
                                       android:textColor="@color/colorPrimary"
@@ -413,6 +433,7 @@
                                       android:layout_height="wrap_content"
                                       android:textSize="@dimen/space_14"
                                       android:padding="2dp"
+                                      android:fontFamily="@font/cabin"
                                       android:textColor="@android:color/black"
                                       android:text="Delivery Charges :"/>
 
@@ -425,6 +446,7 @@
                                       android:layout_marginRight="20dp"
                                       android:layout_toRightOf="@id/txtDel"
                                       android:text="0"
+                                      android:fontFamily="@font/cabin"
                                       android:textAlignment="viewEnd"
                                       android:textColor="@color/colorPrimary"
                                       android:textSize="@dimen/space_14" />
@@ -434,6 +456,7 @@
                                   android:layout_height="@dimen/space_1"
                                   android:background="@android:color/darker_gray"
                                   android:layout_marginRight="@dimen/space_2"
+                                  android:fontFamily="@font/cabin"
                                   android:layout_marginLeft="@dimen/space_2"/>
 
                               <RelativeLayout
@@ -449,6 +472,7 @@
                                       android:padding="2dp"
                                       android:textStyle="bold"
                                       android:text="Sub Total :"
+                                      android:fontFamily="@font/cabin"
                                       android:textColor="@android:color/black"/>
 
 
@@ -460,6 +484,7 @@
                                       android:layout_marginRight="20dp"
                                       android:textColor="@android:color/black"
                                       android:textSize="@dimen/space_14"
+                                      android:fontFamily="@font/cabin"
                                       android:padding="2dp"
                                       android:textStyle="bold"
                                       android:layout_height="wrap_content"
@@ -563,7 +588,8 @@
                 android:layout_marginBottom="3dp"
                 android:orientation="vertical">
 
-                <Fonts.LatoBLack
+                <TextView
+                    android:fontFamily="@font/cabin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_rounded_button"
@@ -589,7 +615,7 @@
                             android:padding="2dp"
                             android:textColor="@android:color/holo_red_dark"
                             android:layout_marginTop="@dimen/space_5"
-
+                            android:fontFamily="@font/cabin"
                             android:text="Order placed after 06:00 PM will deliver next day. "/>
 
 
@@ -612,14 +638,15 @@
             android:orientation="vertical"
             android:padding="@dimen/space_10">
 
-            <Fonts.LatoBLack
+            <TextView
                 android:id="@+id/buttonContinue"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
+                android:fontFamily="@font/cabin"
                 android:text="@string/order_now"
                 android:textColor="#fff"
-                android:textSize="@dimen/text_size_small"/>
+                android:textSize="@dimen/space_16"/>
         </LinearLayout>
 
     </RelativeLayout>

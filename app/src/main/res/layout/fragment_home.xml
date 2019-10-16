@@ -81,6 +81,7 @@
                             android:src="@drawable/lens" />
 
                         <TextView
+                            android:fontFamily="@font/cabin"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_marginLeft="8dp"
@@ -176,6 +177,7 @@
                                 android:id="@+id/view_all_deals"
                                 android:layout_width="70dp"
                                 android:layout_height="35dp"
+                                android:fontFamily="@font/cabin"
                                 android:layout_marginRight="12dp"
                                 android:text="@string/view_all"
                                 android:textColor="#000"
@@ -355,6 +357,7 @@
                 android:layout_alignParentBottom="true"
                 android:padding="@dimen/space_5"
                 android:textSize="15dp"
+                android:fontFamily="@font/cabin"
                 android:textAlignment="center"
                 android:textColor="@android:color/white"
                 android:background="@color/colorPrimary"

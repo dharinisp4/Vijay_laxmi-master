@@ -41,7 +41,7 @@
         android:orientation="vertical"
         android:padding="@dimen/activity_horizontal_margin">
 
-        <Fonts.LatoBLack
+        <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -50,13 +50,14 @@
             android:shadowDx="1"
             android:shadowDy="1"
             android:shadowRadius="1"
+            android:fontFamily="@font/cabin"
             android:text="@string/failed"
             android:textAlignment="center"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textSize="20sp"
             android:textStyle="bold" />
 
-        <Fonts.LatoBLack
+        <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -67,11 +68,12 @@
             android:shadowRadius="1"
             android:text="@string/again"
             android:textAlignment="center"
+            android:fontFamily="@font/cabin"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textSize="20sp"
             android:textStyle="bold" />
 
-        <Fonts.LatoBLack
+        <TextView
             android:id="@+id/tv_thank_info"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -79,6 +81,7 @@
             android:layout_marginBottom="30dp"
             android:gravity="center_horizontal"
             android:textColor="@color/green"
+            android:fontFamily="@font/cabin"
             android:textSize="16sp" />
 
         <LinearLayout
@@ -95,13 +98,14 @@
                 android:background="@drawable/bg_rounded_button"
                 android:padding="12dp">
 
-                <Fonts.LatoBLack
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:text="@string/retry"
+                    android:fontFamily="@font/cabin"
                     android:textColor="#fff"
-                    android:textSize="@dimen/text_size_small" />
+                    android:textSize="@dimen/space_16" />
 
             </RelativeLayout>
 

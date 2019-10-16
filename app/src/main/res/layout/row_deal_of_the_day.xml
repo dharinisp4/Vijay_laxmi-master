@@ -39,7 +39,8 @@
                 android:orientation="horizontal"
                 android:visibility="gone">
 
-                <Fonts.LatoBLack
+                <TextView
+                    android:fontFamily="@font/cabin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -47,7 +48,8 @@
                     android:textColor="#837e7e"
                     android:textSize="8sp" />
 
-                <Fonts.LatoBLack
+                <TextView
+                    android:fontFamily="@font/cabin"
                     android:id="@+id/start_time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -64,7 +66,8 @@
                 android:layout_weight="1"
                 android:visibility="gone">
 
-                <Fonts.LatoBLack
+                <TextView
+                    android:fontFamily="@font/cabin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -72,7 +75,8 @@
                     android:textColor="#837e7e"
                     android:textSize="8sp" />
 
-                <Fonts.LatoBLack
+                <TextView
+                    android:fontFamily="@font/cabin"
                     android:id="@+id/end_time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -97,6 +101,7 @@
 
 
             <TextView
+                android:fontFamily="@font/cabin"
                 android:id="@+id/product_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -111,6 +116,7 @@
                 android:ellipsize="end"/>
 
             <TextView
+                android:fontFamily="@font/cabin"
                 android:id="@+id/product_desc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -133,17 +139,7 @@
 
 
 
-                    <TextView
-                        android:id="@+id/product_prize"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/space_4"
-                        android:textAlignment="viewStart"
 
-
-                        android:text="@string/tv_toolbar_price"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/text_size_normal" />
 
                 <TextView
                     android:id="@+id/product_offer_prize"
@@ -154,10 +150,34 @@
                     android:paddingLeft="@dimen/space_8"
                     android:paddingRight="@dimen/space_8"
                     android:text="@string/tv_toolbar_price"
-                    android:textColor="@color/pink"
+                    android:fontFamily="@font/cabin"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_normal" />
+                <TextView
+                    android:id="@+id/product_prize"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_4"
+                    android:textAlignment="viewStart"
+                    android:fontFamily="@font/cabin"
+                    android:text="@string/tv_toolbar_price"
+                    android:textColor="@color/dark_gray"
                     android:textSize="@dimen/text_size_normal" />
 
+                <TextView
+                    android:id="@+id/product_discount"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text=" discount"
+                    android:fontFamily="@font/cabin"
 
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="4dp"
+
+                    android:layout_marginStart="30dp"
+                    android:padding="2dp"
+                    android:textColor="@color/pink"
+                    />
 
             </LinearLayout>
             <RelativeLayout
@@ -173,7 +193,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/space_10"
                 android:textSize="10dp"
-
+                android:fontFamily="@font/cabin"
                 android:text="Weight :"
                 android:visibility="gone"
 
@@ -181,7 +201,7 @@
 
             <TextView
                 android:id="@+id/txtVar"
-
+                android:fontFamily="@font/cabin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/space_10"
@@ -196,6 +216,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/space_10"
                 android:text="1kg"
+                android:fontFamily="@font/cabin"
                 android:textAlignment="gravity"
                 android:paddingLeft="@dimen/space_2"
                 android:layout_marginTop="@dimen/space_5"
@@ -223,7 +244,8 @@
                     android:layout_marginRight="35dp"
                     android:text=""
                     android:textColor="@android:color/darker_gray"
-                    android:textSize="15sp" />
+                    android:textSize="15sp"
+                    android:fontFamily="@font/cabin"/>
                 <ImageView
                     android:layout_alignParentEnd="true"
                     android:background="@drawable/ic_arrow_drop_down_black_24dp"
