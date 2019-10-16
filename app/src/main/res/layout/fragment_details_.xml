@@ -105,6 +105,7 @@
                         >
 
                         <RelativeLayout
+                            android:visibility="gone"
                             android:id="@+id/rel_weight"
                             android:layout_width="match_parent"
                             android:layout_height="100dp">
@@ -119,6 +120,7 @@
 
                         <RelativeLayout
                             android:id="@+id/rel"
+                            android:visibility="gone"
                             android:layout_below="@id/rel_weight"
                             android:layout_width="match_parent"
                             android:layout_height="100dp">

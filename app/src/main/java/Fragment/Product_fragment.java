@@ -108,6 +108,7 @@ public class Product_fragment extends Fragment {
             maketopsaleProductRequest(get_top_sale_id);
           makeGetSliderCategoryRequest(id);
 
+          Toast.makeText(getActivity(),""+product_modelList.size(),Toast.LENGTH_LONG).show();
             //Slider
         // makeGetBannerSliderRequest();
 

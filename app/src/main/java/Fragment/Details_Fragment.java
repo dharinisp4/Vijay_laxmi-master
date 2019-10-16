@@ -80,16 +80,24 @@ import util.WishlistHandler;
  * A simple {@link Fragment} subclass.
  */
 public class Details_Fragment extends Fragment {
+
+
+
+
+    String flag="";
     String atr_id="";
     String atr_product_id="";
     String attribute_name="";
     String attribute_value="";
     String attribute_mrp="";
     Context context;
+
+    List<ProductVariantModel> vlist;
+
     Button btn_add;
-    ArrayList<ProductVariantModel> variantList;
+    //ArrayList<ProductVariantModel> variantList;
     ProductVariantAdapter productVariantAdapter;
-  VarientsAdapter varientsAdapter;
+    VarientsAdapter varientsAdapter;
     List<ProductVariantModel> v_list;
     AttrColorAdapter colorAdapter;
     private static String TAG = Details_Fragment.class.getSimpleName();
@@ -98,7 +106,8 @@ public class Details_Fragment extends Fragment {
     double tot_amt=0;
     ProgressDialog loadingBar;
     double tot=0;
-    RelativeLayout rel_variant;
+    RelativeLayout rel_variant,rel_weight,rel_color;
+
     private List<RelatedProductModel> product_modelList = new ArrayList<>();
     private RelatedProductAdapter adapter_product;
    // VarientsAdapter varientsAdapter ;
@@ -151,10 +160,7 @@ public class Details_Fragment extends Fragment {
     Button btn_desc,btn_info;
     RelativeLayout rel_desc,rel_info;
     RecyclerView.LayoutManager layoutManager;
-    public Details_Fragment() {
-        // Required empty public constructor
-    }
-
+    JSONObject var_respons=null;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -164,7 +170,7 @@ public class Details_Fragment extends Fragment {
 
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_details_, container, false);
-
+         var_respons=new JSONObject();
         sessionManagement = new Session_management(getActivity());
         sessionManagement.cleardatetime();
         loadingBar=new ProgressDialog(getActivity());
@@ -175,6 +181,8 @@ public class Details_Fragment extends Fragment {
         varient_recycler=(RecyclerView)view.findViewById( R.id.varient_recycler );
         rv_color=(RecyclerView)view.findViewById( R.id.rv_color);
         rv_weight=(RecyclerView)view.findViewById( R.id.rv_weight);
+        rel_weight=(RelativeLayout) view.findViewById(R.id.rel_weight);
+        rel_color=(RelativeLayout) view.findViewById(R.id.rel);
 
         // gifImageView=(ImageView) view.findViewById(R.id.gifImageView);
         LinearLayoutManager linearLayoutManager1=new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false);
@@ -184,10 +192,11 @@ public class Details_Fragment extends Fragment {
         varient_recycler.setLayoutManager( linearLayoutManager2 );
         db_wish = new WishlistHandler( getActivity() );
         db_cart=new DatabaseCartHandler(getActivity());
-
-        Bundle bundle=getArguments();
-        variantList=new ArrayList<>();
         v_list=new ArrayList<>();
+        Bundle bundle=getArguments();
+
+         vlist = new ArrayList<>();
+
 
         cat_id=bundle.getString("cat_id");
         product_id=bundle.getString("product_id");
@@ -221,6 +230,7 @@ public class Details_Fragment extends Fragment {
         btn=(ImageView)view.findViewById(R.id.img_product);
         recyclerView=view.findViewById(R.id.recylerView);
         //   listView=findViewById(R.id.lstView);
+
         txtBack=(TextView)view.findViewById(R.id.txtBack);
             wish_after=(ImageView)view.findViewById(R.id.wish_after );
             wish_before = (ImageView)view.findViewById( R.id.wish_before );
@@ -240,15 +250,6 @@ public class Details_Fragment extends Fragment {
         txtTotal=(TextView)view.findViewById(R.id.product_total);
         numberButton=(ElegantNumberButton)view.findViewById(R.id.product_qty);
         txtDesc.setText(details_product_desc);
-        Double mrp=Double.parseDouble(details_product_mrp);
-       final Double price=Double.parseDouble(details_product_price);
-       Double discount = Double.valueOf(getDiscount(details_product_price,details_product_mrp));
-      if (mrp > price)
-      {
-
-          txtPer.setText(String.valueOf(Math.round(discount)+"%"+"off"));
-      }
-      else  txtPer.setVisibility(View.GONE);
 
         txtName.setText(details_product_name);
 
@@ -256,18 +257,127 @@ public class Details_Fragment extends Fragment {
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false);
         recyclerView.setLayoutManager(linearLayoutManager);
 
-        makeGetAttributeRequest(product_id);
 
-        layoutManager=new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false);
-        rv_color.setLayoutManager(layoutManager);
-        colorAdapter=new AttrColorAdapter(list_color,getActivity());
-        rv_color.setAdapter(colorAdapter);
+        if(details_product_attribute.equals("[]"))
+        {
+            txtPrice.setText(getResources().getString(R.string.currency)+details_product_price);
+            txtMrp.setText(getResources().getString(R.string.currency)+details_product_mrp);
+            Double mrp=Double.parseDouble(details_product_mrp);
+            final Double price=Double.parseDouble(details_product_price);
+            Double discount = Double.valueOf(getDiscount(details_product_price,details_product_mrp));
+            if (mrp > price)
+            {
 
-        RecyclerView.LayoutManager layoutManager1=new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false);
-        rv_weight.setLayoutManager(layoutManager1);
-        varientsAdapter=new VarientsAdapter(getActivity(),v_list);
-        rv_weight.setAdapter(varientsAdapter);
+                txtPer.setText(String.valueOf(Math.round(discount)+"%"+"off"));
+            }
+            else  txtPer.setVisibility(View.GONE);
+        }
+        else
+        {
+            rel_color.setVisibility(View.VISIBLE);
+            rel_weight.setVisibility(View.VISIBLE);
+            makeGetAttributeRequest(product_id);
 
+            layoutManager=new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false);
+            rv_color.setLayoutManager(layoutManager);
+            colorAdapter=new AttrColorAdapter(list_color,getActivity());
+            rv_color.setAdapter(colorAdapter);
+
+            RecyclerView.LayoutManager layoutManager1=new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false);
+            rv_weight.setLayoutManager(layoutManager1);
+            varientsAdapter=new VarientsAdapter(getActivity(),vlist);
+            rv_weight.setAdapter(varientsAdapter);
+
+          //  Toast.makeText(getActivity(),""+var_respons.toString(),Toast.LENGTH_LONG).show();
+            //       List<ProductVariantModel> p_list=  getAttr();
+
+//            details_product_mrp=v_list.get(0).getAttribute_mrp();
+//            details_product_price=v_list.get(0).getAttribute_value();
+
+
+        }
+
+        rv_weight.addOnItemTouchListener(new RecyclerTouchListener(getActivity(), rv_weight, new RecyclerTouchListener.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+
+                ProductVariantModel model=vlist.get(position);
+
+              //  view.setCard(Color.parseColor("#36a93c"));
+            //   view.setCardBackgroundColor(Color.parseColor("#36a93c"));
+                txtPrice.setText(getResources().getString(R.string.currency)+model.getAttribute_value());
+                txtMrp.setText(getResources().getString(R.string.currency)+model.getAttribute_mrp());
+                Double mrp=Double.parseDouble(model.getAttribute_mrp());
+                final Double price=Double.parseDouble(model.getAttribute_value());
+                Double discount = Double.valueOf(getDiscount(model.getAttribute_value(),model.getAttribute_mrp()));
+                if (mrp > price)
+                {
+
+                    txtPer.setText(String.valueOf(Math.round(discount)+"%"+"off"));
+                }
+                else  txtPer.setVisibility(View.GONE);
+
+                try
+                {
+
+
+                String str_col=vlist.get(position).getAttribute_color();
+                if(str_col.isEmpty() || str_col.equals(null))
+                {
+                    Toast.makeText(getActivity(),"empty ",Toast.LENGTH_LONG).show();
+                    rv_color.setVisibility(View.GONE);
+                    colorAdapter.notifyDataSetChanged();
+                }
+                else
+                {
+                    list_color.clear();
+                   rv_color.setVisibility(View.VISIBLE);
+                    JSONArray col_array=new JSONArray(str_col);
+                    for(int j=0; j<col_array.length();j++)
+                    {
+                        list_color.add(col_array.getString(j).toString());
+                    }
+                    colorAdapter.notifyDataSetChanged();
+                    //Toast.makeText(getActivity(),""+col_array+"\n "+col_array.length(),Toast.LENGTH_LONG).show();
+                }
+
+                list_images.clear();
+                String str_img=vlist.get(position).getAttribute_image();
+                if(str_img.isEmpty() || str_img.equals(null))
+                {
+                    Toast.makeText(getActivity(),"empty ",Toast.LENGTH_LONG).show();
+                }
+                else
+                {
+
+                    JSONArray col_array=new JSONArray(str_img);
+                    for(int j=0; j<col_array.length();j++)
+                    {
+                        list_images.add(col_array.getString(j).toString());
+                    }
+                    varientsAdapter.notifyDataSetChanged();
+                    //colorAdapter.notifyDataSetChanged();
+                    //Toast.makeText(getActivity(),""+col_array+"\n "+col_array.length(),Toast.LENGTH_LONG).show();
+                }
+                }
+catch (Exception ex)
+{
+    ex.printStackTrace();
+    Toast.makeText(getActivity(),""+ex.getMessage(),Toast.LENGTH_LONG).show();
+}
+
+            }
+
+            @Override
+            public void onLongItemClick(View view, int position) {
+
+            }
+        }));
+
+
+
+
+//        Toast.makeText(getActivity(),"Flag :-- "+details_product_attribute,Toast.LENGTH_LONG).show();
 
 
 
@@ -278,171 +388,7 @@ public class Details_Fragment extends Fragment {
         }
 
 
-        rel_variant.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-          //      final Product_model mList = modelList.get(position);
-                AlertDialog.Builder builder=new AlertDialog.Builder(getActivity());
-                LayoutInflater layoutInflater=(LayoutInflater)getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                View row=layoutInflater.inflate(R.layout.dialog_vairant_layout,null);
-                variantList.clear();
-                String atr=String.valueOf(details_product_attribute);
-                JSONArray jsonArr = null;
-                try {
-
-                    jsonArr = new JSONArray(atr);
-                    for (int i = 0; i < jsonArr.length(); i++)
-                    {
-                        ProductVariantModel model=new ProductVariantModel();
-                        JSONObject jsonObj = jsonArr.getJSONObject(i);
-                        String atr_id=jsonObj.getString("id");
-                        String atr_product_id=jsonObj.getString("product_id");
-                        String attribute_name=jsonObj.getString("attribute_name");
-                        String attribute_value=jsonObj.getString("attribute_value");
-                        String attribute_mrp=jsonObj.getString("attribute_mrp");
-
-
-                        model.setId(atr_id);
-                        model.setProduct_id(atr_product_id);
-                        model.setAttribute_value(attribute_value);
-                        model.setAttribute_name(attribute_name);
-                        model.setAttribute_mrp(attribute_mrp);
-
-                        variantList.add(model);
-
-                        //     arrayList.add(new AttributeModel(atr_id,product_id,attribute_name,attribute_value));
-
-                        //Toast.makeText(getActivity(),"id "+atr_id+"\n p_id "+product_id+"\n atr_name "+attribute_name+"\n atr_value "+attribute_value,Toast.LENGTH_LONG).show();
-                    }
-
-
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                ListView l1=(ListView)row.findViewById(R.id.list_view_varaint);
-                productVariantAdapter=new ProductVariantAdapter(getActivity(),variantList);
-                //productVariantAdapter.notifyDataSetChanged();
-                l1.setAdapter(productVariantAdapter);
-
-
-                builder.setView(row);
-                final AlertDialog ddlg=builder.create();
-                ddlg.show();
-                l1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
-                        atr_id=String.valueOf(variantList.get(i).getId());
-                        atr_product_id=String.valueOf(variantList.get(i).getProduct_id());
-                        attribute_name=String.valueOf(variantList.get(i).getAttribute_name());
-                        attribute_value=String.valueOf(variantList.get(i).getAttribute_value());
-                        attribute_mrp=String.valueOf(variantList.get(i).getAttribute_mrp());
-
-                        dialog_unit_type.setText("\u20B9"+attribute_value+"/"+attribute_name);
-                        dialog_txtId.setText(variantList.get(i).getId()+"@"+i);
-                        dialog_txtVar.setText(attribute_value+"@"+attribute_name+"@"+attribute_mrp);
-                        //    txtPer.setText(String.valueOf(df)+"% off");
-
-                        txtPrice.setText("\u20B9"+attribute_value.toString());
-                        txtMrp.setText("\u20B9"+attribute_mrp.toString());
-                        String pr=String.valueOf(attribute_value);
-                        String mr=String.valueOf(attribute_mrp);
-                        int atr_dis=getDiscount(pr,mr);
-                        txtPer.setText(""+atr_dis+"% OFF");
-                        String atr=String.valueOf(details_product_attribute);
-                        if(atr.equals("[]"))
-                        {
-                            boolean st=db_cart.isInCart(product_id);
-                            if(st==true)
-                            {
-                                btn_add.setVisibility(View.GONE);
-                                numberButton.setNumber(db_cart.getCartItemQty(product_id));
-                                numberButton.setVisibility(View.VISIBLE);
-                            }
-                        }
-                        else
-                        {
-                            String str_id=dialog_txtId.getText().toString();
-                            String[] str=str_id.split("@");
-                            String at_id=String.valueOf(str[0]);
-                            boolean st=db_cart.isInCart(at_id);
-                            if(st==true)
-                            {
-                                btn_add.setVisibility(View.GONE);
-                                numberButton.setNumber(db_cart.getCartItemQty(at_id));
-                                numberButton.setVisibility(View.VISIBLE);
-                            }
-                            else
-                            {
-                                btn_add.setVisibility(View.VISIBLE);
-
-                                numberButton.setVisibility(View.GONE);
-                            }
-                        }
-
-     numberButton.setNumber("1");
-
-                        txtTotal.setText("\u20B9"+String.valueOf(db_cart.getTotalAmount()));
-                        ddlg.dismiss();
-                    }
-                });
-
-            }
-        });
-        //Toast.makeText(getActivity(),"tot_amount"+atr.toString(),Toast.LENGTH_LONG).show();
-
-
-
-//       if (details_product_color.isEmpty())
-//       {
-//           txtColor.setVisibility( View.GONE );
-//       }
-//       if (details_product_color.equals( "null" ))
-//       {
-//           txtColor.setVisibility( View.GONE );
-//       }
-//       if(details_product_size.isEmpty())
-//       {
-//           txtSize.setVisibility( View.GONE );
-//       }
-//       if(details_product_size.equals( "null" ))
-//       {
-//           txtSize.setVisibility( View.GONE );
-//       }
-
-//if (txtSize.getVisibility()== View.VISIBLE) {
-//    txtSize.setOnClickListener( new View.OnClickListener() {
-//        @Override
-//        public void onClick(View view) {
-//            dialog = new Dialog( getActivity() );
-//            dialog.requestWindowFeature( Window.FEATURE_NO_TITLE );
-//            dialog.setContentView( R.layout.dialog_product_size_layout );
-//
-//            listView = (ListView) dialog.findViewById( R.id.list_view_size );
-//            pgb = (ProgressBar) dialog.findViewById( R.id.pgb );
-//            //final List lis=makeGetProductColorRequest(cat_id,product_id,listView1,pbg1,dialog);
-//            final List lis = makeGetProductRequest( cat_id, product_id, listView, pgb, dialog );
-//
-//
-//            dialog.setCanceledOnTouchOutside( false );
-//            dialog.show();
-//
-//            listView.setOnItemClickListener( new AdapterView.OnItemClickListener() {
-//                @Override
-//                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//
-//                    txtSize.setText( lis.get( i ).toString() );
-//                    dialog.dismiss();
-//
-//
-//                }
-//            } );
-//
-//        }
-//    } );
-//}
         wish_before.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -580,9 +526,9 @@ public class Details_Fragment extends Fragment {
                         .diskCacheStrategy(DiskCacheStrategy.ALL)
                         .dontAnimate()
                         .into(btn);
-                btn.setColorFilter(Color.parseColor(list_color.get(position).toString()), android.graphics.PorterDuff.Mode.SRC_IN);
-                btn.setColorFilter(ContextCompat.getColor(getActivity(), Color.parseColor(list_color.get(position).toString())), android.graphics.PorterDuff.Mode.SRC_IN);
-                btn.setColorFilter(Color.parseColor(list_color.get(position).toString()));
+//                btn.setColorFilter(Color.parseColor(list_color.get(position).toString()), android.graphics.PorterDuff.Mode.SRC_IN);
+//                btn.setColorFilter(ContextCompat.getColor(getActivity(), Color.parseColor(list_color.get(position).toString())), android.graphics.PorterDuff.Mode.SRC_IN);
+//                btn.setColorFilter(Color.parseColor(list_color.get(position).toString()));
             }
 
             @Override
@@ -740,6 +686,8 @@ public class Details_Fragment extends Fragment {
         super.onStart();
 
 
+
+//Toast.makeText(getActivity(),""+v_list.size(),Toast.LENGTH_LONG).show();
         txtTotal.setText("\u20B9"+String.valueOf(db_cart.getTotalAmount()));
 
 //        String atr=String.valueOf(details_product_attribute);
@@ -1094,27 +1042,37 @@ public class Details_Fragment extends Fragment {
 
     private void makeGetAttributeRequest(String product_id)
     {
+
         loadingBar.show();
         String json_tag="json_attr_tag";
         HashMap<String,String> params=new HashMap<>();
         params.put("product_id",product_id);
-
+       final List<ProductVariantModel>  lst=new ArrayList<>();
         CustomVolleyJsonRequest customVolleyJsonRequest=new CustomVolleyJsonRequest(Request.Method.POST, BaseURL.GET_ATTR_URL, params, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
 
                 v_list.clear();
+
+                var_respons=response;
+
                 Log.d("attrm",response.toString());
                 loadingBar.dismiss();
                 try
                 {
                     JSONArray jsonArr=response.getJSONArray("product_attribute");
 
-                    List<ProductVariantModel> varientlist = new ArrayList<>();
+                    // Toast.makeText(getActivity(),""+jsonArr.length(),Toast.LENGTH_LONG).show();
 
+                    int len=jsonArr.length();
 
-                        //JSONArray jsonArr = new JSONArray(attribute);
-
+                    if(len<=0)
+                    {
+      //                  flag="1";
+                    }
+                    else
+                    {
+    //                    flag="2";
                         for (int i = 0; i < jsonArr.length(); i++) {
                             JSONObject jsonObj = jsonArr.getJSONObject(i);
                             ProductVariantModel model=new ProductVariantModel();
@@ -1154,12 +1112,23 @@ public class Details_Fragment extends Fragment {
                                 model.setAttribute_color("");
 
 
-                            varientlist.add(model);
-                            v_list.add(model);
-                         varientsAdapter.notifyDataSetChanged();
+                            vlist.add(model);
+                            varientsAdapter.notifyDataSetChanged();
                         }
-              list_color.clear();
-                        String str_col=varientlist.get(0).getAttribute_color();
+                      // Toast.makeText(getActivity(),"asdasd"+lst.size(),Toast.LENGTH_LONG).show();
+                        list_color.clear();
+                        txtPrice.setText(getResources().getString(R.string.currency)+vlist.get(0).getAttribute_value());
+                        txtMrp.setText(getResources().getString(R.string.currency)+vlist.get(0).getAttribute_mrp());
+                        Double mrp=Double.parseDouble(vlist.get(0).getAttribute_mrp());
+                        final Double price=Double.parseDouble(vlist.get(0).getAttribute_value());
+                        Double discount = Double.valueOf(getDiscount(vlist.get(0).getAttribute_value(),vlist.get(0).getAttribute_mrp()));
+                        if (mrp > price)
+                        {
+
+                            txtPer.setText(String.valueOf(Math.round(discount)+"%"+"off"));
+                        }
+                        else  txtPer.setVisibility(View.GONE);
+                        String str_col=vlist.get(0).getAttribute_color();
                         if(str_col.isEmpty() || str_col.equals(null))
                         {
                             Toast.makeText(getActivity(),"empty ",Toast.LENGTH_LONG).show();
@@ -1170,29 +1139,36 @@ public class Details_Fragment extends Fragment {
                             JSONArray col_array=new JSONArray(str_col);
                             for(int j=0; j<col_array.length();j++)
                             {
-                                    list_color.add(col_array.getString(j).toString());
+                                list_color.add(col_array.getString(j).toString());
                             }
                             colorAdapter.notifyDataSetChanged();
                             //Toast.makeText(getActivity(),""+col_array+"\n "+col_array.length(),Toast.LENGTH_LONG).show();
                         }
 
-                    list_images.clear();
-                    String str_img=varientlist.get(0).getAttribute_image();
-                    if(str_img.isEmpty() || str_img.equals(null))
-                    {
-                        Toast.makeText(getActivity(),"empty ",Toast.LENGTH_LONG).show();
-                    }
-                    else
-                    {
-
-                        JSONArray col_array=new JSONArray(str_img);
-                        for(int j=0; j<col_array.length();j++)
+                        list_images.clear();
+                        String str_img=vlist.get(0).getAttribute_image();
+                        if(str_img.isEmpty() || str_img.equals(null))
                         {
-                            list_images.add(col_array.getString(j).toString());
+                            Toast.makeText(getActivity(),"empty ",Toast.LENGTH_LONG).show();
                         }
-                        //colorAdapter.notifyDataSetChanged();
-                        //Toast.makeText(getActivity(),""+col_array+"\n "+col_array.length(),Toast.LENGTH_LONG).show();
+                        else
+                        {
+
+                            JSONArray col_array=new JSONArray(str_img);
+                            for(int j=0; j<col_array.length();j++)
+                            {
+                                list_images.add(col_array.getString(j).toString());
+                            }
+                            //colorAdapter.notifyDataSetChanged();
+                            //Toast.makeText(getActivity(),""+col_array+"\n "+col_array.length(),Toast.LENGTH_LONG).show();
+                        }
                     }
+
+
+
+                        //JSONArray jsonArr = new JSONArray(attribute);
+
+
 
 
                 }
@@ -1211,6 +1187,7 @@ public class Details_Fragment extends Fragment {
             }
         });
         AppController.getInstance().addToRequestQueue(customVolleyJsonRequest,json_tag);
+
      }
 
 
@@ -1404,4 +1381,6 @@ public boolean checkAttributeStatus(String atr)
 
         ((MainActivity) getActivity()).setCartCounter("" + db_cart.getCartCount());
     }
+
+
 }
