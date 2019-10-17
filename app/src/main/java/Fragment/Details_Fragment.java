@@ -83,13 +83,16 @@ public class Details_Fragment extends Fragment {
 
 
 
-
     String flag="";
     String atr_id="";
     String atr_product_id="";
     String attribute_name="";
     String attribute_value="";
     String attribute_mrp="";
+    String attribute_color="";
+    String attribute_img="";
+
+
     Context context;
 
     List<ProductVariantModel> vlist;
@@ -151,7 +154,7 @@ public class Details_Fragment extends Fragment {
     CardView cardView;
 
     private ElegantNumberButton numberButton;
- Module module=new Module();
+    Module module=new Module();
     private Session_management sessionManagement;
     private String details_product_unit_price;
     List<String> list_color=new ArrayList<>();
@@ -231,12 +234,12 @@ public class Details_Fragment extends Fragment {
         recyclerView=view.findViewById(R.id.recylerView);
         //   listView=findViewById(R.id.lstView);
 
-        txtBack=(TextView)view.findViewById(R.id.txtBack);
+      //  txtBack=(TextView)view.findViewById(R.id.txtBack);
             wish_after=(ImageView)view.findViewById(R.id.wish_after );
             wish_before = (ImageView)view.findViewById( R.id.wish_before );
 
         image_list=new ArrayList<>();
-        progressBar=(ProgressBar)view.findViewById(R.id.progress_bar);
+     //   progressBar=(ProgressBar)view.findViewById(R.id.progress_bar);
         //   Glide.with(this).load(R.raw.basicloader).into(btn);
         txtName=(TextView)view.findViewById(R.id.details_product_name);
         txtDesc=(TextView)view.findViewById(R.id.details_product_description);
@@ -303,6 +306,11 @@ public class Details_Fragment extends Fragment {
 
                 ProductVariantModel model=vlist.get(position);
 
+                atr_id=model.getId();
+                atr_product_id=model.getProduct_id();
+                attribute_mrp=model.getAttribute_mrp();
+                attribute_value=model.getAttribute_value();
+                attribute_name=model.getAttribute_name();
               //  view.setCard(Color.parseColor("#36a93c"));
             //   view.setCardBackgroundColor(Color.parseColor("#36a93c"));
                 txtPrice.setText(getResources().getString(R.string.currency)+model.getAttribute_value());
@@ -355,6 +363,7 @@ public class Details_Fragment extends Fragment {
                     {
                         list_images.add(col_array.getString(j).toString());
                     }
+                    attribute_img=list_images.get(position).toString();
                     varientsAdapter.notifyDataSetChanged();
                     //colorAdapter.notifyDataSetChanged();
                     //Toast.makeText(getActivity(),""+col_array+"\n "+col_array.length(),Toast.LENGTH_LONG).show();
@@ -479,10 +488,10 @@ catch (Exception ex)
               String atr = String.valueOf(details_product_attribute);
                 if (atr.equals("[]")) {
 
-                    Module.setIntoCart(getActivity(),product_id,product_id,product_images,cat_id,details_product_name,details_product_price,
-                            details_product_desc,details_product_rewards,details_product_price,details_product_unit_value,details_product_unit,details_product_increament,
-                            details_product_inStock,details_product_title,details_product_mrp,details_product_attribute,"p",qty);
-                    txtTotal.setText("\u20B9"+String.valueOf(db_cart.getTotalAmount()));
+//                    Module.setIntoCart(getActivity(),product_id,product_id,product_images,cat_id,details_product_name,details_product_price,
+//                            details_product_desc,details_product_rewards,details_product_price,details_product_unit_value,details_product_unit,details_product_increament,
+//                            details_product_inStock,details_product_title,details_product_mrp,details_product_attribute,"p",qty);
+//                    txtTotal.setText("\u20B9"+String.valueOf(db_cart.getTotalAmount()));
 
                 }
                 else {
@@ -498,10 +507,10 @@ catch (Exception ex)
                     String at_id=String.valueOf(str[0]);
                     int j=Integer.parseInt(String.valueOf(str[1]));
 
-                    Module.setIntoCart(getActivity(),at_id,product_id,product_images,cat_id,details_product_name,st0,
-                            details_product_desc,details_product_rewards,st0,details_product_unit_value,st1,details_product_increament,
-                            details_product_inStock,details_product_title,st2,details_product_attribute,"a",qty);
-                    txtTotal.setText("\u20B9"+String.valueOf(db_cart.getTotalAmount()));
+//                    Module.setIntoCart(getActivity(),at_id,product_id,product_images,cat_id,details_product_name,st0,
+//                            details_product_desc,details_product_rewards,st0,details_product_unit_value,st1,details_product_increament,
+//                            details_product_inStock,details_product_title,st2,details_product_attribute,"a",qty);
+//                    txtTotal.setText("\u20B9"+String.valueOf(db_cart.getTotalAmount()));
 
                 }
 
@@ -526,6 +535,8 @@ catch (Exception ex)
                         .diskCacheStrategy(DiskCacheStrategy.ALL)
                         .dontAnimate()
                         .into(btn);
+
+                attribute_color=list_color.get(position).toString();
 //                btn.setColorFilter(Color.parseColor(list_color.get(position).toString()), android.graphics.PorterDuff.Mode.SRC_IN);
 //                btn.setColorFilter(ContextCompat.getColor(getActivity(), Color.parseColor(list_color.get(position).toString())), android.graphics.PorterDuff.Mode.SRC_IN);
 //                btn.setColorFilter(Color.parseColor(list_color.get(position).toString()));
@@ -578,9 +589,9 @@ catch (Exception ex)
                         String unt = String.valueOf(details_product_unit_value + " " + details_product_unit);
 
 
-                        Module.setIntoCart(getActivity(),product_id,product_id,product_images,cat_id,details_product_name,String.valueOf(amt),
-                                details_product_desc,details_product_rewards,details_product_price,details_product_unit_value,unt,details_product_increament,
-                                details_product_inStock,details_product_title,details_product_mrp,details_product_attribute,"p",qty);
+//                        Module.setIntoCart(getActivity(),product_id,product_id,product_images,cat_id,details_product_name,String.valueOf(amt),
+//                                details_product_desc,details_product_rewards,details_product_price,details_product_unit_value,unt,details_product_increament,
+//                                details_product_inStock,details_product_title,details_product_mrp,details_product_attribute,"p",qty);
 
 
 
@@ -607,9 +618,9 @@ catch (Exception ex)
                         double amt = pr * qty;
                         //       Toast.makeText(context,""+str[0].toString()+"\n"+str[1].toString(),Toast.LENGTH_LONG).show();
 
-                        Module.setIntoCart(getActivity(),at_id,product_id,product_images,cat_id,details_product_name,String.valueOf(amt),
-                                details_product_desc,details_product_rewards,st0,details_product_unit_value,st1,details_product_increament,
-                                details_product_inStock,details_product_title,st2,details_product_attribute,"a",qty);
+//                        Module.setIntoCart(getActivity(),at_id,product_id,product_images,cat_id,details_product_name,String.valueOf(amt),
+//                                details_product_desc,details_product_rewards,st0,details_product_unit_value,st1,details_product_increament,
+//                                details_product_inStock,details_product_title,st2,details_product_attribute,"a",qty);
                         //txtTotal.setText("\u20B9"+String.valueOf(db_cart.getTotalAmount()));
 
                         //  Toast.makeText(context,""+attributeList.get(j).getId()+"\n"+mapProduct,Toast.LENGTH_LONG).show();
@@ -653,7 +664,10 @@ catch (Exception ex)
             @Override
             public void onClick(View v) {
                 if (ConnectivityReceiver.isConnected()) {
-                    makeGetLimiteRequest();
+                    Toast.makeText(getActivity(),""+vlist.size()+"\n a_id "+atr_id+"\n a_p_id "+atr_product_id+
+                            "\n a_name"+attribute_name+"\n a_value "+attribute_value+"\n a_mrp "+attribute_mrp+
+                            "\n a_img "+attribute_img+"a_color "+attribute_color,Toast.LENGTH_LONG).show();
+                   // makeGetLimiteRequest();
                 } else {
                     ((MainActivity) getActivity()).onNetworkConnectionChanged(false);
                 }
@@ -1117,6 +1131,11 @@ catch (Exception ex)
                         }
                       // Toast.makeText(getActivity(),"asdasd"+lst.size(),Toast.LENGTH_LONG).show();
                         list_color.clear();
+                        atr_id=v_list.get(0).getId();
+                        atr_product_id=v_list.get(0).getProduct_id();
+                        attribute_mrp=v_list.get(0).getAttribute_mrp();
+                        attribute_value=v_list.get(0).getAttribute_value();
+                        attribute_name=v_list.get(0).getAttribute_name();
                         txtPrice.setText(getResources().getString(R.string.currency)+vlist.get(0).getAttribute_value());
                         txtMrp.setText(getResources().getString(R.string.currency)+vlist.get(0).getAttribute_mrp());
                         Double mrp=Double.parseDouble(vlist.get(0).getAttribute_mrp());
@@ -1142,6 +1161,8 @@ catch (Exception ex)
                                 list_color.add(col_array.getString(j).toString());
                             }
                             colorAdapter.notifyDataSetChanged();
+                            attribute_color=list_color.get(0).toString();
+
                             //Toast.makeText(getActivity(),""+col_array+"\n "+col_array.length(),Toast.LENGTH_LONG).show();
                         }
 
@@ -1159,6 +1180,7 @@ catch (Exception ex)
                             {
                                 list_images.add(col_array.getString(j).toString());
                             }
+                            attribute_img=list_images.get(0).toString();
                             //colorAdapter.notifyDataSetChanged();
                             //Toast.makeText(getActivity(),""+col_array+"\n "+col_array.length(),Toast.LENGTH_LONG).show();
                         }

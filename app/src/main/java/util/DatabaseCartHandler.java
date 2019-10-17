@@ -31,9 +31,9 @@ public class DatabaseCartHandler extends SQLiteOpenHelper {
     public static final String COLUMN_TYPE = "type";
     public static final String COLUMN_DESC = "product_description";
     public static final String COLUMN_STOCK = "stock";
-    public static final String COLUMN_ATRID = "attr_id";
     public static final String COLUMN_ATRCOLOR = "attr_color";
     public static final String COLUMN_ATRIMG = "attr_img";
+    public static final String COLUMN_PRODUCT_ATTR = "product_attribute";
     public static final String COLUMN_REWARDS = "rewards";
     public static final String COLUMN_INCREMENT = "increment";
     public static final String COLUMN_TITLE = "title";
@@ -63,10 +63,12 @@ public class DatabaseCartHandler extends SQLiteOpenHelper {
                 + COLUMN_UNIT_PRICE + " DOUBLE NOT NULL, "
                 + COLUMN_UNIT + " TEXT NOT NULL, "
                 + COLUMN_TYPE + " TEXT NOT NULL ,"
-                + COLUMN_DESC + " TEXT , "
+                + COLUMN_DESC + " TEXT ,"
                 + COLUMN_STOCK + " TEXT NOT NULL, "
-                + COLUMN_REWARDS + " TEXT, "
-                + COLUMN_INCREMENT + " TEXT , "
+                + COLUMN_ATRIMG + " TEXT ,"
+                + COLUMN_ATRCOLOR + " TEXT,"
+                + COLUMN_PRODUCT_ATTR + " TEXT,"
+                + COLUMN_INCREMENT + " TEXT ,"
                 + COLUMN_TITLE + " TEXT "
 
 
@@ -88,7 +90,7 @@ public class DatabaseCartHandler extends SQLiteOpenHelper {
             values.put(COLUMN_ID, map.get(COLUMN_ID));
             values.put(COLUMN_QTY, Qty);
             values.put(COLUMN_CAT_ID, map.get(COLUMN_CAT_ID));
-           values.put(COLUMN_IMAGE, map.get(COLUMN_IMAGE));
+            values.put(COLUMN_IMAGE, map.get(COLUMN_IMAGE));
             values.put(COLUMN_NAME, map.get(COLUMN_NAME));
             values.put(COLUMN_PRICE, map.get(COLUMN_PRICE));
             values.put(COLUMN_MRP, map.get(COLUMN_MRP));
@@ -98,6 +100,10 @@ public class DatabaseCartHandler extends SQLiteOpenHelper {
             values.put(COLUMN_DESC, map.get(COLUMN_DESC));
 
             values.put(COLUMN_STOCK, map.get(COLUMN_STOCK));
+            values.put(COLUMN_ATRIMG, map.get(COLUMN_ATRIMG));
+            values.put(COLUMN_ATRCOLOR, map.get(COLUMN_ATRCOLOR));
+            values.put(COLUMN_PRODUCT_ATTR, map.get(COLUMN_PRODUCT_ATTR));
+
             values.put(COLUMN_REWARDS, map.get(COLUMN_REWARDS));
             values.put(COLUMN_INCREMENT, map.get(COLUMN_INCREMENT));
             values.put(COLUMN_TITLE, map.get(COLUMN_TITLE));
@@ -215,6 +221,9 @@ public class DatabaseCartHandler extends SQLiteOpenHelper {
             map.put(COLUMN_UNIT, cursor.getString(cursor.getColumnIndex(COLUMN_UNIT)));
 
             map.put(COLUMN_STOCK, cursor.getString(cursor.getColumnIndex(COLUMN_STOCK)));
+            map.put(COLUMN_ATRIMG, cursor.getString(cursor.getColumnIndex(COLUMN_ATRIMG)));
+            map.put(COLUMN_ATRCOLOR, cursor.getString(cursor.getColumnIndex(COLUMN_ATRCOLOR)));
+            map.put(COLUMN_PRODUCT_ATTR, cursor.getString(cursor.getColumnIndex(COLUMN_PRODUCT_ATTR)));
             map.put(COLUMN_REWARDS, cursor.getString(cursor.getColumnIndex(COLUMN_REWARDS)));
             map.put(COLUMN_INCREMENT, cursor.getString(cursor.getColumnIndex(COLUMN_INCREMENT)));
             map.put(COLUMN_TITLE, cursor.getString(cursor.getColumnIndex(COLUMN_TITLE)));
@@ -247,6 +256,10 @@ public class DatabaseCartHandler extends SQLiteOpenHelper {
             map.put(COLUMN_UNIT, cursor.getString(cursor.getColumnIndex(COLUMN_UNIT)));
 
             map.put(COLUMN_STOCK, cursor.getString(cursor.getColumnIndex(COLUMN_STOCK)));
+            map.put(COLUMN_ATRIMG, cursor.getString(cursor.getColumnIndex(COLUMN_ATRIMG)));
+            map.put(COLUMN_ATRCOLOR, cursor.getString(cursor.getColumnIndex(COLUMN_ATRCOLOR)));
+            map.put(COLUMN_PRODUCT_ATTR, cursor.getString(cursor.getColumnIndex(COLUMN_PRODUCT_ATTR)));
+
             map.put(COLUMN_REWARDS, cursor.getString(cursor.getColumnIndex(COLUMN_REWARDS)));
             map.put(COLUMN_INCREMENT, cursor.getString(cursor.getColumnIndex(COLUMN_INCREMENT)));
             map.put(COLUMN_TITLE, cursor.getString(cursor.getColumnIndex(COLUMN_TITLE)));

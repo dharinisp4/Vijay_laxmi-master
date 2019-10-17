@@ -512,9 +512,9 @@ SharedPreferences preferences;
 //
                       if (atr.equals("[]")) {
 
-                           Module.setIntoCart(activity,product_id,product_id,product_images,cat_id,details_product_name,details_product_price,
-                                   details_product_desc,details_product_rewards,details_product_price,details_product_unit_value,details_product_unit,details_product_increament,
-                                   details_product_inStock,details_product_title,details_product_mrp,details_product_attribute,"p",qty);
+//                           Module.setIntoCart(activity,product_id,product_id,product_images,cat_id,details_product_name,details_product_price,
+//                                   details_product_desc,details_product_rewards,details_product_price,details_product_unit_value,details_product_unit,details_product_increament,
+//                                   details_product_inStock,details_product_title,details_product_mrp,details_product_attribute,"p",qty);
                           // txtTotal.setText("\u20B9"+String.valueOf(db_cart.getTotalAmount()));
 
                        }
@@ -531,9 +531,9 @@ SharedPreferences preferences;
                            String at_id=String.valueOf(str[0]);
                            int j=Integer.parseInt(String.valueOf(str[1]));
 
-                           Module.setIntoCart(activity,at_id,product_id,product_images,cat_id,details_product_name,st0,
-                                   details_product_desc,details_product_rewards,st0,details_product_unit_value,st1,details_product_increament,
-                                   details_product_inStock,details_product_title,st2,details_product_attribute,"a",qty);
+//                           Module.setIntoCart(activity,at_id,product_id,product_images,cat_id,details_product_name,st0,
+//                                   details_product_desc,details_product_rewards,st0,details_product_unit_value,st1,details_product_increament,
+//                                   details_product_inStock,details_product_title,st2,details_product_attribute,"a",qty);
                           // txtTotal.setText("\u20B9"+String.valueOf(db_cart.getTotalAmount()));
 //
 //                       }
