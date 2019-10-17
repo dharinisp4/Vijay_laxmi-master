@@ -94,8 +94,9 @@ public class Cart_adapter extends RecyclerView.Adapter<Cart_adapter.ProductHolde
             e.printStackTrace();
         }
 
+        String color_img=map.get("attr_img").toString();
         Glide.with(activity)
-                .load(BaseURL.IMG_PRODUCT_URL + img_name)
+                .load(BaseURL.IMG_PRODUCT_URL + color_img)
               //  .centerCrop()
                 .placeholder(R.drawable.icon)
                 .crossFade()
@@ -122,10 +123,10 @@ public class Cart_adapter extends RecyclerView.Adapter<Cart_adapter.ProductHolde
         else
             holder.tv_product_discout.setVisibility(View.GONE);
 
-        int items = Integer.parseInt(db_cart.getInCartItemQty(map.get("cart_id")));
+     //   int items = Integer.parseInt(db_cart.getInCartItemQty(map.get("cart_id")));
          price = Double.parseDouble(map.get("unit_price"));
         // holder.tv_subcat_weight.setText("Weight : "+map.get("unit"));
-        holder.tv_total.setText("" + price * items);
+        //holder.tv_total.setText("" + price * items);
      //   holder.tv_reward.setText("" + reward * items);
        // holder.btnQty.setNumber(String.valueOf(items));
 

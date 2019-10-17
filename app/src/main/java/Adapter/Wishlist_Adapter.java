@@ -125,9 +125,6 @@ public class Wishlist_Adapter extends RecyclerView.Adapter<Wishlist_Adapter.Wish
 
         String atr=String.valueOf(map.get("product_attribute"));
 
-        if(atr.equals("[]"))
-        {
-
 
             status=1;
 //
@@ -138,13 +135,6 @@ public class Wishlist_Adapter extends RecyclerView.Adapter<Wishlist_Adapter.Wish
              discount=getDiscount(p,m);
             //Toast.makeText(getActivity(),""+atr,Toast.LENGTH_LONG).show();
             holder.discount.setText(""+Math.round(discount)+"% OFF");
-        }
-        else
-        {
-            List<ProductVariantModel> variantModels=module.getAttribute(atr);
-            holder.product_price.setText("\u20B9" +variantModels.get(position).getAttribute_value());
-            holder.product_mrp.setText("\u20B9" +variantModels.get(position).getAttribute_mrp());
-        }
 
 //        else
 //        {

@@ -40,6 +40,7 @@ import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.borjabravo.readmoretextview.ReadMoreTextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.cepheuen.elegantnumberbutton.view.ElegantNumberButton;
@@ -72,6 +73,7 @@ import trolley.tcc.R;
 import util.ConnectivityReceiver;
 import util.CustomVolleyJsonRequest;
 import util.DatabaseCartHandler;
+import util.ExpandableTextView;
 import util.RecyclerTouchListener;
 import util.Session_management;
 import util.WishlistHandler;
@@ -148,7 +150,8 @@ public class Details_Fragment extends Fragment {
 
     // ListView listView;
     List<String> image_list;
-    private TextView txtName,txtDesc,txtPrice,txtMrp;
+    private TextView txtName,txtPrice,txtMrp;
+    ReadMoreTextView txtDesc;
     //Spinner spinner_size,spinner_color;
     RecyclerView recyclerView ,varient_recycler;
     CardView cardView;
@@ -242,7 +245,7 @@ public class Details_Fragment extends Fragment {
      //   progressBar=(ProgressBar)view.findViewById(R.id.progress_bar);
         //   Glide.with(this).load(R.raw.basicloader).into(btn);
         txtName=(TextView)view.findViewById(R.id.details_product_name);
-        txtDesc=(TextView)view.findViewById(R.id.details_product_description);
+        txtDesc=(ReadMoreTextView) view.findViewById(R.id.details_product_description);
         txtPrice=(TextView)view.findViewById(R.id.details_product_price);
         txtMrp=(TextView)view.findViewById(R.id.details_product_mrp);
         txtMrp.setPaintFlags(txtMrp.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
@@ -254,7 +257,17 @@ public class Details_Fragment extends Fragment {
         numberButton=(ElegantNumberButton)view.findViewById(R.id.product_qty);
         txtDesc.setText(details_product_desc);
 
-        txtName.setText(details_product_name);
+        if(details_product_attribute.equals("[]"))
+        {
+            txtName.setText(details_product_name+" | "+details_product_unit_value+details_product_unit);
+
+        }
+        else
+        {
+            txtName.setText(details_product_name);
+
+        }
+
 
 
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false);
@@ -363,7 +376,7 @@ public class Details_Fragment extends Fragment {
                     {
                         list_images.add(col_array.getString(j).toString());
                     }
-                    attribute_img=list_images.get(position).toString();
+                    //attribute_img=list_images.get(position).toString();
                     varientsAdapter.notifyDataSetChanged();
                     //colorAdapter.notifyDataSetChanged();
                     //Toast.makeText(getActivity(),""+col_array+"\n "+col_array.length(),Toast.LENGTH_LONG).show();
@@ -488,29 +501,24 @@ catch (Exception ex)
               String atr = String.valueOf(details_product_attribute);
                 if (atr.equals("[]")) {
 
-//                    Module.setIntoCart(getActivity(),product_id,product_id,product_images,cat_id,details_product_name,details_product_price,
-//                            details_product_desc,details_product_rewards,details_product_price,details_product_unit_value,details_product_unit,details_product_increament,
-//                            details_product_inStock,details_product_title,details_product_mrp,details_product_attribute,"p",qty);
-//                    txtTotal.setText("\u20B9"+String.valueOf(db_cart.getTotalAmount()));
+                    Module.setWithoutAttrIntoCart(getActivity(),"0",product_id,product_images,cat_id,details_product_name,details_product_price,
+                            details_product_desc,details_product_rewards,details_product_price,details_product_unit,details_product_increament,
+                            details_product_inStock,"","",details_product_title,details_product_mrp,details_product_attribute,"p",qty);
+                    txtTotal.setText("\u20B9"+String.valueOf(db_cart.getTotalAmount()));
+//                    Toast.makeText(getActivity(),""+db_cart.getCartCount(),Toast.LENGTH_LONG).show();
 
                 }
                 else {
-                    //ProductVariantModel model=variantList.get(position);
+//                    Toast.makeText(getActivity(),""+vlist.size()+"\n a_id "+atr_id+"\n a_p_id "+atr_product_id+
+//                            "\n a_name"+attribute_name+"\n a_value "+attribute_value+"\n a_mrp "+attribute_mrp+
+//                            "\n a_img "+attribute_img+"a_color "+attribute_color,Toast.LENGTH_LONG).show();
+//                    //ProductVariantModel model=variantList.get(position);
 
-                    String str_id=dialog_txtId.getText().toString();
-                    String s=dialog_txtVar.getText().toString();
-                    String[] st=s.split("@");
-                    String st0=String.valueOf(st[0]);
-                    String st1=String.valueOf(st[1]);
-                    String st2=String.valueOf(st[2]);
-                    String[] str=str_id.split("@");
-                    String at_id=String.valueOf(str[0]);
-                    int j=Integer.parseInt(String.valueOf(str[1]));
-
-//                    Module.setIntoCart(getActivity(),at_id,product_id,product_images,cat_id,details_product_name,st0,
-//                            details_product_desc,details_product_rewards,st0,details_product_unit_value,st1,details_product_increament,
-//                            details_product_inStock,details_product_title,st2,details_product_attribute,"a",qty);
-//                    txtTotal.setText("\u20B9"+String.valueOf(db_cart.getTotalAmount()));
+                    Module.setIntoCart(getActivity(),atr_id,product_id,product_images,cat_id,details_product_name,attribute_value,
+                            details_product_desc,details_product_rewards,attribute_value,attribute_name,details_product_increament,
+                            details_product_inStock,attribute_color,attribute_img,details_product_title,attribute_mrp,details_product_attribute,"a",qty);
+                    txtTotal.setText("\u20B9"+String.valueOf(db_cart.getTotalAmount()));
+  //                  Toast.makeText(getActivity(),""+db_cart.getCartCount(),Toast.LENGTH_LONG).show();
 
                 }
 
@@ -537,6 +545,7 @@ catch (Exception ex)
                         .into(btn);
 
                 attribute_color=list_color.get(position).toString();
+                attribute_img=list_images.get(position).toString();
 //                btn.setColorFilter(Color.parseColor(list_color.get(position).toString()), android.graphics.PorterDuff.Mode.SRC_IN);
 //                btn.setColorFilter(ContextCompat.getColor(getActivity(), Color.parseColor(list_color.get(position).toString())), android.graphics.PorterDuff.Mode.SRC_IN);
 //                btn.setColorFilter(Color.parseColor(list_color.get(position).toString()));
@@ -588,7 +597,10 @@ catch (Exception ex)
                         HashMap<String, String> mapProduct = new HashMap<String, String>();
                         String unt = String.valueOf(details_product_unit_value + " " + details_product_unit);
 
-
+                        Module.setWithoutAttrIntoCart(getActivity(),"0",product_id,product_images,cat_id,details_product_name,details_product_price,
+                                details_product_desc,details_product_rewards,String.valueOf(amt),unt,details_product_increament,
+                                details_product_inStock,"","",details_product_title,details_product_mrp,details_product_attribute,"p",qty);
+                        txtTotal.setText("\u20B9"+String.valueOf(db_cart.getTotalAmount()));
 //                        Module.setIntoCart(getActivity(),product_id,product_id,product_images,cat_id,details_product_name,String.valueOf(amt),
 //                                details_product_desc,details_product_rewards,details_product_price,details_product_unit_value,unt,details_product_increament,
 //                                details_product_inStock,details_product_title,details_product_mrp,details_product_attribute,"p",qty);
@@ -602,22 +614,14 @@ catch (Exception ex)
 
 
 
-
-                        String s = dialog_txtVar.getText().toString();
-                        String[] st = s.split("@");
-                        String st0 = String.valueOf(st[0]);
-                        String st1 = String.valueOf(st[1]);
-                        String st2 = String.valueOf(st[2]);
-                        String str_id = dialog_txtId.getText().toString();
-                        String[] str = str_id.split("@");
-                        String at_id = String.valueOf(str[0]);
-                        int k = Integer.parseInt(String.valueOf(str[1]));
-                        double pr = Double.parseDouble(st0);
-
-
+                        double pr=Double.parseDouble( attribute_value);
                         double amt = pr * qty;
                         //       Toast.makeText(context,""+str[0].toString()+"\n"+str[1].toString(),Toast.LENGTH_LONG).show();
 
+                        Module.setIntoCart(getActivity(),atr_id,product_id,product_images,cat_id,details_product_name,attribute_value,
+                                details_product_desc,details_product_rewards,String.valueOf(amt),attribute_name,details_product_increament,
+                                details_product_inStock,attribute_color,attribute_img,details_product_title,attribute_mrp,details_product_attribute,"a",qty);
+                        txtTotal.setText("\u20B9"+String.valueOf(db_cart.getTotalAmount()));
 //                        Module.setIntoCart(getActivity(),at_id,product_id,product_images,cat_id,details_product_name,String.valueOf(amt),
 //                                details_product_desc,details_product_rewards,st0,details_product_unit_value,st1,details_product_increament,
 //                                details_product_inStock,details_product_title,st2,details_product_attribute,"a",qty);
@@ -664,9 +668,10 @@ catch (Exception ex)
             @Override
             public void onClick(View v) {
                 if (ConnectivityReceiver.isConnected()) {
-                    Toast.makeText(getActivity(),""+vlist.size()+"\n a_id "+atr_id+"\n a_p_id "+atr_product_id+
-                            "\n a_name"+attribute_name+"\n a_value "+attribute_value+"\n a_mrp "+attribute_mrp+
-                            "\n a_img "+attribute_img+"a_color "+attribute_color,Toast.LENGTH_LONG).show();
+                    db_cart.clearCart();
+//                    Toast.makeText(getActivity(),""+vlist.size()+"\n a_id "+atr_id+"\n a_p_id "+atr_product_id+
+//                            "\n a_name"+attribute_name+"\n a_value "+attribute_value+"\n a_mrp "+attribute_mrp+
+//                            "\n a_img "+attribute_img+"a_color "+attribute_color,Toast.LENGTH_LONG).show();
                    // makeGetLimiteRequest();
                 } else {
                     ((MainActivity) getActivity()).onNetworkConnectionChanged(false);
@@ -1131,11 +1136,11 @@ catch (Exception ex)
                         }
                       // Toast.makeText(getActivity(),"asdasd"+lst.size(),Toast.LENGTH_LONG).show();
                         list_color.clear();
-                        atr_id=v_list.get(0).getId();
-                        atr_product_id=v_list.get(0).getProduct_id();
-                        attribute_mrp=v_list.get(0).getAttribute_mrp();
-                        attribute_value=v_list.get(0).getAttribute_value();
-                        attribute_name=v_list.get(0).getAttribute_name();
+                        atr_id=vlist.get(0).getId();
+                        atr_product_id=vlist.get(0).getProduct_id();
+                        attribute_mrp=vlist.get(0).getAttribute_mrp();
+                        attribute_value=vlist.get(0).getAttribute_value();
+                        attribute_name=vlist.get(0).getAttribute_name();
                         txtPrice.setText(getResources().getString(R.string.currency)+vlist.get(0).getAttribute_value());
                         txtMrp.setText(getResources().getString(R.string.currency)+vlist.get(0).getAttribute_mrp());
                         Double mrp=Double.parseDouble(vlist.get(0).getAttribute_mrp());
@@ -1160,7 +1165,7 @@ catch (Exception ex)
                             {
                                 list_color.add(col_array.getString(j).toString());
                             }
-                            colorAdapter.notifyDataSetChanged();
+                            //colorAdapter.notifyDataSetChanged();
                             attribute_color=list_color.get(0).toString();
 
                             //Toast.makeText(getActivity(),""+col_array+"\n "+col_array.length(),Toast.LENGTH_LONG).show();
@@ -1181,9 +1186,10 @@ catch (Exception ex)
                                 list_images.add(col_array.getString(j).toString());
                             }
                             attribute_img=list_images.get(0).toString();
-                            //colorAdapter.notifyDataSetChanged();
+
                             //Toast.makeText(getActivity(),""+col_array+"\n "+col_array.length(),Toast.LENGTH_LONG).show();
                         }
+                        colorAdapter.notifyDataSetChanged();
                     }
 
 

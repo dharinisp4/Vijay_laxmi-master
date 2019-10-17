@@ -118,6 +118,8 @@
 
                         </RelativeLayout>
 
+
+
                         <RelativeLayout
                             android:id="@+id/rel"
                             android:visibility="gone"
@@ -152,9 +154,11 @@
                                     android:id="@+id/details_product_name"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:textSize="18dp"
+                                    android:textSize="16dp"
+                                    android:textColor="@color/black"
+
                                     android:padding="5dp"
-                                    android:textStyle="bold|italic"
+                                    android:fontFamily="@font/cabin"
                                     android:text="Name"/>
                                 <TextView
                                     android:id="@+id/details_product_price"
@@ -208,10 +212,69 @@
                                     android:layout_marginRight="@dimen/space_5"
                                     android:layout_below="@id/details_product_mrp"
                                     android:background="@color/dark_gray"/>
+
+
+                                <TextView
+                                    android:id="@+id/txtw"
+
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/line2"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_marginTop="12dp"
+                                    android:fontFamily="@font/cabin"
+                                    android:padding="5dp"
+                                    android:text="Select Quantity :"
+
+
+                                    android:textSize="15dp" />
+
+                                <RelativeLayout
+                                    android:id="@+id/rel_qty"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toRightOf="@+id/txtw"
+                                    android:padding="8dp"
+                                    android:layout_below="@+id/line2">
+                                    <Button
+                                        android:id="@+id/btn_add"
+                                        android:layout_width="90dp"
+                                        android:layout_height="30dp"
+
+                                        android:layout_marginLeft="20dp"
+                                        android:layout_marginTop="5dp"
+                                        android:layout_alignParentEnd="true"
+                                        android:layout_marginRight="@dimen/space_10"
+                                        android:layout_toRightOf="@+id/varient"
+                                        android:background="@color/colorPrimary"
+                                        android:clickable="true"
+                                        android:text="Add"
+                                        android:textColor="@color/white" />
+                                    <com.cepheuen.elegantnumberbutton.view.ElegantNumberButton
+                                        android:id="@+id/product_qty"
+                                        android:layout_width="90dp"
+                                        android:layout_height="28dp"
+                                        android:layout_marginLeft="20dp"
+                                        android:layout_marginTop="5dp"
+                                        android:layout_alignParentEnd="true"
+                                        android:layout_marginRight="@dimen/space_10"
+                                        android:layout_toRightOf="@+id/varient"
+                                        android:background="@color/colorPrimary"
+                                        android:elevation="6dp"
+                                        app:textSize="8dp"
+                                        app:initialNumber="0"
+                                        app:finalNumber="10"
+                                        app:textColor="@color/white"
+                                        android:visibility="gone"
+                                        />
+
+                                </RelativeLayout>
+
+
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_below="@+id/line2"
+                                    android:layout_below="@+id/rel_qty"
                                     android:id="@+id/descriptionTitle"
                                     android:text="Description :"
                                     android:textSize="15dp"
@@ -222,19 +285,35 @@
                                     android:layout_marginRight="5dp"
                                     />
 
-                                <TextView
+
+
+                                <com.borjabravo.readmoretextview.ReadMoreTextView
                                     android:id="@+id/details_product_description"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_below="@id/descriptionTitle"
-                                    android:layout_marginTop="5dp"
-                                    android:textSize="18sp"
-                                    android:textAllCaps="false"
-                                    android:padding="5dp"
-                                    android:text="Name"
-                                    android:layout_marginRight="5dp"
-                                    android:layout_marginLeft="5dp"
+                                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                                    app:trimExpandedText="show more.."
+                                    app:trimCollapsedText="show less"
+                                    app:trimMode="trimModeLength"
+                                    app:trimLength="100"
+                                    app:colorClickableText="@color/colorPrimary"
                                     />
+
+
+<!--                                <TextView-->
+<!--                                    android:id="@+id/details_product_description"-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_below="@id/descriptionTitle"-->
+<!--                                    android:layout_marginTop="5dp"-->
+<!--                                    android:textSize="18sp"-->
+<!--                                    android:textAllCaps="false"-->
+<!--                                    android:padding="5dp"-->
+<!--                                    android:text="Name"-->
+<!--                                    android:layout_marginRight="5dp"-->
+<!--                                    android:layout_marginLeft="5dp"-->
+<!--                                    />-->
 
                                 <View
                                     android:id="@+id/line3"
@@ -417,58 +496,7 @@
                                     android:layout_marginRight="@dimen/space_5"/>
 
 
-                                <TextView
-                                    android:id="@+id/txtw"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_below="@id/line1"
-                                    android:layout_marginLeft="5dp"
-                                    android:layout_marginTop="5dp"
-                                    android:fontFamily="@font/cabin"
-                                    android:padding="5dp"
-                                    android:text="Select Quantity :"
 
-
-                                    android:textSize="15dp" />
-
-                                <RelativeLayout
-                                    android:id="@+id/rel_qty"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                   android:layout_toRightOf="@+id/txtw"
-                                    android:layout_below="@id/line1">
-                                    <Button
-                                        android:id="@+id/btn_add"
-                                        android:layout_width="90dp"
-                                        android:layout_height="30dp"
-                                        android:layout_marginLeft="20dp"
-                                        android:layout_marginTop="5dp"
-                                        android:layout_alignParentEnd="true"
-                                        android:layout_marginRight="@dimen/space_10"
-                                        android:layout_toRightOf="@+id/varient"
-                                        android:background="@color/colorPrimary"
-                                        android:clickable="true"
-                                        android:text="Add"
-                                        android:textColor="@color/white" />
-                                    <com.cepheuen.elegantnumberbutton.view.ElegantNumberButton
-                                        android:id="@+id/product_qty"
-                                        android:layout_width="90dp"
-                                        android:layout_height="28dp"
-                                        android:layout_marginLeft="20dp"
-                                        android:layout_marginTop="5dp"
-                                        android:layout_alignParentEnd="true"
-                                        android:layout_marginRight="@dimen/space_10"
-                                        android:layout_toRightOf="@+id/varient"
-                                        android:background="@color/colorPrimary"
-                                        android:elevation="6dp"
-                                        app:textSize="8dp"
-                                        app:initialNumber="0"
-                                        app:finalNumber="10"
-                                        app:textColor="@color/white"
-                                        android:visibility="gone"
-                                        />
-
-                                </RelativeLayout>
 <!--                                <com.cepheuen.elegantnumberbutton.view.ElegantNumberButton-->
 
 <!--                                    android:id="@+id/product_qty"-->

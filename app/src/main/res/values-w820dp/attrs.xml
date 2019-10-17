@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <item name="logout" type="id" />
+    <item name="skip" type="id" />
+    <item name="add_account" type="id" />
+
+    <declare-styleable name="CustomTextView">
+        <attr name="fontName" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="FlowLayout">
+        <attr name="lineSpacing" format="dimension" />
+        <attr name="maxLine" format="integer" />
+    </declare-styleable>
+
+    <declare-styleable name="ExpandableTextView">
+        <attr name="maxCollapsedLines" format="integer"/>
+        <attr name="animDuration" format="integer"/>
+        <attr name="animAlphaStart" format="float"/>
+        <attr name="expandIndicator" format="reference"/>
+        <attr name="collapseIndicator" format="reference"/>
+        <attr name="expandToggleType" format="enum">
+            <enum name="ImageButton" value="0"/>
+            <enum name="TextView" value="1"/>
+        </attr>
+        <attr name="expandableTextId" format="reference"/>
+        <attr name="expandCollapseToggleId" format="reference"/>
+        <attr name="expandToggleOnTextClick" format="boolean"/>
+    </declare-styleable>
+
+
+    <declare-styleable name="SimpleArcLoader">
+        <attr name="arc_style" format="enum">
+            <enum name="simple_arc" value="0"></enum>
+            <enum name="complete_arc" value="1"></enum>
+        </attr>
+
+        <attr name="arc_margin" format="dimension"/>
+        <attr name="arc_thickness" format="dimension"/>
+
+        <attr name="arc_speed" format="enum">
+            <enum name="slow" value="0"></enum>
+            <enum name="medium" value="1"></enum>
+            <enum name="fast" value="2"></enum>
+        </attr>
+
+        <attr name="arc_colors" format="reference"></attr>
+
+    </declare-styleable>
+
+</resources>
