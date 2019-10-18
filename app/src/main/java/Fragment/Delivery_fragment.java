@@ -45,7 +45,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import Adapter.Delivery_get_address_adapter;
+import Adapter.DeliveryAddressAdapter;
+
 import Config.BaseURL;
 import Config.SharedPref;
 import Model.Delivery_address_model;
@@ -74,7 +75,7 @@ public class Delivery_fragment extends Fragment implements View.OnClickListener 
     private RelativeLayout btn_checkout, tv_add_adress;
     private RecyclerView rv_address;
 
-    private Delivery_get_address_adapter adapter;
+    private DeliveryAddressAdapter adapter;
     private List<Delivery_address_model> delivery_address_modelList = new ArrayList<>();
 
     private DatabaseCartHandler db_cart;
@@ -369,8 +370,8 @@ String language;
                         delivery_address_modelList = gson.fromJson(response.getString("data"), listType);
 
                         //RecyclerView.Adapter adapter1 = new Delivery_get_address_adapter(delivery_address_modelList);
-                        adapter = new Delivery_get_address_adapter(delivery_address_modelList);
-                        ((Delivery_get_address_adapter) adapter).setMode(Attributes.Mode.Single);
+                        adapter = new DeliveryAddressAdapter(delivery_address_modelList);
+                        //((DeliveryAddressAdapter) adapter).setMode(Attributes.Mode.Single);
                         rv_address.setAdapter(adapter);
                         adapter.notifyDataSetChanged();
 

@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -74,10 +75,13 @@ public class TopBrandsAdapter extends RecyclerView.Adapter<TopBrandsAdapter.Hold
 
     public class Holder extends RecyclerView.ViewHolder {
         ImageView brand_icon ;
+        TextView brand_name;
 
         public Holder(View itemView) {
             super( itemView );
             brand_icon = itemView.findViewById( R.id.brandlogo );
+            brand_name=itemView.findViewById( R.id.brandname );
+
         }
     }
 }

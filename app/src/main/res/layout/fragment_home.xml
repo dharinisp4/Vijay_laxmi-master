@@ -317,7 +317,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="@dimen/space_4"
-                android:background="@color/colorPrimary"
+
                 android:gravity="center"
                 android:orientation="vertical">
 
@@ -330,7 +330,7 @@
                     android:fontFamily="cursive"
                     android:paddingLeft="@dimen/space_20"
                     android:paddingTop="@dimen/space_10"
-                    android:textColor="@color/white"
+                    android:textColor="@color/colorPrimary"
                     android:textSize="20dp" />
                 <RelativeLayout
                     android:layout_width="match_parent"
