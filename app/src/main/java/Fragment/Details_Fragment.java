@@ -597,8 +597,8 @@ catch (Exception ex)
                         HashMap<String, String> mapProduct = new HashMap<String, String>();
                         String unt = String.valueOf(details_product_unit_value + " " + details_product_unit);
 
-                        Module.setWithoutAttrIntoCart(getActivity(),"0",product_id,product_images,cat_id,details_product_name,details_product_price,
-                                details_product_desc,details_product_rewards,String.valueOf(amt),unt,details_product_increament,
+                        Module.setWithoutAttrIntoCart(getActivity(),"0",product_id,product_images,cat_id,details_product_name,String.valueOf(amt),
+                                details_product_desc,details_product_rewards,details_product_price,unt,details_product_increament,
                                 details_product_inStock,"","",details_product_title,details_product_mrp,details_product_attribute,"p",qty);
                         txtTotal.setText("\u20B9"+String.valueOf(db_cart.getTotalAmount()));
 //                        Module.setIntoCart(getActivity(),product_id,product_id,product_images,cat_id,details_product_name,String.valueOf(amt),
@@ -618,8 +618,8 @@ catch (Exception ex)
                         double amt = pr * qty;
                         //       Toast.makeText(context,""+str[0].toString()+"\n"+str[1].toString(),Toast.LENGTH_LONG).show();
 
-                        Module.setIntoCart(getActivity(),atr_id,product_id,product_images,cat_id,details_product_name,attribute_value,
-                                details_product_desc,details_product_rewards,String.valueOf(amt),attribute_name,details_product_increament,
+                        Module.setIntoCart(getActivity(),atr_id,product_id,product_images,cat_id,details_product_name,String.valueOf(amt),
+                                details_product_desc,details_product_rewards,attribute_value,attribute_name,details_product_increament,
                                 details_product_inStock,attribute_color,attribute_img,details_product_title,attribute_mrp,details_product_attribute,"a",qty);
                         txtTotal.setText("\u20B9"+String.valueOf(db_cart.getTotalAmount()));
 //                        Module.setIntoCart(getActivity(),at_id,product_id,product_images,cat_id,details_product_name,String.valueOf(amt),
@@ -668,11 +668,11 @@ catch (Exception ex)
             @Override
             public void onClick(View v) {
                 if (ConnectivityReceiver.isConnected()) {
-                    db_cart.clearCart();
+                   // db_cart.clearCart();
 //                    Toast.makeText(getActivity(),""+vlist.size()+"\n a_id "+atr_id+"\n a_p_id "+atr_product_id+
 //                            "\n a_name"+attribute_name+"\n a_value "+attribute_value+"\n a_mrp "+attribute_mrp+
 //                            "\n a_img "+attribute_img+"a_color "+attribute_color,Toast.LENGTH_LONG).show();
-                   // makeGetLimiteRequest();
+                    makeGetLimiteRequest();
                 } else {
                     ((MainActivity) getActivity()).onNetworkConnectionChanged(false);
                 }
