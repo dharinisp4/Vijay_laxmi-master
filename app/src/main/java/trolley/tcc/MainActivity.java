@@ -45,7 +45,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.FirebaseApp;
-import com.google.firebase.iid.FirebaseInstanceId;
+//import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.util.ArrayList;
@@ -120,8 +120,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         FirebaseApp.initializeApp(this);
         setContentView(R.layout.activity_main);
         String token;
-        token = FirebaseInstanceId.getInstance().getToken();
-        Log.d("MYTAG", "This is your Firebase token" + token);
+        //token = FirebaseInstanceId.getInstance().getToken();
+        //Log.d("MYTAG", "This is your Firebase token" + token);
         sharedPreferences = getSharedPreferences("lan", Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
 
@@ -560,15 +560,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //        }
         else if (id==R.id.action_wish)
         {
+          // db_wish.clearWishtable();
             if (db_wish.getWishtableCount() > 0) {
 
-                Toast.makeText(MainActivity.this,""+db_wish.getWishtableCount(),Toast.LENGTH_LONG).show();
+           //     Toast.makeText(MainActivity.this,""+db_wish.getWishtableCount(),Toast.LENGTH_LONG).show();
                 Fragment fm = new Wishlist();
                 FragmentManager fragmentManager = getFragmentManager();
                 fragmentManager.beginTransaction().replace(R.id.contentPanel, fm)
                         .addToBackStack(null).commit();
             } else {
-                Toast.makeText(MainActivity.this,""+db_wish.getWishtableCount(),Toast.LENGTH_LONG).show();
+               // Toast.makeText(MainActivity.this,""+db_wish.getWishtableCount(),Toast.LENGTH_LONG).show();
                 Fragment fm = new Empty_wishlist_fragment();
                 FragmentManager fragmentManager = getFragmentManager();
                 fragmentManager.beginTransaction().replace(R.id.contentPanel, fm)
@@ -801,10 +802,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Log.d("Tecmanic", "Subscribed");
 //        Toast.makeText(MainActivity.this, "Subscribed", Toast.LENGTH_SHORT).show();
 
-        String token = FirebaseInstanceId.getInstance().getToken();
+       // String token = FirebaseInstanceId.getInstance().getToken();
 
         // Log and toast
-        Log.d("Tecmanic", token);
+       // Log.d("Tecmanic", token);
         //      Toast.makeText(MainActivity.this, token, Toast.LENGTH_SHORT).show();
     }
 

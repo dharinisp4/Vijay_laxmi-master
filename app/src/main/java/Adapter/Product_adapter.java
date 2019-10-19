@@ -191,6 +191,8 @@ SharedPreferences preferences;
 
             else if(id==R.id.wish_before) {
                     final Product_model mList = modelList.get(position);
+                //    txt_desc.setText(""+);
+                    //Toast.makeText(activity,""+mList.getProduct_attribute(),Toast.LENGTH_LONG).show();
                     wish_after.setVisibility( View.VISIBLE );
                     wish_before.setVisibility( View.INVISIBLE );
                     HashMap<String, String> mapProduct = new HashMap<String, String>();
@@ -208,7 +210,7 @@ SharedPreferences preferences;
                     mapProduct.put("stock",mList.getStock());
                     mapProduct.put("title",mList.getTitle());
                     mapProduct.put("mrp",mList.getMrp());
-                    mapProduct.put("product_attribute", String.valueOf(module.getAttribute(mList.getProduct_attribute())));
+                    mapProduct.put("product_attribute",modelList.get(position).getProduct_attribute());
                //    mapProduct.put("product_attribute",mList.getProduct_attribute());
 
                        // Toast.makeText(context,""+mapProduct,Toast.LENGTH_LONG).show();
@@ -220,7 +222,7 @@ SharedPreferences preferences;
                         if (tr == true) {
 
                             //   context.setCartCounter("" + holder.db_cart.getCartCount());
-                            Toast.makeText(context, "Added to Wishlist" +db_wish.getWishtableCount(), Toast.LENGTH_LONG).show();
+                            Toast.makeText(context, "Added to Wishlist", Toast.LENGTH_LONG).show();
 
 
 
@@ -367,21 +369,44 @@ SharedPreferences preferences;
             }
             else
             {
-                for(int i=0; i<=array.length()-1;i++)
+                String st_atr=mList.getProduct_attribute().toString();
+                if(st_atr.equals("[]"))
                 {
-                    image_list.add(array.get(i).toString());
+                    for(int i=0; i<=array.length()-1;i++)
+                    {
+                        image_list.add(array.get(i).toString());
 
+                    }
+
+
+                    Glide.with(context)
+                            .load(BaseURL.IMG_PRODUCT_URL +image_list.get(0) )
+                            // .centerCrop()
+                            .placeholder(R.drawable.icon)
+                            .crossFade()
+                            .diskCacheStrategy(DiskCacheStrategy.ALL)
+                            .dontAnimate()
+                            .into(holder.iv_logo);
+                }
+                else
+                {
+                    List<ProductVariantModel> variantModels=module.getAttribute(atr);
+
+                    String img=variantModels.get(0).getAttribute_image();
+
+                    String img_f=getAttrFstImage(img);
+
+
+                    Glide.with(context)
+                            .load(BaseURL.IMG_PRODUCT_URL +img_f.toString() )
+                             .fitCenter()
+                            .placeholder(R.drawable.icon)
+                            .crossFade()
+                            .diskCacheStrategy(DiskCacheStrategy.ALL)
+                            .dontAnimate()
+                            .into(holder.iv_logo);
                 }
 
-
-                Glide.with(context)
-                        .load(BaseURL.IMG_PRODUCT_URL +image_list.get(0) )
-                       // .centerCrop()
-                        .placeholder(R.drawable.icon)
-                        .crossFade()
-                        .diskCacheStrategy(DiskCacheStrategy.ALL)
-                        .dontAnimate()
-                        .into(holder.iv_logo);
             }
 
 
@@ -828,6 +853,27 @@ SharedPreferences preferences;
 //
 //           }
 //      });
+    }
+
+    private String getAttrFstImage(String img) {
+
+        String st="";
+        try
+        {
+            List<String> list_img=new ArrayList<>();
+            JSONArray array=new JSONArray(img);
+            for(int i=0; i<array.length();i++)
+            {
+                list_img.add(array.getString(i).toString());
+            }
+            st=list_img.get(0).toString();
+
+        }
+        catch (Exception ex)
+        {
+            ex.printStackTrace();
+        }
+        return st;
     }
 
     @Override

@@ -55,8 +55,9 @@ public class DeliveryAddressAdapter extends RecyclerView.Adapter<DeliveryAddress
     private String location_id = "";
     private String getsocity, gethouse, getphone, getpin, getname, getcharge;
 
-    public DeliveryAddressAdapter(List<Delivery_address_model> modelList) {
+    public DeliveryAddressAdapter(List<Delivery_address_model> modelList, Context context) {
         this.modelList = modelList;
+        this.context = context;
     }
 
     @Override
@@ -111,6 +112,7 @@ public class DeliveryAddressAdapter extends RecyclerView.Adapter<DeliveryAddress
             public void onClick(View view) {
 
                 if(ConnectivityReceiver.isConnected()){
+
                     makeDeleteAddressRequest(mList.getLocation_id(),position);
                 }
 

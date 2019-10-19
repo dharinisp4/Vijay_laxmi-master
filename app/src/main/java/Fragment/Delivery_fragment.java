@@ -370,7 +370,7 @@ String language;
                         delivery_address_modelList = gson.fromJson(response.getString("data"), listType);
 
                         //RecyclerView.Adapter adapter1 = new Delivery_get_address_adapter(delivery_address_modelList);
-                        adapter = new DeliveryAddressAdapter(delivery_address_modelList);
+                        adapter = new DeliveryAddressAdapter(delivery_address_modelList,getActivity());
                         //((DeliveryAddressAdapter) adapter).setMode(Attributes.Mode.Single);
                         rv_address.setAdapter(adapter);
                         adapter.notifyDataSetChanged();

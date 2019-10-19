@@ -128,11 +128,11 @@ public class Top_Selling_Adapter extends RecyclerView.Adapter<Top_Selling_Adapte
     public void onBindViewHolder(final Top_Selling_Adapter.MyViewHolder holder, final int position) {
         final Top_Selling_model mList = modelList.get(position);
         final String getid = mList.getProduct_id();
-        if(db_wish.isInWishtable( getid ))
-        {
-            holder.wish_after.setVisibility( View.VISIBLE );
-            holder.wish_before.setVisibility( View.GONE );
-        }
+//        if(db_wish.isInWishtable( getid ))
+//        {
+//            holder.wish_after.setVisibility( View.VISIBLE );
+//            holder.wish_before.setVisibility( View.GONE );
+//        }
 
          preferences = context.getSharedPreferences("lan", MODE_PRIVATE);
     final String language=preferences.getString("language","");

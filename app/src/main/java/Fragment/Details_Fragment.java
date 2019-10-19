@@ -85,6 +85,7 @@ public class Details_Fragment extends Fragment {
 
 
 
+
     String flag="";
     String atr_id="";
     String atr_product_id="";
@@ -127,7 +128,7 @@ public class Details_Fragment extends Fragment {
     ImageView wish_before ,wish_after ;
     int status=0;
 
-    private TextView dialog_unit_type,dialog_txtId,dialog_txtVar;
+    private TextView dialog_unit_type,dialog_txtId,dialog_txtVar,details_product_weight;
     String color ,size ;
     Dialog dialog;
 
@@ -189,7 +190,7 @@ public class Details_Fragment extends Fragment {
         rv_weight=(RecyclerView)view.findViewById( R.id.rv_weight);
         rel_weight=(RelativeLayout) view.findViewById(R.id.rel_weight);
         rel_color=(RelativeLayout) view.findViewById(R.id.rel);
-
+        details_product_weight=(TextView)view.findViewById(R.id.details_product_weight);
         // gifImageView=(ImageView) view.findViewById(R.id.gifImageView);
         LinearLayoutManager linearLayoutManager1=new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false);
 
@@ -278,6 +279,7 @@ public class Details_Fragment extends Fragment {
         {
             txtPrice.setText(getResources().getString(R.string.currency)+details_product_price);
             txtMrp.setText(getResources().getString(R.string.currency)+details_product_mrp);
+            details_product_weight.setText(details_product_unit_value+details_product_unit);
             Double mrp=Double.parseDouble(details_product_mrp);
             final Double price=Double.parseDouble(details_product_price);
             Double discount = Double.valueOf(getDiscount(details_product_price,details_product_mrp));
@@ -501,8 +503,9 @@ catch (Exception ex)
               String atr = String.valueOf(details_product_attribute);
                 if (atr.equals("[]")) {
 
+                    String details_unt=details_product_unit_value+details_product_unit;
                     Module.setWithoutAttrIntoCart(getActivity(),"0",product_id,product_images,cat_id,details_product_name,details_product_price,
-                            details_product_desc,details_product_rewards,details_product_price,details_product_unit,details_product_increament,
+                            details_product_desc,details_product_rewards,details_product_price,details_unt,details_product_increament,
                             details_product_inStock,"","",details_product_title,details_product_mrp,details_product_attribute,"p",qty);
                     txtTotal.setText("\u20B9"+String.valueOf(db_cart.getTotalAmount()));
 //                    Toast.makeText(getActivity(),""+db_cart.getCartCount(),Toast.LENGTH_LONG).show();
@@ -537,7 +540,7 @@ catch (Exception ex)
 
                 Glide.with(getActivity())
                         .load(BaseURL.IMG_PRODUCT_URL +list_images.get(position).toString())
-                        .centerCrop()
+                        .fitCenter()
                         .placeholder(R.drawable.icon)
                         .crossFade()
                         .diskCacheStrategy(DiskCacheStrategy.ALL)
@@ -737,34 +740,37 @@ catch (Exception ex)
         //Toast.makeText(getActivity(),""+cat_id, Toast.LENGTH_LONG).show();
       //  makeRelatedProductRequest(cat_id);
 
-       try
+
+        if(details_product_attribute.equals("[]"))
         {
-            image_list.clear();
-            JSONArray array=new JSONArray(product_images );
-           //Toast.makeText(this,""+product_images,Toast.LENGTH_LONG).show();
-            if(product_images.equals(null))
+            try
             {
-                Toast.makeText(getActivity(),"There is no image for this product",Toast.LENGTH_LONG).show();
-            }
-            else
-            {
-                for(int i=0; i<=array.length()-1;i++)
+                image_list.clear();
+                JSONArray array=new JSONArray(product_images );
+                //Toast.makeText(this,""+product_images,Toast.LENGTH_LONG).show();
+                if(product_images.equals(null))
                 {
-                    image_list.add(array.get(i).toString());
+                    Toast.makeText(getActivity(),"There is no image for this product",Toast.LENGTH_LONG).show();
+                }
+                else
+                {
+                    for(int i=0; i<=array.length()-1;i++)
+                    {
+                        image_list.add(array.get(i).toString());
+
+                    }
 
                 }
 
-            }
-
-         //   Toast.makeText(getActivity(),""+image_list.get(0).toString(),Toast.LENGTH_LONG).show();
-            Glide.with(getActivity())
-                    .load(BaseURL.IMG_PRODUCT_URL +image_list.get(0) )
-                    .centerCrop()
-                    .placeholder(R.drawable.icon)
-                    .crossFade()
-                    .diskCacheStrategy(DiskCacheStrategy.ALL)
-                    .dontAnimate()
-                    .into(btn);
+                //   Toast.makeText(getActivity(),""+image_list.get(0).toString(),Toast.LENGTH_LONG).show();
+                Glide.with(getActivity())
+                        .load(BaseURL.IMG_PRODUCT_URL +image_list.get(0) )
+                        .fitCenter()
+                        .placeholder(R.drawable.icon)
+                        .crossFade()
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .dontAnimate()
+                        .into(btn);
 
             /*if(details_product_color.equals(null) || details_product_color.equals("null"))
             {
@@ -775,14 +781,33 @@ catch (Exception ex)
                 cardView.setVisibility(View.VISIBLE);
             }*/
 
-          //  makeGetProductColorSizeRequest(cat_id,product_id);
+                //  makeGetProductColorSizeRequest(cat_id,product_id);
 
-           // Toast.makeText(Product_Frag_details.this,""+image_list.toString(),Toast.LENGTH_LONG).show();
+                // Toast.makeText(Product_Frag_details.this,""+image_list.toString(),Toast.LENGTH_LONG).show();
+
+            }
+            catch (Exception ex)
+            {
+
+                // Toast.makeText(Product_Frag_details.this,""+ex.getMessage(),Toast.LENGTH_LONG).show();
+            }
 
         }
-        catch (Exception ex)
+        else
         {
-           // Toast.makeText(Product_Frag_details.this,""+ex.getMessage(),Toast.LENGTH_LONG).show();
+            List<ProductVariantModel> pv=module.getAttribute(details_product_attribute);
+
+           String v=pv.get(0).getAttribute_image();
+           String s=getAttrImage(v);
+
+            Glide.with(getActivity())
+                    .load(BaseURL.IMG_PRODUCT_URL +s)
+                    .fitCenter()
+                    .placeholder(R.drawable.icon)
+                    .crossFade()
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .dontAnimate()
+                    .into(btn);
         }
       // imagesAdapter.notifyDataSetChanged();
         // makeGetProductRequest(cat_id,product_id);
@@ -792,6 +817,26 @@ catch (Exception ex)
         //recyclerView.setAdapter(imagesAdapter);
 
 
+    }
+
+    private String getAttrImage(String v) {
+
+        String s="";
+        try
+        {
+            List<String> list=new ArrayList<>();
+            JSONArray array=new JSONArray(v);
+            for(int i=0; i<array.length();i++)
+            {
+                list.add(array.getString(i).toString());
+            }
+            s=list.get(0).toString();
+        }
+        catch (Exception ex)
+        {
+            ex.printStackTrace();
+        }
+        return s;
     }
 
 

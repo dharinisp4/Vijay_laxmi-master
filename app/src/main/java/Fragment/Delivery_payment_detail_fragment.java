@@ -9,6 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import Config.BaseURL;
 import Config.SharedPref;
@@ -21,9 +25,7 @@ import util.Session_management;
 
 import static android.content.Context.MODE_PRIVATE;
 
-/**
- * Created by Rajesh Dabhi on 29/6/2017.
- */
+
 
 public class Delivery_payment_detail_fragment extends Fragment {
 
@@ -100,7 +102,8 @@ SharedPreferences preferences;
         }
         getlocation_id = getArguments().getString("location_id");
         getstore_id = getArguments().getString("store_id");
-        deli_charges = Integer.parseInt(getArguments().getString("deli_charges"));
+       // deli_charges = Integer.parseInt(getArguments().getString("deli_charges"));
+        deli_charges = 0;
         String name = getArguments().getString("name");
         String phone = getArguments().getString( "phone" );
         String house = getArguments().getString( "house" );
@@ -120,12 +123,12 @@ SharedPreferences preferences;
         pincode.setText( pin );
         society.setText( societys );
        tvItems.setText(String.valueOf(db_cart.getCartCount()));
-      String mrp= String.valueOf(db_cart.getTotalMRP());
+      String mrp= String.valueOf(getTotMRp());
       String price=String.valueOf(db_cart.getTotalAmount());
         tvMrp.setText(getResources().getString(R.string.currency)+mrp);
       double m=Double.parseDouble(mrp);
        double p=Double.parseDouble(price);
-        double d=p-m;
+        double d=m-p;
         tvDiscount.setText("-"+getResources().getString(R.string.currency)+String.valueOf(d));
         double db = (m-d)+deli_charges ;
     tvDelivary.setText(getResources().getString(R.string.currency)+deli_charges);
@@ -140,6 +143,8 @@ SharedPreferences preferences;
         btn_order.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                //getTotMRp();
                 if (ConnectivityReceiver.isConnected()) {
                     Fragment fm = new Payment_fragment();
                     Bundle args = new Bundle();
@@ -250,5 +255,30 @@ SharedPreferences preferences;
 //        // Adding request to request queue
 //        AppController.getInstance().addToRequestQueue(jsonObjReq, tag_json_obj);
 //    }
+
+    public String getTotMRp()
+    {
+        ArrayList<HashMap<String, String>> list = db_cart.getCartAll();
+        float sum=0;
+        for(int i=0;i<list.size();i++)
+        {
+            final HashMap<String, String> map = list.get(i);
+
+            float q=Float.parseFloat(map.get("qty"));
+            float m=Float.parseFloat(map.get("mrp"));
+
+            sum=sum+(q*m);
+         //   Toast.makeText(getActivity(),""+q+"\n"+m,Toast.LENGTH_LONG).show();
+
+        }
+        if(sum!=0)
+        {
+            return String.valueOf(sum);
+        }
+        else
+            return "0";
+        //Toast.makeText(getActivity(),""+sum,Toast.LENGTH_LONG).show();
+    }
+
 
 }

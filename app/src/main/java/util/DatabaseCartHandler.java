@@ -217,16 +217,26 @@ public class DatabaseCartHandler extends SQLiteOpenHelper {
     }
 
 
-    public boolean updateCart(HashMap<String,String> map,Float Qty)
+    public boolean updateCartWithQty(String id,String price,Float Qty)
     {
         db = getWritableDatabase();
-        if (isInCart(map.get(COLUMN_CID))) {
-            db.execSQL("update " + CART_TABLE + " set " + COLUMN_QTY + " = '" + Qty + "'," + COLUMN_PRICE + " = '" + map.get(COLUMN_PRICE) + "' where " + COLUMN_CID + "=" + map.get(COLUMN_CID));
+        if (isInCartID(id)) {
+            db.execSQL("update " + CART_TABLE + " set " + COLUMN_QTY + " = '" + Qty + "'," + COLUMN_PRICE + " = '" + price + "' where " + COLUMN_CID + "=" +id);
             return true;
         }
         return false;
 
 
+    }
+
+    public boolean isInCartID(String id) {
+        db = getReadableDatabase();
+        String qry = "Select *  from " + CART_TABLE + " where " + COLUMN_CID + " = " + id;
+        Cursor cursor = db.rawQuery(qry, null);
+        cursor.moveToFirst();
+        if (cursor.getCount() > 0) return true;
+
+        return false;
     }
 
     public boolean isInCart(String id) {
@@ -319,6 +329,35 @@ public class DatabaseCartHandler extends SQLiteOpenHelper {
     }
 
 
+    public String getAllMRP() {
+        db = getReadableDatabase();
+        String qry = "Select *  from " + CART_TABLE;
+        Cursor cursor = db.rawQuery(qry, null);
+        cursor.moveToFirst();
+
+
+        float res=0;
+
+        for(int i=0; i<cursor.getColumnCount();i++)
+        {
+            float qty=cursor.getFloat(cursor.getColumnIndex(COLUMN_QTY));
+            String mrp=cursor.getString(cursor.getColumnIndex(COLUMN_MRP));
+            float m=Float.parseFloat(mrp);
+            float sum=qty*m;
+           res=res+sum;
+        }
+
+        //String total = cursor.getString(cursor.getColumnIndex("total_mrp"));
+        if (res != 0) {
+
+            return String.valueOf(res);
+        } else {
+            return "0";
+        }
+    }
+
+
+
     public ArrayList<HashMap<String, String>> getCartAll() {
         ArrayList<HashMap<String, String>> list = new ArrayList<>();
         db = getReadableDatabase();
@@ -330,7 +369,6 @@ public class DatabaseCartHandler extends SQLiteOpenHelper {
             map.put(COLUMN_CID, cursor.getString(cursor.getColumnIndex(COLUMN_CID)));
             map.put(COLUMN_ID, cursor.getString(cursor.getColumnIndex(COLUMN_ID)));
             map.put(COLUMN_AID, cursor.getString(cursor.getColumnIndex(COLUMN_AID)));
-
             map.put(COLUMN_QTY, cursor.getString(cursor.getColumnIndex(COLUMN_QTY)));
             map.put(COLUMN_IMAGE, cursor.getString(cursor.getColumnIndex(COLUMN_IMAGE)));
             map.put(COLUMN_CAT_ID, cursor.getString(cursor.getColumnIndex(COLUMN_CAT_ID)));

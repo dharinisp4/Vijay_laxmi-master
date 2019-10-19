@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class WishlistHandler extends SQLiteOpenHelper {
-    private static String DB_NAME = "dbwishtable";
+    private static String DB_NAME = "dbwi";
     private static int DB_VERSION = 3;
     private SQLiteDatabase db;
 

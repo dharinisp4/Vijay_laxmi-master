@@ -27,15 +27,13 @@ import java.util.HashMap;
 import Config.BaseURL;
 import Fragment.Cart_fragment;
 import Fragment.Details_Fragment;
+import Module.Module;
 import trolley.tcc.R;
 import util.CartHandler;
 import util.DatabaseCartHandler;
 
 import static android.content.Context.MODE_PRIVATE;
 
-/**
- * Created by Rajesh Dabhi on 26/6/2017.
- */
 
 public class Cart_adapter extends RecyclerView.Adapter<Cart_adapter.ProductHolder> {
     ArrayList<HashMap<String, String>> list;
@@ -45,7 +43,7 @@ public class Cart_adapter extends RecyclerView.Adapter<Cart_adapter.ProductHolde
     SharedPreferences preferences;
     String language;
     int qty = 0;
-
+    Module module=new Module();
     int lastpostion;
    // DatabaseHandler dbHandler;
     DatabaseCartHandler db_cart;
@@ -54,24 +52,8 @@ public class Cart_adapter extends RecyclerView.Adapter<Cart_adapter.ProductHolde
         this.list = list;
         this.activity = activity;
 
-        //dbHandler = new DatabaseHandler(activity);
         db_cart=new DatabaseCartHandler(activity);
-        /*common = new CommonClass(activity);
-        File cacheDir = StorageUtils.getCacheDirectory(activity);
-        options = new DisplayImageOptions.Builder()
-                .showImageOnLoading(R.drawable.loading)
-                .showImageForEmptyUri(R.drawable.loading)
-                .showImageOnFail(R.drawable.loading)
-                .cacheInMemory(true)
-                .cacheOnDisk(true)
-                .considerExifParams(true)
-                .displayer(new SimpleBitmapDisplayer())
-                .imageScaleType(ImageScaleType.EXACTLY)
-                .build();
 
-        imgconfig = new ImageLoaderConfiguration.Builder(activity)
-                .build();
-        ImageLoader.getInstance().init(imgconfig);*/
     }
 
     @Override
@@ -84,19 +66,30 @@ public class Cart_adapter extends RecyclerView.Adapter<Cart_adapter.ProductHolde
     @Override
     public void onBindViewHolder(final ProductHolder holder, final int position) {
         final HashMap<String, String> map = list.get(position);
-        
-        String img_array=map.get("product_image");
         String img_name = null;
-        try {
-            JSONArray array=new JSONArray(img_array);
-            img_name=array.get(0).toString();
-        } catch (JSONException e) {
-            e.printStackTrace();
+
+        String st_atr=map.get("product_attribute");
+
+        if(st_atr.equals("[]"))
+        {
+            String img_array=map.get("product_image");
+            try {
+                JSONArray array=new JSONArray(img_array);
+                img_name=array.get(0).toString();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+        }
+        else
+        {
+            img_name=map.get("attr_img").toString();
         }
 
-        String color_img=map.get("attr_img").toString();
+
+
         Glide.with(activity)
-                .load(BaseURL.IMG_PRODUCT_URL + color_img)
+                .load(BaseURL.IMG_PRODUCT_URL + img_name)
               //  .centerCrop()
                 .placeholder(R.drawable.icon)
                 .crossFade()
@@ -190,66 +183,27 @@ public class Cart_adapter extends RecyclerView.Adapter<Cart_adapter.ProductHolde
                 if (qty > 0) {
                     qty = qty - 1;
                     holder.tv_contetiy.setText(String.valueOf(qty));
-                    double t=Double.parseDouble(m.get("price"));
-                    double p=Double.parseDouble(m.get("unit_price"));
+                    double t = Double.parseDouble(m.get("price"));
+                    double p = Double.parseDouble(m.get("unit_price"));
                     holder.tv_total.setText("" + t * qty);
-                    String pr=String.valueOf(t-p);
-                    float qt=Float.valueOf(qty);
+                    String pr = String.valueOf(t - p);
+                    float qt = Float.valueOf(qty);
 
-                    HashMap<String, String> mapProduct = new HashMap<String, String>();
-                    mapProduct.put("cat_id",map.get( "cat_id" ));
-                    mapProduct.put( "cart_id",map.get( "cart_id" ) );
-                    mapProduct.put( "qty", String.valueOf( qt ) );
-                    mapProduct.put("product_id",map.get( "product_id" ));
-                    mapProduct.put("product_image",map.get( "product_image" ));
-                    mapProduct.put("product_name",map.get("product_name"));
-                    mapProduct.put("product_description",map.get( "product_description" ));
-                    mapProduct.put("product_attribute",map.get( "product_attribute" ));
-                    mapProduct.put("stock",map.get("stock"));
-                    mapProduct.put("price",pr);
-                    mapProduct.put("mrp",map.get("mrp"));;
-                    mapProduct.put( "unit_price",map.get("unit_price") );
-                    mapProduct.put("unit_value",map.get( "unit_value" ));
-                    mapProduct.put("unit",map.get("unit"));
-                    mapProduct.put("rewards",map.get("rewards"));
-                    mapProduct.put("increment",map.get("increment"));
-                    mapProduct.put("title",map.get( "title" ));
-//
-//                Toast.makeText(activity,"id- "+map.get("product_id")+"\n img- "+map.get("product_image")+"\n cat_id- "+map.get("category_id")+"\n" +
-//                        "\n name- "+map.get("product_name")+"\n price- "+pr+"\n unit_price- "+map.get("unit_price")+
-//                        "\n size- "+ map.get("size")+"\n col- "+ map.get("color")+"rew- "+ map.get("rewards")+"unit_value- "+ map.get("unit_value")+
-//                        "unit- "+map.get("unit")+"\n inc- "+map.get("increament")+"stock- "+map.get("stock")+"title- "+map.get("title"),Toast.LENGTH_LONG).show();
 
-                    boolean update_cart=db_cart.setCart(mapProduct,qt);
-                    if(update_cart==true)
-                    {
-                        Toast.makeText(activity,"Qty Not Updated",Toast.LENGTH_LONG).show();
-
+                    boolean b = db_cart.updateCartWithQty(map.get("cart_id"), pr, qt);
+                    if (b) {
+                        Toast.makeText(activity, "Qty Updated", Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(activity, "Qty not Updated", Toast.LENGTH_LONG).show();
                     }
-                    else
-                    {
-                        Toast.makeText(activity,"Qty Updated",Toast.LENGTH_LONG).show();
-                        Cart_fragment.tv_total.setText(activity.getResources().getString(R.string.currency)+" "+db_cart.getTotalAmount());
-                    }
-
                 }
+                    Cart_fragment.tv_total.setText(activity.getResources().getString(R.string.currency)+" "+db_cart.getTotalAmount());
 
-                if (holder.tv_contetiy.getText().toString().equalsIgnoreCase("0")) {
+                    if (holder.tv_contetiy.getText().toString().equalsIgnoreCase("0")) {
 
-                    String type=String.valueOf(map.get("type"));
-                    if(type.equals("p"))
-                    {
-                        db_cart.removeItemFromCart(map.get("product_id"));
-
-                    }
-                    else if(type.equals("a"))
-                    {
                         db_cart.removeItemFromCart(map.get("cart_id"));
-                    }
                     list.remove(position);
                     notifyDataSetChanged();
-
-               // db_cart.getCartAll()
                     updateintent();
                 }
             }
@@ -277,44 +231,64 @@ public class Cart_adapter extends RecyclerView.Adapter<Cart_adapter.ProductHolde
                 String pr=String.valueOf(t+p);
                 float qt=Float.valueOf(qty);
 
-             // Toast.makeText(activity,"\npri "+map.get("unit_value")+"\n am "+pr,Toast.LENGTH_LONG ).show();
-                HashMap<String, String> mapProduct = new HashMap<String, String>();
-                mapProduct.put("cat_id",map.get( "cat_id" ));
-                mapProduct.put("qty", String.valueOf( qt ) );
-                mapProduct.put( "cart_id",map.get( "cart_id" ) );
-                mapProduct.put("product_id",map.get( "product_id" ));
-                mapProduct.put("product_image",map.get( "product_image" ));
-                mapProduct.put("product_name",map.get("product_name"));
-                mapProduct.put("product_description",map.get( "product_description" ));
-                mapProduct.put("product_attribute",map.get( "product_attribute" ));
-                mapProduct.put("stock",map.get("stock"));
-                mapProduct.put("price",pr);
-                mapProduct.put("mrp",map.get("mrp"));;
-                mapProduct.put( "unit_price",map.get("unit_price") );
-                mapProduct.put("unit_value",map.get( "unit_value" ));
-                mapProduct.put("unit",map.get("unit"));
-                mapProduct.put("rewards",map.get("rewards"));
-                mapProduct.put("increment",map.get("increment"));
-                mapProduct.put("title",map.get( "title" ));
+                String st_atr=map.get("product_attribute").toString();
 
+                boolean b=db_cart.updateCartWithQty(map.get("cart_id"),pr,qt);
+               if(b)
+               {
+                   Toast.makeText(activity,"Qty Updated",Toast.LENGTH_LONG).show();
+               }
+               else
+               {
+                   Toast.makeText(activity,"Qty not Updated",Toast.LENGTH_LONG).show();
+               }
+
+                Cart_fragment.tv_total.setText(activity.getResources().getString(R.string.currency)+" "+db_cart.getTotalAmount());
+
+
+                // Toast.makeText(activity,""+map.get("product_attribute").toString(),Toast.LENGTH_LONG).show();
+
+
+
+//             // Toast.makeText(activity,"\npri "+map.get("unit_value")+"\n am "+pr,Toast.LENGTH_LONG ).show();
+//                HashMap<String, String> mapProduct = new HashMap<String, String>();
+//                mapProduct.put("cat_id",map.get( "cat_id" ));
+//                mapProduct.put("qty", String.valueOf( qt ) );
+//                mapProduct.put( "cart_id",map.get( "cart_id" ) );
+//                mapProduct.put("product_id",map.get( "product_id" ));
+//                mapProduct.put("product_image",map.get( "product_image" ));
+//                mapProduct.put("product_name",map.get("product_name"));
+//                mapProduct.put("product_description",map.get( "product_description" ));
+//                mapProduct.put("product_attribute",map.get( "product_attribute" ));
+//                mapProduct.put("stock",map.get("stock"));
+//                mapProduct.put("price",pr);
+//                mapProduct.put("mrp",map.get("mrp"));;
+//                mapProduct.put( "unit_price",map.get("unit_price") );
+//                mapProduct.put("unit_value",map.get( "unit_value" ));
+//                mapProduct.put("unit",map.get("unit"));
+//                mapProduct.put("rewards",map.get("rewards"));
+//                mapProduct.put("increment",map.get("increment"));
+//                mapProduct.put("title",map.get( "title" ));
 //
-//                Toast.makeText(activity,"id- "+map.get("product_id")+"\n img- "+map.get("product_image")+"\n cat_id- "+map.get("category_id")+"\n" +
-//                        "\n name- "+map.get("product_name")+"\n price- "+pr+"\n unit_price- "+map.get("unit_price")+
-//                        "\n size- "+ map.get("size")+"\n col- "+ map.get("color")+"rew- "+ map.get("rewards")+"unit_value- "+ map.get("unit_value")+
-//                        "unit- "+map.get("unit")+"\n inc- "+map.get("increament")+"stock- "+map.get("stock")+"title- "+map.get("title"),Toast.LENGTH_LONG).show();
-
-                boolean update_cart=db_cart.setCart(mapProduct,qt);
-                if(update_cart==true)
-                {
-                    Toast.makeText(activity,"Qty Not Updated",Toast.LENGTH_LONG).show();
-
-                }
-                else
-                {
-                    Toast.makeText(activity,"Qty Updated",Toast.LENGTH_LONG).show();
-                    Cart_fragment.tv_total.setText(activity.getResources().getString(R.string.currency)+" "+db_cart.getTotalAmount());
-                }
+////
+////                Toast.makeText(activity,"id- "+map.get("product_id")+"\n img- "+map.get("product_image")+"\n cat_id- "+map.get("category_id")+"\n" +
+////                        "\n name- "+map.get("product_name")+"\n price- "+pr+"\n unit_price- "+map.get("unit_price")+
+////                        "\n size- "+ map.get("size")+"\n col- "+ map.get("color")+"rew- "+ map.get("rewards")+"unit_value- "+ map.get("unit_value")+
+////                        "unit- "+map.get("unit")+"\n inc- "+map.get("increament")+"stock- "+map.get("stock")+"title- "+map.get("title"),Toast.LENGTH_LONG).show();
+//
+//                boolean update_cart=db_cart.setCart(mapProduct,qt);
+//                if(update_cart==true)
+//                {
+//                    Toast.makeText(activity,"Qty Not Updated",Toast.LENGTH_LONG).show();
+//
+//                }
+//                else
+//                {
+//                    Toast.makeText(activity,"Qty Updated",Toast.LENGTH_LONG).show();
+//                    Cart_fragment.tv_total.setText(activity.getResources().getString(R.string.currency)+" "+db_cart.getTotalAmount());
+//                }
              //  holder.tv_total.setText(""+db_cart.getTotalAmount());
+
             }
         });
 //
@@ -391,16 +365,7 @@ public class Cart_adapter extends RecyclerView.Adapter<Cart_adapter.ProductHolde
         holder.iv_remove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String type=String.valueOf(map.get("type"));
-                if(type.equals("p"))
-                {
-                    db_cart.removeItemFromCart(map.get("product_id"));
-
-                }
-                else if(type.equals("a"))
-                {
                     db_cart.removeItemFromCart(map.get("cart_id"));
-                }
 
                 list.remove(position);
                 notifyDataSetChanged();
